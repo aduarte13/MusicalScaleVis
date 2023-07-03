@@ -36,7 +36,13 @@ class Scale(
 
         setFormula(modeType)                // set formulaStrings and formulaInts to correct mode intervals
 
-
+        var offset: Int = allNotes.indexOf(rootNote)
+        for (i in 0 until formulaInts.size-1){
+            offset += formulaInts[i]
+            if (offset >= allNotes.size)
+                offset -= allNotes.size
+            diatonicNotes.add(allNotes[offset])
+        }
     }
 
     fun getRoot() = rootNote
@@ -49,9 +55,9 @@ class Scale(
 
     fun getDiatonicNotes() = diatonicNotes
 
-    fun setNote(rootNote: String){ this.rootNote = rootNote }
+    fun setNote(rootNote: String){ this.rootNote = rootNote; build() }
 
-    fun setMode(modeType: String){ this.modeType = modeType }
+    fun setMode(modeType: String){ this.modeType = modeType; build() }
 
     fun setFormula(modeType: String) {
         formulaInts.clear()
@@ -59,11 +65,11 @@ class Scale(
         if (modeType in allMajorModes) {
             var offset: Int = allMajorModes.indexOf(modeType)
             for (i in 0 until stepsMajorModes.size){
-                if (i + offset > stepsMajorModes.size){
-                    offset -= stepsMajorModes.size
-                }
-                formulaInts.add(stepsMajorModes.get(i + offset))
+                formulaInts.add(stepsMajorModes[offset])
                 formulaStrings.add(intervalStrings[formulaInts[i]]!!)
+                offset += 1
+                if (offset >= stepsMajorModes.size)
+                    offset -= stepsMajorModes.size
             }
         }
         //else if // ADD OTHER MODES HERE
@@ -71,7 +77,7 @@ class Scale(
 }
 
 fun main(){
-    val scale1 = Scale(rootNote = "C", modeType = "Major/Ionian")
+    val scale1 = Scale(rootNote = "B", modeType = "Locrian")
     println("${scale1.getRoot()} ${scale1.getMode()}")
     for (i in 0 until scale1.getDiatonicNotes().size){
         print(scale1.getDiatonicNotes().get(i) + " ")
