@@ -1,10 +1,7 @@
 import java.awt.FlowLayout
 import java.awt.event.ActionEvent
 import java.awt.event.ActionListener
-import javax.swing.BorderFactory
-import javax.swing.JCheckBox
-import javax.swing.JComboBox
-import javax.swing.JPanel
+import javax.swing.*
 
 
 class SelectionPanel(
@@ -20,7 +17,6 @@ class SelectionPanel(
     )
 
     private val noteDropMenu = JComboBox<String>(noteList)
-
     private val modeDropMenu = JComboBox<String>(modeList)
 
     init {
@@ -30,16 +26,41 @@ class SelectionPanel(
         noteDropMenu.maximumRowCount = 5
         modeDropMenu.maximumRowCount = 5
 
+        // add action listeners
         checkboxHide.addActionListener(HideCheckBoxListener())
+        noteDropMenu.addActionListener(RootSelectionListener())
+        modeDropMenu.addActionListener(ModeSelectionListener())
 
+        // add components to subpanels
+        add(checkboxHide)
+        add(noteDropMenu)
+        add(modeDropMenu)
 
     }
 
 
-    private class HideCheckBoxListener: ActionListener {
+    inner class RootSelectionListener() : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
-            //displayPanel.switchChordHidden()
-            //displayPanel.repaint()
+            val selection = noteDropMenu.getSelectedItem() as String // get the currently selected root from the list
+            scale.setRoot(selection) // set the chord's root to the selected note
+            displayPanel.repaint() // update display panel
+        }
+    }
+
+
+    inner class ModeSelectionListener() : ActionListener{
+        override fun actionPerformed(e: ActionEvent) {
+            val selection = modeDropMenu.getSelectedItem() as String // get currently selected type from the list
+            scale.setMode(selection) // set the chord's type to the selected tyoe
+            displayPanel.repaint() // update display panel
+        }
+    }
+
+
+    inner class HideCheckBoxListener(): ActionListener {
+        override fun actionPerformed(e: ActionEvent) {
+            displayPanel.switchHidden()
+            displayPanel.repaint()
         }
     }
 

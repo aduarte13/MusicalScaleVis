@@ -1,22 +1,26 @@
-import javax.swing.JFrame
 import java.awt.*
+import javax.swing.JFrame
+
+
 public class Main : JFrame(){
     init{
-        title = "Scale Visualizer"
+        title = "Music Vis"
         defaultCloseOperation = EXIT_ON_CLOSE
         layout = BorderLayout()
 
-        // create panels
+        // create music structure and panels
+        var music_struct = Scale(rootNote = "C", modeType = "Major/Ionian")
+        val displayPanel = DisplayPanel(music_struct)
+        val selectionPanel = SelectionPanel(music_struct, displayPanel)
 
         // set panel sizes
+        selectionPanel.preferredSize = Dimension(750, 160)
+        displayPanel.preferredSize = Dimension(750, 500)
 
         // add panels to frame
+        add(selectionPanel, BorderLayout.CENTER);
+        add(displayPanel, BorderLayout.SOUTH);
 
-        // create panels
-
-        // set panel sizes
-
-        // add panels to frame
         pack()
         setLocationRelativeTo(null) // center on screen
 

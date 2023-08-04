@@ -43,6 +43,22 @@ class Scale(
                 offset -= allNotes.size
             diatonicNotes.add(allNotes[offset])
         }
+
+        // display for debug
+        println("===================")
+        println("${rootNote} ${modeType}")
+        for (i in 0 until diatonicNotes.size){
+            print(diatonicNotes.get(i) + " ")
+        }
+        println()
+        for (i in 0 until formulaInts.size){
+            print("${formulaInts.get(i)} ")
+        }
+        println()
+        for (i in 0 until formulaStrings.size){
+            print("${formulaStrings.get(i)} ")
+        }
+        println()
     }
 
     fun getRoot() = rootNote
@@ -55,7 +71,7 @@ class Scale(
 
     fun getDiatonicNotes() = diatonicNotes
 
-    fun setNote(rootNote: String){ this.rootNote = rootNote; build() }
+    fun setRoot(rootNote: String){ this.rootNote = rootNote; build() }
 
     fun setMode(modeType: String){ this.modeType = modeType; build() }
 
@@ -78,16 +94,4 @@ class Scale(
 
 fun main(){
     val scale1 = Scale(rootNote = "B", modeType = "Locrian")
-    println("${scale1.getRoot()} ${scale1.getMode()}")
-    for (i in 0 until scale1.getDiatonicNotes().size){
-        print(scale1.getDiatonicNotes().get(i) + " ")
-    }
-    println()
-    for (i in 0 until scale1.getFormulaInts().size){
-        print("${scale1.getFormulaInts().get(i)} ")
-    }
-    println()
-    for (i in 0 until scale1.getFormulaStrings().size){
-        print("${scale1.getFormulaStrings().get(i)} ")
-    }
 }
