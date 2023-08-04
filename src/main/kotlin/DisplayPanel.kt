@@ -2,7 +2,7 @@ import java.awt.*
 import javax.swing.*
 
 
-public class DisplayPanel(
+class DisplayPanel(
     private val scale: Scale,
     private val background_color: Color = Color(40, 40, 40),
     private val text_color: Color = Color(235, 235, 235),
@@ -18,7 +18,7 @@ public class DisplayPanel(
     private var hidden: Boolean = false
 
     init{
-        setBorder(BorderFactory.createEtchedBorder());
+        setBorder(BorderFactory.createEtchedBorder())
 
     }
 
@@ -37,18 +37,10 @@ public class DisplayPanel(
     }
 
     fun drawChordNotes(g: Graphics) {
-        // FIRST, decide whether to use sharps or flats
         var flatsOrSharps = 0 // 0 = undecided; 1 = sharps; 2 = flats
-        var inc = 0
-        var indexOfNote = 0
         val accidentals = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
-        while (flatsOrSharps == 0 && inc < scale.getDiatonicNotes().size) {                                        // while undecided
-            if (scale.getDiatonicNotes().get(inc) in accidentals) {
-
-            }
-            inc++
-        }
+        // INSERT SHARPS OR FLAT DECISION LOGIC HERE
 
         g.font = Font("Arial", Font.BOLD, 24)
         g.color = reg_note_color

@@ -2,14 +2,14 @@ import java.awt.*
 import javax.swing.JFrame
 
 
-public class Main : JFrame(){
+class Main : JFrame(){
     init{
         title = "Music Vis"
         defaultCloseOperation = EXIT_ON_CLOSE
         layout = BorderLayout()
 
         // create music structure and panels
-        var music_struct = Scale(rootNote = "C", modeType = "Major/Ionian")
+        val music_struct = Scale(rootNote = "C", modeType = "Major/Ionian")
         val displayPanel = DisplayPanel(music_struct)
         val selectionPanel = SelectionPanel(music_struct, displayPanel)
 
@@ -18,8 +18,8 @@ public class Main : JFrame(){
         displayPanel.preferredSize = Dimension(750, 500)
 
         // add panels to frame
-        add(selectionPanel, BorderLayout.CENTER);
-        add(displayPanel, BorderLayout.SOUTH);
+        add(selectionPanel, BorderLayout.CENTER)
+        add(displayPanel, BorderLayout.SOUTH)
 
         pack()
         setLocationRelativeTo(null) // center on screen

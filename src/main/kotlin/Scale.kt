@@ -93,5 +93,5 @@ class Scale(
 }
 
 fun main(){
-    val scale1 = Scale(rootNote = "B", modeType = "Locrian")
+
 }
