@@ -27,12 +27,103 @@ class DisplayPanel(
         g.fillRect(0, 0, 760, 510) // draw background
         drawFretboard(g) // draw fretboard
         if (hidden == false) {
-            drawStringIntervals(g) // draw the chord intervals
-            drawChordNotes(g) // display chord notes
-            //drawChordFormulaSteps(g) // display chord formula steps
-            //highlightFretboardNotes(g) // highlight chord notes on fretboard
-            //highlightFretboardRoots(g) // highlight root notes on fretboard
-            //drawFretboardDegrees(g);            // draw degree numbers on fretboard
+            drawStringIntervals(g)          // draw the chord intervals
+            drawChordNotes(g)               // display chord notes
+            highlightFretboardNotes(g)    // highlight chord notes on fretboard
+            //highlightFretboardRoots(g)    // highlight root notes on fretboard
+            //drawFretboardDegrees(g);      // draw degree numbers on fretboard
+        }
+    }
+
+    fun highlightFretboardNotes(g: Graphics) {
+        g.color = Color(20, 20, 20)
+
+        for (i in 0..12) {                       // for every fret
+            if (eString[i] in scale.getDiatonicNotes()) {     //
+                g.color = Color.green
+                g.fillRect(
+                    3 + i * 55,
+                    265,
+                    41,
+                    22
+                )
+                g.fillRect(
+                    3 + i * 55,
+                    445,
+                    41,
+                    22
+                )
+            }
+
+            if (bString[i] in scale.getDiatonicNotes()) {
+                g.color = Color.blue
+                g.fillRect(
+                    3 + i * 55,
+                    301,
+                    41,
+                    22
+                )
+            }
+            g.color = Color(20, 20, 20)
+            if (gString[i] in scale.getDiatonicNotes()) g.fillRect(
+                3 + i * 55,
+                337,
+                41,
+                22
+            )
+            if (dString[i] in scale.getDiatonicNotes()) g.fillRect(
+                3 + i * 55,
+                373,
+                41,
+                22
+            )
+            if (aString[i] in scale.getDiatonicNotes()) g.fillRect(
+                3 + i * 55,
+                409,
+                41,
+                22
+            )
+        }
+        g.color = reg_note_color
+        for (i in 0..12) {                       // for every fret
+            if (eString[i] in scale.getDiatonicNotes()) {     //
+                g.fillRect(
+                    4 + i * 55,
+                    265,
+                    39,
+                    20
+                )
+                g.fillRect(
+                    4 + i * 55,
+                    445,
+                    39,
+                    20
+                )
+            }
+            if (bString[i] in scale.getDiatonicNotes()) g.fillRect(
+                4 + i * 55,
+                301,
+                39,
+                20
+            )
+            if (gString[i] in scale.getDiatonicNotes()) g.fillRect(
+                4 + i * 55 ,
+                337,
+                39,
+                20
+            )
+            if (dString[i] in scale.getDiatonicNotes()) g.fillRect(
+                4 + i * 55,
+                373,
+                39,
+                20
+            )
+            if (aString[i] in scale.getDiatonicNotes()) g.fillRect(
+                4 + i * 55,
+                409,
+                39,
+                20
+            )
         }
     }
 
