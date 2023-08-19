@@ -18,7 +18,7 @@ class DisplayPanel(
     private var hidden: Boolean = false
 
     init{
-        setBorder(BorderFactory.createEtchedBorder())
+        border = BorderFactory.createEtchedBorder()
 
     }
 
@@ -35,7 +35,7 @@ class DisplayPanel(
         }
     }
 
-    fun highlightFretboardNotes(g: Graphics) {
+    private fun highlightFretboardNotes(g: Graphics) {
         g.color = Color(20, 20, 20)
 
         for (i in 0..12) {                       // for every fret
@@ -127,7 +127,7 @@ class DisplayPanel(
         }
     }
 
-    fun drawChordNotes(g: Graphics) {
+    private fun drawChordNotes(g: Graphics) {
         var flatsOrSharps = 0 // 0 = undecided; 1 = sharps; 2 = flats
         val accidentals = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
@@ -164,7 +164,7 @@ class DisplayPanel(
         }
     }
 
-    fun drawStringIntervals(g: Graphics) {
+    private fun drawStringIntervals(g: Graphics) {
         g.color = text_color
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
@@ -172,7 +172,7 @@ class DisplayPanel(
         }
     }
 
-    fun drawFretboard(g: Graphics) {
+    private fun drawFretboard(g: Graphics) {
         g.color = Color.LIGHT_GRAY // set color
         g.drawRect(50, 275, 654, 180) // draw rectangle for perimeter of fretboard
         for (i in 0..3) g.drawLine(50, 311 + i * 36, 704, 311 + i * 36) // draw lines for the guitar strings
