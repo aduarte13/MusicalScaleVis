@@ -35,28 +35,30 @@ class DisplayPanel(
         }
     }
 
+    private fun drawGuitarNote(g: Graphics, c: Color, x: Int, y: Int){
+        val size = 42
+        val border_width = 4
+
+        // draw border (will be covered by other circle)
+        g.color = Color.white
+        g.fillOval(x, y, size, size)
+
+        // draw inner circle
+        g.color = c
+        g.fillOval(x + (border_width/2), y + (border_width/2), size - border_width, size - border_width)
+    }
+
     private fun highlightFretboardNotes(g: Graphics) {
         g.color = Color(20, 20, 20)
 
-        for (i in 0..12) {                       // for every fret
-            if (eString[i] in scale.getDiatonicNotes()) {     //
-                g.color = Color.green
-                g.fillRect(
-                    3 + i * 55,
-                    265,
-                    41,
-                    22
+        for (i in 0..12) {
+            if (eString[i] in scale.getDiatonicNotes()) {
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 265,
                 )
-                g.fillRect(
-                    3 + i * 55,
-                    445,
-                    41,
-                    22
-                )
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 445)
             }
-
+            // !!! CONTINUE HERE !!!
             if (bString[i] in scale.getDiatonicNotes()) {
-                g.color = Color.blue
                 g.fillRect(
                     3 + i * 55,
                     301,
@@ -85,8 +87,8 @@ class DisplayPanel(
             )
         }
         g.color = reg_note_color
-        for (i in 0..12) {                       // for every fret
-            if (eString[i] in scale.getDiatonicNotes()) {     //
+        for (i in 0..12) {
+            if (eString[i] in scale.getDiatonicNotes()) {
                 g.fillRect(
                     4 + i * 55,
                     265,

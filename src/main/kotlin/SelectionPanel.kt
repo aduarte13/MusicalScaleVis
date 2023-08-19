@@ -16,8 +16,8 @@ class SelectionPanel(
             "Mixolydian", "Minor/Aeolian", "Locrian"
     )
 
-    private val noteDropMenu = JComboBox<String>(noteList)
-    private val modeDropMenu = JComboBox<String>(modeList)
+    private val noteDropMenu = JComboBox(noteList)
+    private val modeDropMenu = JComboBox(modeList)
 
     init {
         border = BorderFactory.createTitledBorder("Chord Selection")
@@ -31,7 +31,7 @@ class SelectionPanel(
         noteDropMenu.addActionListener(RootSelectionListener())
         modeDropMenu.addActionListener(ModeSelectionListener())
 
-        // add components to subpanels
+        // add components to panels
         add(checkboxHide)
         add(noteDropMenu)
         add(modeDropMenu)
@@ -39,25 +39,25 @@ class SelectionPanel(
     }
 
 
-    inner class RootSelectionListener() : ActionListener {
+    inner class RootSelectionListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
-            val selection = noteDropMenu.getSelectedItem() as String // get the currently selected root from the list
+            val selection = noteDropMenu.selectedItem as String // get the currently selected root from the list
             scale.setRoot(selection) // set the chord's root to the selected note
             displayPanel.repaint() // update display panel
         }
     }
 
 
-    inner class ModeSelectionListener() : ActionListener{
+    inner class ModeSelectionListener : ActionListener{
         override fun actionPerformed(e: ActionEvent) {
-            val selection = modeDropMenu.getSelectedItem() as String // get currently selected type from the list
+            val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
             scale.setMode(selection) // set the chord's type to the selected tyoe
             displayPanel.repaint() // update display panel
         }
     }
 
 
-    inner class HideCheckBoxListener(): ActionListener {
+    inner class HideCheckBoxListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
             displayPanel.switchHidden()
             displayPanel.repaint()
