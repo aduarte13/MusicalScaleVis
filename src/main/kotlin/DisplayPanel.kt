@@ -53,79 +53,22 @@ class DisplayPanel(
 
         for (i in 0..12) {
             if (eString[i] in scale.getDiatonicNotes()) {
-                drawGuitarNote(g, reg_note_color, 3 + i * 55, 265,
-                )
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 265)
                 drawGuitarNote(g, reg_note_color, 3 + i * 55, 445)
             }
-            // !!! CONTINUE HERE !!!
+
             if (bString[i] in scale.getDiatonicNotes()) {
-                g.fillRect(
-                    3 + i * 55,
-                    301,
-                    41,
-                    22
-                )
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 301)
             }
-            g.color = Color(20, 20, 20)
-            if (gString[i] in scale.getDiatonicNotes()) g.fillRect(
-                3 + i * 55,
-                337,
-                41,
-                22
-            )
-            if (dString[i] in scale.getDiatonicNotes()) g.fillRect(
-                3 + i * 55,
-                373,
-                41,
-                22
-            )
-            if (aString[i] in scale.getDiatonicNotes()) g.fillRect(
-                3 + i * 55,
-                409,
-                41,
-                22
-            )
-        }
-        g.color = reg_note_color
-        for (i in 0..12) {
-            if (eString[i] in scale.getDiatonicNotes()) {
-                g.fillRect(
-                    4 + i * 55,
-                    265,
-                    39,
-                    20
-                )
-                g.fillRect(
-                    4 + i * 55,
-                    445,
-                    39,
-                    20
-                )
+            if (gString[i] in scale.getDiatonicNotes()) {
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 337)
             }
-            if (bString[i] in scale.getDiatonicNotes()) g.fillRect(
-                4 + i * 55,
-                301,
-                39,
-                20
-            )
-            if (gString[i] in scale.getDiatonicNotes()) g.fillRect(
-                4 + i * 55 ,
-                337,
-                39,
-                20
-            )
-            if (dString[i] in scale.getDiatonicNotes()) g.fillRect(
-                4 + i * 55,
-                373,
-                39,
-                20
-            )
-            if (aString[i] in scale.getDiatonicNotes()) g.fillRect(
-                4 + i * 55,
-                409,
-                39,
-                20
-            )
+            if (dString[i] in scale.getDiatonicNotes()){
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 373)
+            }
+            if (aString[i] in scale.getDiatonicNotes()){
+                drawGuitarNote(g, reg_note_color, 3 + i * 55, 409)
+            }
         }
     }
 
