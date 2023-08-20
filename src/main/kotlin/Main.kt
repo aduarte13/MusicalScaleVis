@@ -14,8 +14,8 @@ class Main : JFrame(){
         val selectionPanel = SelectionPanel(music_struct, displayPanel)
 
         // set panel sizes
-        selectionPanel.preferredSize = Dimension(750, 160)
-        displayPanel.preferredSize = Dimension(750, 500)
+        selectionPanel.preferredSize = Dimension(750, 60)
+        displayPanel.preferredSize = Dimension(750, 600)
 
         // add panels to frame
         add(selectionPanel, BorderLayout.CENTER)

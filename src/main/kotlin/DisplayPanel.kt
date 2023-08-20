@@ -24,7 +24,7 @@ class DisplayPanel(
 
     override fun paint(g: Graphics) {
         g.color = background_color // set background color
-        g.fillRect(0, 0, 760, 510) // draw background
+        g.fillRect(0, 0, 760, 610) // draw background
         drawFretboard(g) // draw fretboard
         if (hidden == false) {
             drawStringIntervals(g)          // draw the chord intervals
@@ -45,6 +45,7 @@ class DisplayPanel(
 
         // draw inner circle
         g.color = c
+        // !!! CAREFUL WITH TRUNCATION HERE
         g.fillOval(x + (border_width/2), y + (border_width/2), size - border_width, size - border_width)
     }
 
@@ -113,7 +114,7 @@ class DisplayPanel(
         g.color = text_color
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings().get(i) + " ", 55 + i * 60, 25)
+            g.drawString(scale.getFormulaStrings().get(i) + " ", 80 + i * 60, 25)
         }
     }
 

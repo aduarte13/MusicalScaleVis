@@ -32,9 +32,9 @@ class SelectionPanel(
         modeDropMenu.addActionListener(ModeSelectionListener())
 
         // add components to panels
-        add(checkboxHide)
         add(noteDropMenu)
         add(modeDropMenu)
+        add(checkboxHide)
 
     }
 
