@@ -77,36 +77,70 @@ class DisplayPanel(
         var flatsOrSharps = 0 // 0 = undecided; 1 = sharps; 2 = flats
         val accidentals = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
-        // INSERT SHARPS OR FLAT DECISION LOGIC HERE
-
         g.font = Font("Arial", Font.BOLD, 24)
         g.color = reg_note_color
-        for (i in 0 until scale.getDiatonicNotes().size) {
-            var note: String = scale.getDiatonicNotes().get(i)
-            when (note) {
-                "C#/Db" -> {
-                    note = if (flatsOrSharps == 1) "C#" else "Db"
-                }
 
-                "D#/Eb" -> {
-                    note = if (flatsOrSharps == 1) "D#" else "Eb"
-                }
+        // LOOP TO DECIDE WHICH ACCIDENTALS WILL BE USED
+        var inc: Int = 0
+        do {
+            var note: String = scale.getDiatonicNotes().get(inc)
 
-                "F#/Gb" -> {
-                    note = if (flatsOrSharps == 1) "F#" else "Gb"
-                }
-
-                "G#/Ab" -> {
-                    note = if (flatsOrSharps == 1) "G#" else "Ab"
-                }
-
-                "A#/Bb" -> {
-                    note = if (flatsOrSharps == 1) "A#" else "Bb"
-                }
-
-                else -> {}
+            if (note == "C#/Db"){
+                if ("C" in scale.getDiatonicNotes())
+                    flatsOrSharps = 2
+                else
+                    flatsOrSharps = 1
+                break
             }
+            else if(note == "D#/Eb"){
+                if ("D" in scale.getDiatonicNotes())
+                    flatsOrSharps = 2
+                else
+                    flatsOrSharps = 1
+                break
+            }
+            else if (note == "F#/Gb"){
+                if ("F" in scale.getDiatonicNotes())
+                    flatsOrSharps = 2
+                else
+                    flatsOrSharps = 1
+                break
+            }
+            else if (note == "G#/Ab"){
+                if ("G" in scale.getDiatonicNotes())
+                    flatsOrSharps = 2
+                else
+                    flatsOrSharps = 1
+                break
+            }
+            else if (note == "A#/Bb"){
+                if ("A" in scale.getDiatonicNotes())
+                    flatsOrSharps = 2
+                else
+                    flatsOrSharps = 1
+                break
+            }
+
+
+            inc++
+        }while (flatsOrSharps == 0 && inc < scale.getDiatonicNotes().size)
+
+
+        // LOOP FOR DRAWING NOTE STRINGS
+        for (i in 0..scale.getDiatonicNotes().size-1){
+
+            var note: String = scale.getDiatonicNotes().get(i)
+
+            when(note){
+                "C#/Db" -> if (flatsOrSharps == 1) note = "C#" else note = "Db"
+                "D#/Eb" -> if (flatsOrSharps == 1) note = "D#" else note = "Eb"
+                "F#/Gb" -> if (flatsOrSharps == 1) note = "F#" else note = "Gb"
+                "G#/Ab" -> if (flatsOrSharps == 1) note = "G#" else note = "Ab"
+                "A#/Bb" -> if (flatsOrSharps == 1) note = "A#" else note = "Bb"
+            }
+
             g.drawString(note, 50 + i * 60, 50)
+
         }
     }
 
