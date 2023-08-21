@@ -7,7 +7,7 @@ class DisplayPanel(
     private val background_color: Color = Color(40, 40, 40),
     private val text_color: Color = Color(235, 235, 235),
     private val root_note_color: Color = Color(225, 15, 0),
-    private val reg_note_color: Color = Color(235, 200, 90),
+    private val reg_note_color: Color = Color(255, 180, 70),
 
     private val fretboard_x_offset: Int = 3,     // represent top left
     private val fretboard_y_offset: Int = 365,  // corner of fretboard
@@ -33,10 +33,17 @@ class DisplayPanel(
         g.fillRect(0, 0, 760, 610) // draw background
         drawFretboard(g) // draw fretboard
         if (!hidden) {
+            // TOP TEXT
             drawStringIntervals(g)          // draw the chord intervals
             drawChordNotes(g)               // display chord notes
+
+            // HIGHLIGHTING FRETBOARD
             highlightFretboardNotes(g)    // highlight chord notes on fretboard
-            //highlightFretboardRoots(g)    // highlight root notes on fretboard
+            highlightFretboardRoots(g)    // highlight root notes on fretboard
+            if (scale.getMode() == "Blues"){
+                // highlightFretboardBlueNotes(g)
+            }
+
             //drawFretboardDegrees(g);      // draw degree numbers on fretboard
         }
     }
@@ -55,8 +62,63 @@ class DisplayPanel(
         g.fillOval(x + (borderWidth/2), y + (borderWidth/2), size - borderWidth, size - borderWidth)
     }
 
+    private fun highlightFretboardRoots(g: Graphics) {
+
+        for (i in 0..12) {
+            if (eString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset
+                )
+            }
+
+            if (bString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + fretboard_note_y_dist
+                )
+            }
+            if (gString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (2 * fretboard_note_y_dist)
+                )
+            }
+            if (dString[i] == scale.getRoot()){
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (3 * fretboard_note_y_dist)
+                )
+            }
+            if (aString[i] == scale.getRoot()){
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (4 * fretboard_note_y_dist)
+                )
+            }
+            if (eString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (5 * fretboard_note_y_dist)
+                )
+            }
+        }
+    }
+
+
     private fun highlightFretboardNotes(g: Graphics) {
-        g.color = Color(20, 20, 20)
 
         for (i in 0..12) {
             if (eString[i] in scale.getDiatonicNotes()) {
@@ -65,12 +127,6 @@ class DisplayPanel(
                         reg_note_color,
                         fretboard_x_offset + i * fretboard_note_x_dist,
                         fretboard_y_offset
-                )
-                drawGuitarNote(
-                        g,
-                        reg_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + (5 * fretboard_note_y_dist)
                 )
             }
 
@@ -104,6 +160,14 @@ class DisplayPanel(
                         reg_note_color,
                         fretboard_x_offset + i * fretboard_note_x_dist,
                         fretboard_y_offset + (4 * fretboard_note_y_dist)
+                )
+            }
+            if (eString[i] in scale.getDiatonicNotes()) {
+                drawGuitarNote(
+                        g,
+                        reg_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (5 * fretboard_note_y_dist)
                 )
             }
         }
@@ -193,14 +257,14 @@ class DisplayPanel(
         g.drawRect(                     // perimeter of fretboard, includes e strings
                 fretboard_x_offset + (note_size),   // CAREFUL W/ TRUNCATION
                 fretboard_y_offset + (note_size / 2),
-                (fretboard_note_x_dist * 12) - (note_size / 2),
+                (fretboard_note_x_dist * 12) + 4,
                 fretboard_note_y_dist * 5
         )
         for (i in 0..3)         // other guitar strings
             g.drawLine(
-                    fretboard_x_offset + (note_size / 2) + 15,
+                    fretboard_x_offset + (note_size / 2) + 29,
                     fretboard_y_offset + note_size + 15 + (i * fretboard_note_y_dist),
-                    fretboard_x_offset + (note_size / 2) + (fretboard_note_x_dist * 12),
+                    fretboard_x_offset + (note_size / 2) + (fretboard_note_x_dist * 12) + 24,
                     fretboard_y_offset + note_size + 15 + (i * fretboard_note_y_dist)
                     )
         // draw fret lines for fretboard
