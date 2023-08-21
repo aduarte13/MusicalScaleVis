@@ -9,9 +9,9 @@ class Main : JFrame(){
         layout = BorderLayout()
 
         // create music structure and panels
-        val music_struct = Scale(rootNote = "C", modeType = "Major/Ionian")
-        val displayPanel = DisplayPanel(music_struct)
-        val selectionPanel = SelectionPanel(music_struct, displayPanel)
+        val musicStruct = Scale(rootNote = "C", modeType = "Major/Ionian")
+        val displayPanel = DisplayPanel(musicStruct)
+        val selectionPanel = SelectionPanel(musicStruct, displayPanel)
 
         // set panel sizes
         selectionPanel.preferredSize = Dimension(750, 60)

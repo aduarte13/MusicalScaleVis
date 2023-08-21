@@ -44,19 +44,19 @@ class Scale(
             diatonicNotes.add(allNotes[offset])
         }
 
-        // display for debug
+        // CONSOLE LOG FOR DEBUGGING
         println("===================")
-        println("${rootNote} ${modeType}")
+        println("$rootNote $modeType")
         for (i in 0 until diatonicNotes.size){
-            print(diatonicNotes.get(i) + " ")
+            print(diatonicNotes[i] + " ")
         }
         println()
         for (i in 0 until formulaInts.size){
-            print("${formulaInts.get(i)} ")
+            print("${formulaInts[i]} ")
         }
         println()
         for (i in 0 until formulaStrings.size){
-            print("${formulaStrings.get(i)} ")
+            print("${formulaStrings[i]} ")
         }
         println()
     }
@@ -75,7 +75,7 @@ class Scale(
 
     fun setMode(modeType: String){ this.modeType = modeType; build() }
 
-    fun setFormula(modeType: String) {
+    private fun setFormula(modeType: String) {
         formulaInts.clear()
         formulaStrings.clear()
         if (modeType in allMajorModes) {
