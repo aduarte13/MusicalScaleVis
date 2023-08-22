@@ -174,70 +174,14 @@ class DisplayPanel(
     }
 
     private fun drawTopTextNotes(g: Graphics) {
-        var flatsOrSharps = 0 // 0 = undecided; 1 = sharps; 2 = flats
-        //val accidentals = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
         g.font = Font("Arial", Font.BOLD, 24)
         g.color = reg_note_color
 
-        // LOOP TO DECIDE WHICH ACCIDENTALS WILL BE USED
-        var inc = 0
-        do {
-            var note: String = scale.getDiatonicNotes().get(inc)
-
-            if (note == "C#/Db"){
-                flatsOrSharps = if ("C" in scale.getDiatonicNotes())
-                    2
-                else
-                    1
-                break
-            }
-            else if(note == "D#/Eb"){
-                flatsOrSharps = if ("D" in scale.getDiatonicNotes())
-                    2
-                else
-                    1
-                break
-            }
-            else if (note == "F#/Gb"){
-                flatsOrSharps = if ("F" in scale.getDiatonicNotes())
-                    2
-                else
-                    1
-                break
-            }
-            else if (note == "G#/Ab"){
-                flatsOrSharps = if ("G" in scale.getDiatonicNotes())
-                    2
-                else
-                    1
-                break
-            }
-            else if (note == "A#/Bb"){
-                flatsOrSharps = if ("A" in scale.getDiatonicNotes())
-                    2
-                else
-                    1
-                break
-            }
-
-            inc++
-        }while (flatsOrSharps == 0 && inc < scale.getDiatonicNotes().size)
-
-
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0..scale.getDiatonicNotes().size-1){
 
-            var note: String = scale.getDiatonicNotes().get(i)
-
-            when(note){
-                "C#/Db" -> if (flatsOrSharps == 1) note = "C#" else note = "Db"
-                "D#/Eb" -> if (flatsOrSharps == 1) note = "D#" else note = "Eb"
-                "F#/Gb" -> if (flatsOrSharps == 1) note = "F#" else note = "Gb"
-                "G#/Ab" -> if (flatsOrSharps == 1) note = "G#" else note = "Ab"
-                "A#/Bb" -> if (flatsOrSharps == 1) note = "A#" else note = "Bb"
-            }
-
+            var note: String = scale.getCleanNotes().get(i)
             g.drawString(note, 50 + i * 60, 50)
 
         }
@@ -247,7 +191,7 @@ class DisplayPanel(
         g.color = text_color
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings().get(i) + " ", 80 + i * 60, 25)
+            g.drawString(scale.getFormulaStrings().get(i) + " ", 85 + i * 60, 25)
         }
     }
 
