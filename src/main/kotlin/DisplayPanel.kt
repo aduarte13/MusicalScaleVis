@@ -62,62 +62,6 @@ class DisplayPanel(
         g.fillOval(x + (borderWidth/2), y + (borderWidth/2), size - borderWidth, size - borderWidth)
     }
 
-    private fun drawFretboardRoots(g: Graphics) {
-
-        for (i in 0..12) {
-            if (eString[i] == scale.getRoot()) {
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset
-                )
-            }
-
-            if (bString[i] == scale.getRoot()) {
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + fretboard_note_y_dist
-                )
-            }
-            if (gString[i] == scale.getRoot()) {
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + (2 * fretboard_note_y_dist)
-                )
-            }
-            if (dString[i] == scale.getRoot()){
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + (3 * fretboard_note_y_dist)
-                )
-            }
-            if (aString[i] == scale.getRoot()){
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + (4 * fretboard_note_y_dist)
-                )
-            }
-            if (eString[i] == scale.getRoot()) {
-                drawGuitarNote(
-                        g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + (5 * fretboard_note_y_dist)
-                )
-            }
-        }
-    }
-
-
     private fun drawFretboardNotes(g: Graphics) {
 
         for (i in 0..12) {
