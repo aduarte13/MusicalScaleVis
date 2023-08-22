@@ -34,12 +34,12 @@ class DisplayPanel(
         drawFretboard(g) // draw fretboard
         if (!hidden) {
             // TOP TEXT
-            drawStringIntervals(g)          // draw the chord intervals
-            drawChordNotes(g)               // display chord notes
+            drawTopTextIntervals(g)          // draw the chord intervals
+            drawTopTextNotes(g)               // display chord notes
 
             // HIGHLIGHTING FRETBOARD
-            highlightFretboardNotes(g)    // highlight chord notes on fretboard
-            highlightFretboardRoots(g)    // highlight root notes on fretboard
+            drawFretboardNotes(g)    // highlight chord notes on fretboard
+            drawFretboardRoots(g)    // highlight root notes on fretboard
             if (scale.getMode() == "Blues"){
                 // highlightFretboardBlueNotes(g)
             }
@@ -62,7 +62,7 @@ class DisplayPanel(
         g.fillOval(x + (borderWidth/2), y + (borderWidth/2), size - borderWidth, size - borderWidth)
     }
 
-    private fun highlightFretboardRoots(g: Graphics) {
+    private fun drawFretboardRoots(g: Graphics) {
 
         for (i in 0..12) {
             if (eString[i] == scale.getRoot()) {
@@ -118,7 +118,7 @@ class DisplayPanel(
     }
 
 
-    private fun highlightFretboardNotes(g: Graphics) {
+    private fun drawFretboardNotes(g: Graphics) {
 
         for (i in 0..12) {
             if (eString[i] in scale.getDiatonicNotes()) {
@@ -173,7 +173,7 @@ class DisplayPanel(
         }
     }
 
-    private fun drawChordNotes(g: Graphics) {
+    private fun drawTopTextNotes(g: Graphics) {
         var flatsOrSharps = 0 // 0 = undecided; 1 = sharps; 2 = flats
         //val accidentals = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
@@ -221,7 +221,6 @@ class DisplayPanel(
                 break
             }
 
-
             inc++
         }while (flatsOrSharps == 0 && inc < scale.getDiatonicNotes().size)
 
@@ -244,7 +243,7 @@ class DisplayPanel(
         }
     }
 
-    private fun drawStringIntervals(g: Graphics) {
+    private fun drawTopTextIntervals(g: Graphics) {
         g.color = text_color
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
