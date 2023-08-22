@@ -44,7 +44,7 @@ class DisplayPanel(
                 // highlightFretboardBlueNotes(g)
             }
 
-            //drawFretboardDegrees(g);      // draw degree numbers on fretboard
+            drawFretboardNoteStrings(g);      // draw degree numbers on fretboard
         }
     }
 
@@ -171,6 +171,113 @@ class DisplayPanel(
                         root_note_color,
                         fretboard_x_offset + i * fretboard_note_x_dist,
                         fretboard_y_offset + (5 * fretboard_note_y_dist)
+                )
+            }
+        }
+    }
+
+    private fun drawFretboardNoteStrings(g: Graphics) {
+
+        val accidentals = listOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
+        g.color = Color.black
+
+        for (i in 0..12) {
+            if (eString[i] in scale.getDiatonicNotes()) {
+                var note = eString[i]
+                if (note in accidentals){
+                    when (note) {
+                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
+                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
+                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
+                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
+                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                    }
+                }
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7
+                )
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7 + (5 * fretboard_note_y_dist)
+                )
+            }
+            if (bString[i] in scale.getDiatonicNotes()) {
+                //     fretboard_x_offset + i * fretboard_note_x_dist,
+                //     fretboard_y_offset + fretboard_note_y_dist
+                var note = bString[i]
+                if (note in accidentals){
+                    when (note) {
+                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
+                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
+                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
+                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
+                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                    }
+                }
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7 + fretboard_note_y_dist
+                )
+            }
+            if (gString[i] in scale.getDiatonicNotes()) {
+                //      fretboard_x_offset + i * fretboard_note_x_dist,
+                //      fretboard_y_offset + (2 * fretboard_note_y_dist)
+                var note = gString[i]
+                if (note in accidentals){
+                    when (note) {
+                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
+                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
+                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
+                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
+                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                    }
+                }
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7 + (2 * fretboard_note_y_dist)
+                )
+            }
+            if (dString[i] in scale.getDiatonicNotes()){
+                //     fretboard_x_offset + i * fretboard_note_x_dist,
+                //     fretboard_y_offset + (3 * fretboard_note_y_dist)
+                var note = dString[i]
+                if (note in accidentals){
+                    when (note) {
+                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
+                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
+                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
+                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
+                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                    }
+                }
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7 + (3 * fretboard_note_y_dist)
+                )
+            }
+            if (aString[i] in scale.getDiatonicNotes()){
+                //   fretboard_x_offset + i * fretboard_note_x_dist,
+                //   fretboard_y_offset + (4 * fretboard_note_y_dist)
+                var note = aString[i]
+                if (note in accidentals){
+                    when (note) {
+                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
+                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
+                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
+                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
+                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                    }
+                }
+                g.drawString(
+                        note,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_y_offset + (note_size/2) + 7 + (4 * fretboard_note_y_dist)
                 )
             }
         }

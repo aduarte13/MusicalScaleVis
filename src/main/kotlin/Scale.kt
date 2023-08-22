@@ -85,6 +85,8 @@ class Scale(
 
     fun getMode() = modeType
 
+    fun getFlatsOrSharps() = flatsOrSharps
+
     fun getFormulaInts() = formulaInts
 
     fun getFormulaStrings() = formulaStrings
