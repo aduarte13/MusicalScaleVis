@@ -37,9 +37,9 @@ class DisplayPanel(
             drawTopTextIntervals(g)          // draw the chord intervals
             drawTopTextNotes(g)               // display chord notes
 
-            // HIGHLIGHTING FRETBOARD
+            // HIGHLIGHTING FRETBOARD NOTES
             drawFretboardNotes(g)    // highlight chord notes on fretboard
-            drawFretboardRoots(g)    // highlight root notes on fretboard
+            //drawFretboardRoots(g)    // highlight root notes on fretboard
             if (scale.getMode() == "Blues"){
                 // highlightFretboardBlueNotes(g)
             }
@@ -121,6 +121,7 @@ class DisplayPanel(
     private fun drawFretboardNotes(g: Graphics) {
 
         for (i in 0..12) {
+            // REGULAR DIATONIC NOTE
             if (eString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
                         g,
@@ -129,7 +130,16 @@ class DisplayPanel(
                         fretboard_y_offset
                 )
             }
-
+            // ROOT NOTE
+            if (eString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset
+                )
+            }
+            // REGULAR DIATONIC NOTE
             if (bString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
                         g,
@@ -138,6 +148,16 @@ class DisplayPanel(
                         fretboard_y_offset + fretboard_note_y_dist
                 )
             }
+            // ROOT NOTE
+            if (bString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + fretboard_note_y_dist
+                )
+            }
+            // REGULAR DIATONIC NOTE
             if (gString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
                         g,
@@ -146,6 +166,16 @@ class DisplayPanel(
                         fretboard_y_offset + (2 * fretboard_note_y_dist)
                 )
             }
+            // ROOT NOTE
+            if (gString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (2 * fretboard_note_y_dist)
+                )
+            }
+            // REGULAR DIATONIC NOTE
             if (dString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
@@ -154,6 +184,16 @@ class DisplayPanel(
                         fretboard_y_offset + (3 * fretboard_note_y_dist)
                 )
             }
+            // ROOT NOTE
+            if (dString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (3 * fretboard_note_y_dist)
+                )
+            }
+            // REGULAR DIATONIC NOTE
             if (aString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
@@ -162,10 +202,29 @@ class DisplayPanel(
                         fretboard_y_offset + (4 * fretboard_note_y_dist)
                 )
             }
+            // ROOT NOTE
+            if (aString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (4 * fretboard_note_y_dist)
+                )
+            }
+            // REGULAR DIATONIC NOTE
             if (eString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
                         g,
                         reg_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (5 * fretboard_note_y_dist)
+                )
+            }
+            // ROOT NOTE
+            if (eString[i] == scale.getRoot()) {
+                drawGuitarNote(
+                        g,
+                        root_note_color,
                         fretboard_x_offset + i * fretboard_note_x_dist,
                         fretboard_y_offset + (5 * fretboard_note_y_dist)
                 )
