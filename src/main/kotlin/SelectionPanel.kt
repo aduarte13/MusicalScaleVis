@@ -12,8 +12,11 @@ class SelectionPanel(
 
     private val noteList = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
     private val modeList = arrayOf(
+            // CLASSIC SEVEN
             "Major/Ionian", "Dorian", "Phrygian", "Lydian",
-            "Mixolydian", "Minor/Aeolian", "Locrian"
+            "Mixolydian", "Minor/Aeolian", "Locrian",
+            // PENTA + BLUES
+            "Major Pentatonic", "Minor Pentatonic", "Blues"
     )
 
     private val noteDropMenu = JComboBox(noteList)
