@@ -288,6 +288,8 @@ class DisplayPanel(
     private fun drawFretboardNoteStrings(g: Graphics) {
 
         val accidentals = listOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
+        var offset = 0  // for centering accidental strings on note
+
         g.color = Color.black
 
         for (i in 0..12) {
@@ -301,15 +303,17 @@ class DisplayPanel(
                         "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
                         "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
+                    offset = -6
                 }
+                else offset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7
                 )
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7 + (5 * fretboard_note_y_dist)
                 )
             }
@@ -325,10 +329,12 @@ class DisplayPanel(
                         "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
                         "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
+                    offset = -6
                 }
+                else offset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7 + fretboard_note_y_dist
                 )
             }
@@ -344,10 +350,12 @@ class DisplayPanel(
                         "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
                         "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
+                    offset = -6
                 }
+                else offset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7 + (2 * fretboard_note_y_dist)
                 )
             }
@@ -363,10 +371,12 @@ class DisplayPanel(
                         "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
                         "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
+                    offset = -6
                 }
+                else offset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7 + (3 * fretboard_note_y_dist)
                 )
             }
@@ -382,10 +392,12 @@ class DisplayPanel(
                         "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
                         "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
+                    offset = -6
                 }
+                else offset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2,
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
                         fretboard_y_offset + (note_size/2) + 7 + (4 * fretboard_note_y_dist)
                 )
             }
