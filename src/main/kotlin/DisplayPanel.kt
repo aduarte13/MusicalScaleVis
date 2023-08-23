@@ -8,6 +8,7 @@ class DisplayPanel(
     private val text_color: Color = Color(235, 235, 235),
     private val root_note_color: Color = Color(225, 15, 0),
     private val reg_note_color: Color = Color(255, 180, 70),
+    private val blue_note_color: Color = Color(60, 60, 255),
 
     private val fretboard_x_offset: Int = 3,     // represent top left
     private val fretboard_y_offset: Int = 365,  // corner of fretboard
@@ -65,6 +66,7 @@ class DisplayPanel(
     private fun drawFretboardNotes(g: Graphics) {
 
         for (i in 0..12) {
+            // e string
             // REGULAR DIATONIC NOTE
             if (eString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
@@ -83,6 +85,24 @@ class DisplayPanel(
                         fretboard_y_offset
                 )
             }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && eString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset
+                )
+            }
+            if (scale.getMode() == "Major Blues" && eString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset
+                )
+            }
+            // b string
             // REGULAR DIATONIC NOTE
             if (bString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
@@ -101,6 +121,24 @@ class DisplayPanel(
                         fretboard_y_offset + fretboard_note_y_dist
                 )
             }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && bString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + fretboard_note_y_dist
+                )
+            }
+            if (scale.getMode() == "Major Blues" && bString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + fretboard_note_y_dist
+                )
+            }
+            // g string
             // REGULAR DIATONIC NOTE
             if (gString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
@@ -119,6 +157,24 @@ class DisplayPanel(
                         fretboard_y_offset + (2 * fretboard_note_y_dist)
                 )
             }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && gString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (2 * fretboard_note_y_dist)
+                )
+            }
+            if (scale.getMode() == "Major Blues" && gString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (2 * fretboard_note_y_dist)
+                )
+            }
+            // d string
             // REGULAR DIATONIC NOTE
             if (dString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
@@ -137,6 +193,24 @@ class DisplayPanel(
                         fretboard_y_offset + (3 * fretboard_note_y_dist)
                 )
             }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && dString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (3 * fretboard_note_y_dist)
+                )
+            }
+            if (scale.getMode() == "Major Blues" && dString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (3 * fretboard_note_y_dist)
+                )
+            }
+            // a string
             // REGULAR DIATONIC NOTE
             if (aString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
@@ -155,6 +229,24 @@ class DisplayPanel(
                         fretboard_y_offset + (4 * fretboard_note_y_dist)
                 )
             }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && aString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (4 * fretboard_note_y_dist)
+                )
+            }
+            if (scale.getMode() == "Major Blues" && aString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (4 * fretboard_note_y_dist)
+                )
+            }
+            // E string
             // REGULAR DIATONIC NOTE
             if (eString[i] in scale.getDiatonicNotes()) {
                 drawGuitarNote(
@@ -169,6 +261,23 @@ class DisplayPanel(
                 drawGuitarNote(
                         g,
                         root_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (5 * fretboard_note_y_dist)
+                )
+            }
+            // BLUE NOTE
+            if (scale.getMode() == "Minor Blues" && eString[i] == scale.getDiatonicNotes()[3]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
+                        fretboard_x_offset + i * fretboard_note_x_dist,
+                        fretboard_y_offset + (5 * fretboard_note_y_dist)
+                )
+            }
+            if (scale.getMode() == "Major Blues" && eString[i] == scale.getDiatonicNotes()[2]) {
+                drawGuitarNote(
+                        g,
+                        blue_note_color,
                         fretboard_x_offset + i * fretboard_note_x_dist,
                         fretboard_y_offset + (5 * fretboard_note_y_dist)
                 )

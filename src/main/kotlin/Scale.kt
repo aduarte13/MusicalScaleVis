@@ -129,8 +129,14 @@ class Scale(
                 }
             }
         }
-        else if (modeType == "Blues"){
-            formulaInts = mutableListOf(3, 2, 2, 2, 1, 2)
+        else if (modeType == "Major Blues"){
+            formulaInts = mutableListOf(2, 1, 1, 3, 2, 3)
+            for (i in 0 until formulaInts.size){
+                formulaStrings.add(intervalStrings[formulaInts[i]]!!)
+            }
+        }
+        else if (modeType == "Minor Blues"){
+            formulaInts = mutableListOf(3, 2, 1, 1, 3, 2)
             for (i in 0 until formulaInts.size){
                 formulaStrings.add(intervalStrings[formulaInts[i]]!!)
             }
@@ -142,5 +148,5 @@ class Scale(
 }
 
 fun main(){
-    val scale = Scale(rootNote = "A", modeType = "Blues")
+    val scale = Scale(rootNote = "A", modeType = "Minor Blues")
 }
