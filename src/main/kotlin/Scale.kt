@@ -4,8 +4,8 @@ class Scale(
     private var flatsOrSharps: Int = 1,
     private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
     private val cleanNotes: MutableList<String> = mutableListOf<String>(),
-    private val formulaStrings: MutableList<String> = mutableListOf<String>(),
-    private val formulaInts: MutableList<Int> = mutableListOf<Int>(),
+    private var formulaStrings: MutableList<String> = mutableListOf<String>(),
+    private var formulaInts: MutableList<Int> = mutableListOf<Int>(),
     private val intervalStrings: Map<Int, String> = mapOf(
         1 to "h",
         2 to "W",
@@ -20,8 +20,10 @@ class Scale(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
     ),
-    private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1)
-    // val stepsPenta
+    private val pentaModes: List<String> = listOf(
+        "Major Pentatonic", "Minor Pentatonic"
+    ),
+    private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
     // val stepsNaturalMinor
     // val stepsMelodicMinor
     // val stepsByzantine
@@ -102,6 +104,7 @@ class Scale(
     private fun setFormula(modeType: String) {
         formulaInts.clear()
         formulaStrings.clear()
+
         if (modeType in allMajorModes) {
             var offset: Int = allMajorModes.indexOf(modeType)
             for (i in 0 until stepsMajorModes.size){
@@ -112,10 +115,32 @@ class Scale(
                     offset -= stepsMajorModes.size
             }
         }
-        //else if // ADD OTHER MODES HERE
+        else if (modeType in pentaModes){
+            if (modeType == "Major Pentatonic"){
+                formulaInts = mutableListOf(2, 2, 3, 2, 3)
+                for (i in 0 until formulaInts.size){
+                    formulaStrings.add(intervalStrings[formulaInts[i]]!!)
+                }
+            }
+            else if (modeType == "Minor Pentatonic"){
+                formulaInts = mutableListOf(3, 2, 2, 3, 2)
+                for (i in 0 until formulaInts.size){
+                    formulaStrings.add(intervalStrings[formulaInts[i]]!!)
+                }
+            }
+        }
+        else if (modeType == "Blues"){
+            formulaInts = mutableListOf(3, 2, 2, 2, 1, 2)
+            for (i in 0 until formulaInts.size){
+                formulaStrings.add(intervalStrings[formulaInts[i]]!!)
+            }
+        }
+        else{
+            println("Mode not found!!!")
+        }
     }
 }
 
 fun main(){
-
+    val scale = Scale(rootNote = "A", modeType = "Blues")
 }

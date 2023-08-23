@@ -44,7 +44,7 @@ class DisplayPanel(
                 // highlightFretboardBlueNotes(g)
             }
 
-            drawFretboardNoteStrings(g);      // draw degree numbers on fretboard
+            drawFretboardNoteStrings(g)      // draw degree numbers on fretboard
         }
     }
 
@@ -186,11 +186,11 @@ class DisplayPanel(
                 var note = eString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
-                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
-                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
-                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
-                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
                 }
                 g.drawString(
@@ -210,11 +210,11 @@ class DisplayPanel(
                 var note = bString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
-                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
-                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
-                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
-                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
                 }
                 g.drawString(
@@ -229,11 +229,11 @@ class DisplayPanel(
                 var note = gString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
-                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
-                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
-                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
-                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
                 }
                 g.drawString(
@@ -248,11 +248,11 @@ class DisplayPanel(
                 var note = dString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
-                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
-                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
-                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
-                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
                 }
                 g.drawString(
@@ -267,11 +267,11 @@ class DisplayPanel(
                 var note = aString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> if (scale.getFlatsOrSharps() == 1) note = "C#" else note = "Db"
-                        "D#/Eb" -> if (scale.getFlatsOrSharps() == 1) note = "D#" else note = "Eb"
-                        "F#/Gb" -> if (scale.getFlatsOrSharps() == 1) note = "F#" else note = "Gb"
-                        "G#/Ab" -> if (scale.getFlatsOrSharps() == 1) note = "G#" else note = "Ab"
-                        "A#/Bb" -> if (scale.getFlatsOrSharps() == 1) note = "A#" else note = "Bb"
+                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
                     }
                 }
                 g.drawString(
@@ -291,7 +291,7 @@ class DisplayPanel(
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0..scale.getDiatonicNotes().size-1){
 
-            var note: String = scale.getCleanNotes().get(i)
+            val note: String = scale.getCleanNotes().get(i)
             g.drawString(note, 50 + i * 60, 50)
 
         }
