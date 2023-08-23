@@ -40,11 +40,6 @@ class DisplayPanel(
 
             // HIGHLIGHTING FRETBOARD NOTES
             drawFretboardNotes(g)    // highlight chord notes on fretboard
-            //drawFretboardRoots(g)    // highlight root notes on fretboard
-            if (scale.getMode() == "Blues"){
-                // highlightFretboardBlueNotes(g)
-            }
-
             drawFretboardNoteStrings(g)      // draw degree numbers on fretboard
         }
     }
@@ -288,7 +283,7 @@ class DisplayPanel(
     private fun drawFretboardNoteStrings(g: Graphics) {
 
         val accidentals = listOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
-        var offset = 0  // for centering accidental strings on note
+        var offset: Int   // for centering accidental strings on note
 
         g.color = Color.black
 

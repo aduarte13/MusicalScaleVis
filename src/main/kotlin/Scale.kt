@@ -148,5 +148,5 @@ class Scale(
 }
 
 fun main(){
-    val scale = Scale(rootNote = "A", modeType = "Minor Blues")
+    //val scale = Scale(rootNote = "A", modeType = "Minor Blues")
 }
