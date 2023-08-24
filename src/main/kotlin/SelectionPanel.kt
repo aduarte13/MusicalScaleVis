@@ -41,6 +41,8 @@ class SelectionPanel(
         checkboxHide.addActionListener(HideCheckBoxListener())
         noteDropMenu.addActionListener(RootSelectionListener())
         modeDropMenu.addActionListener(ModeSelectionListener())
+        sharpsRadioButton.addActionListener(SharpsOrFlatsListener())
+        flatsRadioButton.addActionListener(SharpsOrFlatsListener())
 
         // add components to panels
         add(noteDropMenu)
@@ -49,6 +51,16 @@ class SelectionPanel(
         add(sharpsRadioButton)
         add(flatsRadioButton)
 
+    }
+
+    inner class SharpsOrFlatsListener : ActionListener {
+        override fun actionPerformed(e: ActionEvent?) {
+            if (sharpsRadioButton.isSelected)
+                scale.setUsingSharps(true)
+            else
+                scale.setUsingSharps(false)
+            displayPanel.repaint()
+        }
     }
 
 

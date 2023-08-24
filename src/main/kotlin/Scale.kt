@@ -99,8 +99,8 @@ class Scale(
 
     fun getUsingSharps() = usingSharps
 
-    fun switchUsingSharps(){
-        usingSharps = !usingSharps
+    fun setUsingSharps(b: Boolean){
+        usingSharps = b
     }
 
     fun getFormulaInts() = formulaInts
