@@ -1,5 +1,3 @@
-import org.w3c.dom.stylesheets.LinkStyle
-
 class Scale(
         private var rootNote: String,
         private var modeType: String,
@@ -14,26 +12,26 @@ class Scale(
         2 to "W",
         3 to "m3",
         4 to "M4"
-    ),
+        ),
         private val allNotes: List<String> = listOf(
         "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb",
         "G", "G#/Ab", "A", "A#/Bb", "B"
-    ),
+        ),
         private val allMajorModes: List<String> = listOf(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
-    ),
+        ),
         private val pentaModes: List<String> = listOf(
         "Major Pentatonic", "Minor Pentatonic"
-    ),
+        ),
         private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
-        private val chordsMajorModes: List<String> = listOf(
-            "Major", "Minor", "Minor", "Major",
-            "Major", "Minor", "Diminished"
-    ),
-    // val stepsNaturalMinor
-    // val stepsMelodicMinor
-    // val stepsByzantine
+        //private val chordsMajorModes: List<String> = listOf(
+        //    "Major", "Minor", "Minor", "Major",
+        //    "Major", "Minor", "Diminished"
+        //),
+        // val stepsNaturalMinor
+        // val stepsMelodicMinor
+        // val stepsByzantine
 ) {
     init{
         build()     // assembles scale
@@ -163,24 +161,19 @@ class Scale(
     private fun setDiatonicChords(){
         diatonicChords.clear()  //
 
-        if(modeType == "Major/Ionian")
-            diatonicChords = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
-        else if (modeType == "Dorian")
-            diatonicChords = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
-        else if (modeType == "Phrygian")
-            diatonicChords = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
-        else if (modeType == "Lydian")
-            diatonicChords = mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
-        else if (modeType == "Mixolydian")
-            diatonicChords = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
-        else if (modeType == "Minor/Aeolian")
-            diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
-        else if (modeType == "Locrian")
-            diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
+        when (modeType) {
+            "Major/Ionian" -> diatonicChords = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
+            "Dorian" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
+            "Phrygian" -> diatonicChords = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
+            "Lydian" -> diatonicChords = mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
+            "Mixolydian" -> diatonicChords = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
+            "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
+            "Locrian" -> diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
+        }
 
     }
 }
 
 fun main(){
-    val scale = Scale(rootNote = "C", modeType = "Major/Ionian")
+    //val scale = Scale(rootNote = "C", modeType = "Major/Ionian")
 }
