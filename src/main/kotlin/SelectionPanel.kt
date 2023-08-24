@@ -26,6 +26,10 @@ class SelectionPanel(
     private val flatsRadioButton = JRadioButton("Flats")
     private val sharpsOrFlatsButtonGroup = ButtonGroup()
 
+    private val notesRadioButton = JRadioButton("Notes")
+    private val degreesRadioButton = JRadioButton("Degrees")
+    private val notesOrDegreesButtonGroup = ButtonGroup()
+
     init {
         border = BorderFactory.createTitledBorder("Chord Selection")
         layout = FlowLayout()
@@ -37,19 +41,33 @@ class SelectionPanel(
         sharpsOrFlatsButtonGroup.add(flatsRadioButton)
         sharpsRadioButton.isSelected = true
 
+        notesOrDegreesButtonGroup.add(notesRadioButton)
+        notesOrDegreesButtonGroup.add(degreesRadioButton)
+        notesRadioButton.isSelected = true
+
         // add action listeners
         checkboxHide.addActionListener(HideCheckBoxListener())
+
         noteDropMenu.addActionListener(RootSelectionListener())
         modeDropMenu.addActionListener(ModeSelectionListener())
+
         sharpsRadioButton.addActionListener(SharpsOrFlatsListener())
         flatsRadioButton.addActionListener(SharpsOrFlatsListener())
+
+        notesRadioButton.addActionListener(NotesOrDegreesListener())
+        degreesRadioButton.addActionListener(NotesOrDegreesListener())
 
         // add components to panels
         add(noteDropMenu)
         add(modeDropMenu)
+
         add(checkboxHide)
+
         add(sharpsRadioButton)
         add(flatsRadioButton)
+
+        add(notesRadioButton)
+        add(degreesRadioButton)
 
     }
 
@@ -63,6 +81,15 @@ class SelectionPanel(
         }
     }
 
+    inner class NotesOrDegreesListener : ActionListener {
+        override fun actionPerformed(e: ActionEvent?) {
+            if (notesRadioButton.isSelected)
+                displayPanel.setUsingNoteNames(true)
+            else
+                displayPanel.setUsingNoteNames(false)
+            displayPanel.repaint()
+        }
+    }
 
     inner class RootSelectionListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
@@ -88,7 +115,6 @@ class SelectionPanel(
             displayPanel.repaint()
         }
     }
-
 
 }
 

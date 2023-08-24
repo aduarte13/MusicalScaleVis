@@ -16,7 +16,7 @@ class DisplayPanel(
     private val fretboard_note_y_dist: Int = 35,     // vertical distance between notes
     private val note_size: Int = 42,                // size of notes on fretboard
 
-    private var usingNoteNames: Boolean = false,
+    private var usingNoteNames: Boolean = true,
 ) : JPanel(){
     private val eString = arrayOf("E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E")
     private val aString = arrayOf("A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A")
@@ -548,5 +548,9 @@ class DisplayPanel(
 
     fun switchHidden() {
         hidden = !hidden
+    }
+
+    fun setUsingNoteNames(b: Boolean){
+        usingNoteNames = b
     }
 }
