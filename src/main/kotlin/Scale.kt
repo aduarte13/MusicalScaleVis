@@ -1,7 +1,7 @@
 class Scale(
         private var rootNote: String,
         private var modeType: String,
-        private var flatsOrSharps: Int = 1,
+        private var usingSharps: Boolean = true,
         private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
         private val cleanNotes: MutableList<String> = mutableListOf<String>(),
         private var diatonicChords: MutableList<String> = mutableListOf<String>(),
@@ -61,11 +61,11 @@ class Scale(
         // LOOP FOR CLEANING THE SCALE
         for (i in 0 until cleanNotes.size) {
             when (cleanNotes[i]) {
-                "C#/Db" -> if (flatsOrSharps == 1) cleanNotes[i] = "C#" else cleanNotes[i] = "Db"
-                "D#/Eb" -> if (flatsOrSharps == 1) cleanNotes[i] = "D#" else cleanNotes[i] = "Eb"
-                "F#/Gb" -> if (flatsOrSharps == 1) cleanNotes[i] = "F#" else cleanNotes[i] = "Gb"
-                "G#/Ab" -> if (flatsOrSharps == 1) cleanNotes[i] = "G#" else cleanNotes[i] = "Ab"
-                "A#/Bb" -> if (flatsOrSharps == 1) cleanNotes[i] = "A#" else cleanNotes[i] = "Bb"
+                "C#/Db" -> if (usingSharps) cleanNotes[i] = "C#" else cleanNotes[i] = "Db"
+                "D#/Eb" -> if (usingSharps) cleanNotes[i] = "D#" else cleanNotes[i] = "Eb"
+                "F#/Gb" -> if (usingSharps) cleanNotes[i] = "F#" else cleanNotes[i] = "Gb"
+                "G#/Ab" -> if (usingSharps) cleanNotes[i] = "G#" else cleanNotes[i] = "Ab"
+                "A#/Bb" -> if (usingSharps) cleanNotes[i] = "A#" else cleanNotes[i] = "Bb"
             }
         }
         // CONSOLE LOG FOR DEBUGGING
@@ -97,7 +97,11 @@ class Scale(
 
     fun getMode() = modeType
 
-    fun getFlatsOrSharps() = flatsOrSharps
+    fun getUsingSharps() = usingSharps
+
+    fun switchUsingSharps(){
+        usingSharps = !usingSharps
+    }
 
     fun getFormulaInts() = formulaInts
 
