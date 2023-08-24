@@ -307,11 +307,11 @@ class DisplayPanel(
                 var note = eString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
-                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
-                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
-                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
-                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
+                        "C#/Db" -> note = if (scale.getUsingSharps()) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getUsingSharps()) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getUsingSharps()) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getUsingSharps()) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getUsingSharps()) "A#" else "Bb"
                     }
                     offset = -6
                 }
@@ -333,11 +333,11 @@ class DisplayPanel(
                 var note = bString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
-                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
-                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
-                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
-                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
+                        "C#/Db" -> note = if (scale.getUsingSharps()) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getUsingSharps()) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getUsingSharps()) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getUsingSharps()) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getUsingSharps()) "A#" else "Bb"
                     }
                     offset = -6
                 }
@@ -354,11 +354,11 @@ class DisplayPanel(
                 var note = gString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
-                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
-                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
-                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
-                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
+                        "C#/Db" -> note = if (scale.getUsingSharps()) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getUsingSharps()) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getUsingSharps()) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getUsingSharps()) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getUsingSharps()) "A#" else "Bb"
                     }
                     offset = -6
                 }
@@ -375,11 +375,11 @@ class DisplayPanel(
                 var note = dString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
-                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
-                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
-                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
-                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
+                        "C#/Db" -> note = if (scale.getUsingSharps()) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getUsingSharps()) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getUsingSharps()) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getUsingSharps()) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getUsingSharps()) "A#" else "Bb"
                     }
                     offset = -6
                 }
@@ -396,11 +396,11 @@ class DisplayPanel(
                 var note = aString[i]
                 if (note in accidentals){
                     when (note) {
-                        "C#/Db" -> note = if (scale.getFlatsOrSharps() == 1) "C#" else "Db"
-                        "D#/Eb" -> note = if (scale.getFlatsOrSharps() == 1) "D#" else "Eb"
-                        "F#/Gb" -> note = if (scale.getFlatsOrSharps() == 1) "F#" else "Gb"
-                        "G#/Ab" -> note = if (scale.getFlatsOrSharps() == 1) "G#" else "Ab"
-                        "A#/Bb" -> note = if (scale.getFlatsOrSharps() == 1) "A#" else "Bb"
+                        "C#/Db" -> note = if (scale.getUsingSharps()) "C#" else "Db"
+                        "D#/Eb" -> note = if (scale.getUsingSharps()) "D#" else "Eb"
+                        "F#/Gb" -> note = if (scale.getUsingSharps()) "F#" else "Gb"
+                        "G#/Ab" -> note = if (scale.getUsingSharps()) "G#" else "Ab"
+                        "A#/Bb" -> note = if (scale.getUsingSharps()) "A#" else "Bb"
                     }
                     offset = -6
                 }

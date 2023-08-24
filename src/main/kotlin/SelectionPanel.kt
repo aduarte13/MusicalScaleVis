@@ -22,12 +22,20 @@ class SelectionPanel(
     private val noteDropMenu = JComboBox(noteList)
     private val modeDropMenu = JComboBox(modeList)
 
+    private val sharpsRadioButton = JRadioButton("Sharps")
+    private val flatsRadioButton = JRadioButton("Flats")
+    private val sharpsOrFlatsButtonGroup = ButtonGroup()
+
     init {
         border = BorderFactory.createTitledBorder("Chord Selection")
         layout = FlowLayout()
 
         noteDropMenu.maximumRowCount = 5
         modeDropMenu.maximumRowCount = 5
+
+        sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
+        sharpsOrFlatsButtonGroup.add(flatsRadioButton)
+        sharpsRadioButton.isSelected = true
 
         // add action listeners
         checkboxHide.addActionListener(HideCheckBoxListener())
@@ -38,6 +46,8 @@ class SelectionPanel(
         add(noteDropMenu)
         add(modeDropMenu)
         add(checkboxHide)
+        add(sharpsRadioButton)
+        add(flatsRadioButton)
 
     }
 
