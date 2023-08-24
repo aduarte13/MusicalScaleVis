@@ -319,12 +319,12 @@ class DisplayPanel(
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7
+                        fretboard_y_offset + (note_size/2) + 9
                 )
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7 + (5 * fretboard_note_y_dist)
+                        fretboard_y_offset + (note_size/2) + 9 + (5 * fretboard_note_y_dist)
                 )
             }
             if (bString[i] in scale.getDiatonicNotes()) {
@@ -345,7 +345,7 @@ class DisplayPanel(
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7 + fretboard_note_y_dist
+                        fretboard_y_offset + (note_size/2) + 9 + fretboard_note_y_dist
                 )
             }
             if (gString[i] in scale.getDiatonicNotes()) {
@@ -366,7 +366,7 @@ class DisplayPanel(
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7 + (2 * fretboard_note_y_dist)
+                        fretboard_y_offset + (note_size/2) + 9 + (2 * fretboard_note_y_dist)
                 )
             }
             if (dString[i] in scale.getDiatonicNotes()){
@@ -387,7 +387,7 @@ class DisplayPanel(
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7 + (3 * fretboard_note_y_dist)
+                        fretboard_y_offset + (note_size/2) + 9 + (3 * fretboard_note_y_dist)
                 )
             }
             if (aString[i] in scale.getDiatonicNotes()){
@@ -408,7 +408,7 @@ class DisplayPanel(
                 g.drawString(
                         note,
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 7 + (4 * fretboard_note_y_dist)
+                        fretboard_y_offset + (note_size/2) + 9 + (4 * fretboard_note_y_dist)
                 )
             }
         }
