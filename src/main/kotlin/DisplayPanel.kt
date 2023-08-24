@@ -10,11 +10,13 @@ class DisplayPanel(
     private val reg_note_color: Color = Color(255, 180, 70),
     private val blue_note_color: Color = Color(60, 60, 255),
 
-    private val fretboard_x_offset: Int = 3,     // represent top left
-    private val fretboard_y_offset: Int = 365,  // corner of fretboard
-    private val fretboard_note_x_dist: Int = 55,  // horizontal distance between notes
-    private val fretboard_note_y_dist: Int = 35,  // vertical distance between notes
-    private val note_size: Int = 42             // size of notes on fretboard
+    private val fretboard_x_offset: Int = 3,        // top left of fretboard
+    private val fretboard_y_offset: Int = 365,      // corner of fretboard
+    private val fretboard_note_x_dist: Int = 55,     // horizontal distance between notes
+    private val fretboard_note_y_dist: Int = 35,     // vertical distance between notes
+    private val note_size: Int = 42,                // size of notes on fretboard
+
+    private var usingNoteNames: Boolean = false,
 ) : JPanel(){
     private val eString = arrayOf("E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E")
     private val aString = arrayOf("A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A")
@@ -41,7 +43,10 @@ class DisplayPanel(
 
             // HIGHLIGHTING FRETBOARD NOTES
             drawFretboardNotes(g)    // highlight chord notes on fretboard
-            drawFretboardNoteStrings(g)      // draw degree numbers on fretboard
+            if (usingNoteNames)
+                drawFretboardNoteStrings(g)      // draw note names on fretboard notes
+            else
+                drawFretboardDegrees(g)         // draw degrees on fretboard notes
         }
     }
 
@@ -413,6 +418,75 @@ class DisplayPanel(
             }
         }
     }
+
+    private fun drawFretboardDegrees(g: Graphics) {
+
+        val offset = 3  // for centering accidental strings on note
+
+        g.color = Color.black
+
+        for (i in 0..12) {
+            if (eString[i] in scale.getDiatonicNotes()) {
+                val note = eString[i]
+
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9
+                )
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9 + (5 * fretboard_note_y_dist)
+                )
+            }
+            if (bString[i] in scale.getDiatonicNotes()) {
+                //     fretboard_x_offset + i * fretboard_note_x_dist,
+                //     fretboard_y_offset + fretboard_note_y_dist
+                val note = bString[i]
+
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9 + fretboard_note_y_dist
+                )
+            }
+            if (gString[i] in scale.getDiatonicNotes()) {
+                //      fretboard_x_offset + i * fretboard_note_x_dist,
+                //      fretboard_y_offset + (2 * fretboard_note_y_dist)
+                val note = gString[i]
+
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9 + (2 * fretboard_note_y_dist)
+                )
+            }
+            if (dString[i] in scale.getDiatonicNotes()){
+                //     fretboard_x_offset + i * fretboard_note_x_dist,
+                //     fretboard_y_offset + (3 * fretboard_note_y_dist)
+                val note = dString[i]
+
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9 + (3 * fretboard_note_y_dist)
+                )
+            }
+            if (aString[i] in scale.getDiatonicNotes()){
+                //   fretboard_x_offset + i * fretboard_note_x_dist,
+                //   fretboard_y_offset + (4 * fretboard_note_y_dist)
+                val note = aString[i]
+
+                g.drawString(
+                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
+                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
+                        fretboard_y_offset + (note_size/2) + 9 + (4 * fretboard_note_y_dist)
+                )
+            }
+        }
+    }
+
 
     private fun drawTopTextNotes(g: Graphics) {
 
