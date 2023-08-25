@@ -8,10 +8,18 @@ class Scale(
         private var formulaStrings: MutableList<String> = mutableListOf<String>(),
         private var formulaInts: MutableList<Int> = mutableListOf<Int>(),
         private val intervalStrings: Map<Int, String> = mapOf(
-        1 to "h",
-        2 to "W",
-        3 to "m3",
-        4 to "M4"
+        // unison && octave omitted
+        1 to "h",   // half step || minor 2md
+        2 to "W",   // whole step || major 2nd
+        3 to "m3",  // minor 3rd
+        4 to "M3",  // major 3rd
+        5 to "P4",  // perfect 4th
+        6 to "TT",  // tritone
+        7 to "P5",  // perfect 5th
+        8 to "m6",  // minor 6th
+        9 to "M6",  // major 6th
+        10 to "m7", // minor 7th
+        11 to "M7"  // major 7th
         ),
         private val allNotes: List<String> = listOf(
         "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb",
