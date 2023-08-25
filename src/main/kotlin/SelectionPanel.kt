@@ -49,6 +49,7 @@ class SelectionPanel(
         checkboxHide.addActionListener(HideCheckBoxListener())
 
         noteDropMenu.addActionListener(RootSelectionListener())
+
         modeDropMenu.addActionListener(ModeSelectionListener())
 
         sharpsRadioButton.addActionListener(SharpsOrFlatsListener())
@@ -99,7 +100,6 @@ class SelectionPanel(
         }
     }
 
-
     inner class ModeSelectionListener : ActionListener{
         override fun actionPerformed(e: ActionEvent) {
             val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
@@ -107,7 +107,6 @@ class SelectionPanel(
             displayPanel.repaint() // update display panel
         }
     }
-
 
     inner class HideCheckBoxListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
