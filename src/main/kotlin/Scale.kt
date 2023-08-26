@@ -111,7 +111,9 @@ class Scale(
         usingSharps = b
     }
 
-    //fun getFormulaInts() = formulaInts
+    fun getIntervalStrings() = intervalStrings
+
+    fun getFormulaInts() = formulaInts
 
     fun getFormulaStrings() = formulaStrings
 

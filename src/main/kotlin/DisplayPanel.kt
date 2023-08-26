@@ -37,9 +37,10 @@ class DisplayPanel(
         drawFretboard(g) // draw fretboard
         if (!hidden) {
             // TOP TEXT
-            drawTopTextIntervals(g)         // draw the chord intervals
-            drawTopTextNotes(g)             // draw diatonic note strings
-            drawTopTextChordNumerals(g)     // draw chord roman numerals
+            drawTopTextIntervals(g)             // draw the chord intervals
+            drawTopTextNotes(g)                 // draw diatonic note strings
+            drawTopTextChordNumerals(g)         // draw chord roman numerals
+            drawTopTextIntraScaleIntervals(g)   //
 
             // HIGHLIGHTING FRETBOARD NOTES
             //drawFretboardNotes(g)    // highlight chord notes on fretboard
@@ -319,6 +320,16 @@ class DisplayPanel(
         }
     }
 
+    private fun drawTopTextIntraScaleIntervals(g: Graphics){
+
+        g.color = Color.white
+
+        var interval_total = 0
+        for (i in 0 until scale.getFormulaInts().size){
+            interval_total += scale.getFormulaInts()[i]
+            println(scale.getIntervalStrings()[interval_total])
+        }
+    }
 
     private fun drawTopTextNotes(g: Graphics) {
 
