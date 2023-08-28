@@ -22,19 +22,10 @@ class FretboardDisplay(
     private val gString = arrayOf("G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G")
     private val bString = arrayOf("B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
 
-    private fun drawGuitarNote(g: Graphics, c: Color, x: Int, y: Int){
-        val size = 42
-        val borderWidth = 4
+    private val allGuitarStrings = arrayOf(
+            eString, bString, gString, dString, aString, eString
+    )
 
-        // draw border (will be covered by other circle)
-        g.color = Color.white
-        g.fillOval(x, y, size, size)
-
-        // draw inner circle
-        g.color = c
-        // !!! CAREFUL WITH TRUNCATION HERE
-        g.fillOval(x + (borderWidth/2), y + (borderWidth/2), size - borderWidth, size - borderWidth)
-    }
 
     fun drawFretboardGuitarStrings(g: Graphics){
         drawFretboardNotes(g, eString, 0)
@@ -44,6 +35,21 @@ class FretboardDisplay(
         drawFretboardNotes(g, aString, 4)
         drawFretboardNotes(g, eString, 5)
     }
+
+    fun drawFretboardNoteNames(g: Graphics) {
+        //drawFretboardNoteStrings(g, eString, 0)
+        //drawFretboardNoteStrings(g, bString, 1)
+        //drawFretboardNoteStrings(g, gString, 2)
+        //drawFretboardNoteStrings(g, dString, 3)
+        //drawFretboardNoteStrings(g, aString, 4)
+        //drawFretboardNoteStrings(g, eString, 5)
+
+        for (i in allGuitarStrings.indices){
+            drawFretboardNoteStrings(g, allGuitarStrings[i], i)
+        }
+
+    }
+
 
     private fun drawFretboardNotes(
             g: Graphics,
@@ -230,12 +236,19 @@ class FretboardDisplay(
         g.fillOval(687, fretboard_y_offset - (note_size / 2), 11, 11) // markings on fret 12
     }
 
-    fun drawFretboardNoteNames(g: Graphics) {
-        drawFretboardNoteStrings(g, eString, 0)
-        drawFretboardNoteStrings(g, bString, 1)
-        drawFretboardNoteStrings(g, gString, 2)
-        drawFretboardNoteStrings(g, dString, 3)
-        drawFretboardNoteStrings(g, aString, 4)
-        drawFretboardNoteStrings(g, eString, 5)
+
+    private fun drawGuitarNote(g: Graphics, c: Color, x: Int, y: Int){
+        val size = 42
+        val borderWidth = 4
+
+        // draw border (will be covered by other circle)
+        g.color = Color.white
+        g.fillOval(x, y, size, size)
+
+        // draw inner circle
+        g.color = c
+        // !!! CAREFUL WITH TRUNCATION HERE
+        g.fillOval(x + (borderWidth/2), y + (borderWidth/2), size - borderWidth, size - borderWidth)
     }
+
 }

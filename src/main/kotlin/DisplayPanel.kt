@@ -46,7 +46,6 @@ class DisplayPanel(
             //drawFretboardNotes(g)    // highlight chord notes on fretboard
             fretboardDisplay.drawFretboardGuitarStrings(g)
 
-
             if (usingNoteNames) {
                 fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
             }
