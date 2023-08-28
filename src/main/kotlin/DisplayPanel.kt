@@ -10,8 +10,6 @@ class DisplayPanel(
     private val reg_note_color: Color = Color(255, 180, 70),
     private val blue_note_color: Color = Color(60, 60, 255),
 
-
-
     private var usingNoteNames: Boolean = true,
 
 ) : JPanel(){
@@ -49,10 +47,12 @@ class DisplayPanel(
             fretboardDisplay.drawFretboardGuitarStrings(g)
 
 
-            if (usingNoteNames)
-                fretboardDisplay.drawFretboardNoteStrings(g)      // draw note names on fretboard notes
-            else
+            if (usingNoteNames) {
+                fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
+            }
+            else{
                 fretboardDisplay.drawFretboardDegrees(g)         // draw degrees on fretboard notes
+            }
         }
     }
 
