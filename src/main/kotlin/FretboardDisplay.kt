@@ -28,12 +28,16 @@ class FretboardDisplay(
 
 
     fun drawFretboardGuitarStrings(g: Graphics){
-        drawFretboardNotes(g, eString, 0)
-        drawFretboardNotes(g, bString, 1)
-        drawFretboardNotes(g, gString, 2)
-        drawFretboardNotes(g, dString, 3)
-        drawFretboardNotes(g, aString, 4)
-        drawFretboardNotes(g, eString, 5)
+        //drawFretboardNotes(g, eString, 0)
+        //drawFretboardNotes(g, bString, 1)
+        //drawFretboardNotes(g, gString, 2)
+        //drawFretboardNotes(g, dString, 3)
+        //drawFretboardNotes(g, aString, 4)
+        //drawFretboardNotes(g, eString, 5)
+
+        for (i in allGuitarStrings.indices){
+            drawFretboardNotes(g, allGuitarStrings[i], i)
+        }
     }
 
     fun drawFretboardNoteNames(g: Graphics) {
