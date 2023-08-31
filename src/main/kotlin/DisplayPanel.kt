@@ -3,18 +3,18 @@ import javax.swing.*
 
 
 class DisplayPanel(
-    private val scale: Scale,
-    private val background_color: Color = Color(40, 40, 40),
-    private val text_color: Color = Color(235, 235, 235),
-    private val root_note_color: Color = Color(225, 15, 0),
-    private val reg_note_color: Color = Color(255, 180, 70),
-    private val blue_note_color: Color = Color(60, 60, 255),
+        private val scale: Scale,
+        private val backgroundColor: Color = Color(40, 40, 40),
+        private val textColor: Color = Color(235, 235, 235),
+        private val rootNoteColor: Color = Color(225, 15, 0),
+        private val regNoteColor: Color = Color(255, 180, 70),
+        private val blueNoteColor: Color = Color(60, 60, 255),
 
-    private val topTextNotesXDist: Int = 60,
+        private val topTextNotesXDist: Int = 60,
 
-    private var usingNoteNames: Boolean = true,
+        private var usingNoteNames: Boolean = true,
 
-) : JPanel(){
+        ) : JPanel(){
 
     private var hidden: Boolean = false
 
@@ -26,13 +26,13 @@ class DisplayPanel(
 
         val fretboardDisplay = FretboardDisplay(
                 scale,
-                reg_note_color = reg_note_color,
-                root_note_color = root_note_color,
-                blue_note_color = blue_note_color
+                reg_note_color = regNoteColor,
+                root_note_color = rootNoteColor,
+                blue_note_color = blueNoteColor
         )
         //val pianoDisplay = PianoDisplay(scale)
 
-        g.color = background_color // set background color
+        g.color = backgroundColor // set background color
         g.fillRect(0, 0, 760, 610) // draw background
 
         fretboardDisplay.drawFretboard(g) // draw fretboard
@@ -63,7 +63,7 @@ class DisplayPanel(
         g.color = Color.white
 
         // LOOP FOR DRAWING NOTE STRINGS
-        for (i in 0..scale.getDiatonicChords().size-1){
+        for (i in 0 until scale.getDiatonicChords().size){
 
             val note: String = scale.getDiatonicChords()[i]
             g.drawString(note, 50 + (i * topTextNotesXDist), 75)
@@ -76,34 +76,36 @@ class DisplayPanel(
         g.font = Font("Arial", Font.BOLD, 24)
         g.color = Color.white
 
-        var interval_total = 0
+        var intervalTotal = 0
+
         g.drawString("R", 50, 105)
+
         for (i in 0 until scale.getFormulaInts().size-1){
-            interval_total += scale.getFormulaInts()[i]
+            intervalTotal += scale.getFormulaInts()[i]
             //println(scale.getIntervalStrings()[interval_total])
-            g.drawString(scale.getIntervalStrings()[interval_total], 50 + ((i+1) * topTextNotesXDist), 105)
+            g.drawString(scale.getIntervalStrings()[intervalTotal]!!, 50 + ((i+1) * topTextNotesXDist), 105)
         }
     }
 
     private fun drawTopTextNotes(g: Graphics) {
 
         g.font = Font("Arial", Font.BOLD, 24)
-        g.color = reg_note_color
+        g.color = regNoteColor
 
         // LOOP FOR DRAWING NOTE STRINGS
-        for (i in 0..scale.getDiatonicNotes().size-1){
+        for (i in 0 until scale.getDiatonicNotes().size){
 
-            val note: String = scale.getCleanNotes().get(i)
+            val note: String = scale.getCleanNotes()[i]
             g.drawString(note, 50 + (i * topTextNotesXDist), 50)
 
         }
     }
 
     private fun drawTopTextIntervals(g: Graphics) {
-        g.color = text_color
+        g.color = textColor
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings().get(i) + " ", 85 + (i * topTextNotesXDist), 25)
+            g.drawString(scale.getFormulaStrings()[i] + " ", 85 + (i * topTextNotesXDist), 25)
         }
     }
 
