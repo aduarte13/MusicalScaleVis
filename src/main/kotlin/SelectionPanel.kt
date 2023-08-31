@@ -78,6 +78,7 @@ class SelectionPanel(
                 scale.setUsingSharps(true)
             else
                 scale.setUsingSharps(false)
+            scale.build()
             displayPanel.repaint()
         }
     }
@@ -88,6 +89,7 @@ class SelectionPanel(
                 displayPanel.setUsingNoteNames(true)
             else
                 displayPanel.setUsingNoteNames(false)
+
             displayPanel.repaint()
         }
     }

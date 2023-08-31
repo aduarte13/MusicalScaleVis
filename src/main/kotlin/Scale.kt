@@ -46,7 +46,7 @@ class Scale(
     }
 
     //
-    private fun build(){
+    fun build(){
         diatonicNotes.clear()   //
         cleanNotes.clear()      //
 

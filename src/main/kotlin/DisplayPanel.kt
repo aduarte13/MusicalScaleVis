@@ -28,7 +28,7 @@ class DisplayPanel(
                 root_note_color = root_note_color,
                 blue_note_color = blue_note_color
         )
-        //val pianoDisplay = PianoDisplay(g, scale)
+        //val pianoDisplay = PianoDisplay(scale)
 
         g.color = background_color // set background color
         g.fillRect(0, 0, 760, 610) // draw background
