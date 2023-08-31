@@ -10,6 +10,8 @@ class DisplayPanel(
     private val reg_note_color: Color = Color(255, 180, 70),
     private val blue_note_color: Color = Color(60, 60, 255),
 
+    private val topTextNotesXDist: Int = 60,
+
     private var usingNoteNames: Boolean = true,
 
 ) : JPanel(){
@@ -64,19 +66,22 @@ class DisplayPanel(
         for (i in 0..scale.getDiatonicChords().size-1){
 
             val note: String = scale.getDiatonicChords()[i]
-            g.drawString(note, 50 + i * 60, 75)
+            g.drawString(note, 50 + (i * topTextNotesXDist), 75)
 
         }
     }
 
     private fun drawTopTextIntraScaleIntervals(g: Graphics){
 
+        g.font = Font("Arial", Font.BOLD, 24)
         g.color = Color.white
 
         var interval_total = 0
+        g.drawString("R", 50, 105)
         for (i in 0 until scale.getFormulaInts().size-1){
             interval_total += scale.getFormulaInts()[i]
-            println(scale.getIntervalStrings()[interval_total])
+            //println(scale.getIntervalStrings()[interval_total])
+            g.drawString(scale.getIntervalStrings()[interval_total], 50 + ((i+1) * topTextNotesXDist), 105)
         }
     }
 
@@ -89,7 +94,7 @@ class DisplayPanel(
         for (i in 0..scale.getDiatonicNotes().size-1){
 
             val note: String = scale.getCleanNotes().get(i)
-            g.drawString(note, 50 + i * 60, 50)
+            g.drawString(note, 50 + (i * topTextNotesXDist), 50)
 
         }
     }
@@ -98,7 +103,7 @@ class DisplayPanel(
         g.color = text_color
         g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings().get(i) + " ", 85 + i * 60, 25)
+            g.drawString(scale.getFormulaStrings().get(i) + " ", 85 + (i * topTextNotesXDist), 25)
         }
     }
 
