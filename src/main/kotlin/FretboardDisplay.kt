@@ -51,9 +51,13 @@ class FretboardDisplay(
         for (i in allGuitarStrings.indices){
             drawFretboardNoteStrings(g, allGuitarStrings[i], i)
         }
-
     }
 
+    fun drawFretboardDegrees(g: Graphics){
+        for (i in allGuitarStrings.indices){
+            drawFretboardDegreeStrings(g, allGuitarStrings[i], i)
+        }
+    }
 
     private fun drawFretboardNotes(
             g: Graphics,
@@ -136,69 +140,24 @@ class FretboardDisplay(
         }
     }
 
-    fun drawFretboardDegrees(g: Graphics) {
+    private fun drawFretboardDegreeStrings(
+            g: Graphics,
+            guitarString: Array<String>,
+            guitarStringNum: Int
+    ) {
 
         val offset = 3  // for centering accidental strings on note
 
         g.color = Color.black
 
         for (i in 0..12) {
-            if (eString[i] in scale.getDiatonicNotes()) {
-                val note = eString[i]
+            if (guitarString[i] in scale.getDiatonicNotes()) {
+                val note = guitarString[i]
 
                 g.drawString(
                         "" + (scale.getDiatonicNotes().indexOf(note) + 1),
                         fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9
-                )
-                g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + (5 * fretboard_note_y_dist)
-                )
-            }
-            if (bString[i] in scale.getDiatonicNotes()) {
-                //     fretboard_x_offset + i * fretboard_note_x_dist,
-                //     fretboard_y_offset + fretboard_note_y_dist
-                val note = bString[i]
-
-                g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + fretboard_note_y_dist
-                )
-            }
-            if (gString[i] in scale.getDiatonicNotes()) {
-                //      fretboard_x_offset + i * fretboard_note_x_dist,
-                //      fretboard_y_offset + (2 * fretboard_note_y_dist)
-                val note = gString[i]
-
-                g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + (2 * fretboard_note_y_dist)
-                )
-            }
-            if (dString[i] in scale.getDiatonicNotes()){
-                //     fretboard_x_offset + i * fretboard_note_x_dist,
-                //     fretboard_y_offset + (3 * fretboard_note_y_dist)
-                val note = dString[i]
-
-                g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + (3 * fretboard_note_y_dist)
-                )
-            }
-            if (aString[i] in scale.getDiatonicNotes()){
-                //   fretboard_x_offset + i * fretboard_note_x_dist,
-                //   fretboard_y_offset + (4 * fretboard_note_y_dist)
-                val note = aString[i]
-
-                g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + (4 * fretboard_note_y_dist)
+                        fretboard_y_offset + (note_size/2) + 9 + (guitarStringNum * fretboard_note_y_dist)
                 )
             }
         }
