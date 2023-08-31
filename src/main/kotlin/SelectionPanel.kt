@@ -30,12 +30,20 @@ class SelectionPanel(
     private val degreesRadioButton = JRadioButton("Degrees")
     private val notesOrDegreesButtonGroup = ButtonGroup()
 
+    private val fretboardRadioButton = JRadioButton("Fretboard")
+    private val keyboardRadioButton = JRadioButton("Keyboard")
+    private val instrumentButtonGroup = ButtonGroup()
+
     init {
         border = BorderFactory.createTitledBorder("Chord Selection")
         layout = FlowLayout()
 
         noteDropMenu.maximumRowCount = 5
         modeDropMenu.maximumRowCount = 5
+
+        instrumentButtonGroup.add(keyboardRadioButton)
+        instrumentButtonGroup.add(fretboardRadioButton)
+        keyboardRadioButton.isSelected = true
 
         sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
         sharpsOrFlatsButtonGroup.add(flatsRadioButton)
@@ -59,6 +67,9 @@ class SelectionPanel(
         degreesRadioButton.addActionListener(NotesOrDegreesListener())
 
         // add components to panels
+        add(keyboardRadioButton)
+        add(fretboardRadioButton)
+
         add(noteDropMenu)
         add(modeDropMenu)
 

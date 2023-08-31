@@ -17,6 +17,7 @@ class DisplayPanel(
         ) : JPanel(){
 
     private var hidden: Boolean = false
+    //private enum class instrument {GUITAR, PIANO}
 
     init{
         border = BorderFactory.createEtchedBorder()
@@ -30,12 +31,15 @@ class DisplayPanel(
                 root_note_color = rootNoteColor,
                 blue_note_color = blueNoteColor
         )
-        //val pianoDisplay = PianoDisplay(scale)
+        //val pianoDisplay = PianoDisplay(
+        //      scale,
+        //      regNoteColor = regNoteColor,
+        //      rootNoteColor = rootNoteColor,
+        //      blueNoteColor = blueNoteColor
+        // )
 
         g.color = backgroundColor // set background color
         g.fillRect(0, 0, 760, 610) // draw background
-
-        fretboardDisplay.drawFretboard(g) // draw fretboard
 
         if (!hidden) {
             // TOP TEXT
@@ -44,8 +48,8 @@ class DisplayPanel(
             drawTopTextChordNumerals(g)         // draw chord roman numerals
             drawTopTextIntraScaleIntervals(g)   //
 
-            // HIGHLIGHTING FRETBOARD NOTES
-            //drawFretboardNotes(g)    // highlight chord notes on fretboard
+            // FRETBOARD DISPLAY
+            fretboardDisplay.drawFretboard(g) // draw fretboard
             fretboardDisplay.drawFretboardGuitarStrings(g)
 
             if (usingNoteNames) {
@@ -82,7 +86,6 @@ class DisplayPanel(
 
         for (i in 0 until scale.getFormulaInts().size-1){
             intervalTotal += scale.getFormulaInts()[i]
-            //println(scale.getIntervalStrings()[interval_total])
             g.drawString(scale.getIntervalStrings()[intervalTotal]!!, 50 + ((i+1) * topTextNotesXDist), 105)
         }
     }
