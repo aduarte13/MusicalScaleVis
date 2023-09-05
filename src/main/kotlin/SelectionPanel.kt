@@ -43,7 +43,7 @@ class SelectionPanel(
 
         instrumentButtonGroup.add(keyboardRadioButton)
         instrumentButtonGroup.add(fretboardRadioButton)
-        keyboardRadioButton.isSelected = true
+        fretboardRadioButton.isSelected = true
 
         sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
         sharpsOrFlatsButtonGroup.add(flatsRadioButton)
@@ -54,6 +54,9 @@ class SelectionPanel(
         notesRadioButton.isSelected = true
 
         // add action listeners
+        keyboardRadioButton.addActionListener(InstrumentSelectionListener())
+        fretboardRadioButton.addActionListener(InstrumentSelectionListener())
+
         checkboxHide.addActionListener(HideCheckBoxListener())
 
         noteDropMenu.addActionListener(RootSelectionListener())
@@ -81,6 +84,13 @@ class SelectionPanel(
         add(notesRadioButton)
         add(degreesRadioButton)
 
+    }
+
+    inner class InstrumentSelectionListener : ActionListener {
+        override fun actionPerformed(e: ActionEvent) {
+            displayPanel.switchInstrument()
+            displayPanel.repaint()
+        }
     }
 
     inner class SharpsOrFlatsListener : ActionListener {

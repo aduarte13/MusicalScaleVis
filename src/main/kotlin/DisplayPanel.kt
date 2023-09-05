@@ -17,7 +17,7 @@ class DisplayPanel(
         ) : JPanel(){
 
     private var hidden: Boolean = false
-    //private enum class instrument {GUITAR, PIANO}
+    private var usingFretboard: Boolean = true
 
     init{
         border = BorderFactory.createEtchedBorder()
@@ -48,16 +48,18 @@ class DisplayPanel(
             drawTopTextChordNumerals(g)         // draw chord roman numerals
             drawTopTextIntraScaleIntervals(g)   //
 
-            // FRETBOARD DISPLAY
-            fretboardDisplay.drawFretboard(g) // draw fretboard
-            fretboardDisplay.drawFretboardGuitarStrings(g)
+            if (usingFretboard) {
+                // FRETBOARD DISPLAY
+                fretboardDisplay.drawFretboard(g) // draw fretboard
+                fretboardDisplay.drawFretboardGuitarStrings(g)
 
-            if (usingNoteNames) {
-                fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
+                if (usingNoteNames) {
+                    fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
+                } else {
+                    fretboardDisplay.drawFretboardDegrees(g)         // draw degrees on fretboard notes
+                }
             }
-            else{
-                fretboardDisplay.drawFretboardDegrees(g)         // draw degrees on fretboard notes
-            }
+
         }
     }
 
@@ -114,6 +116,10 @@ class DisplayPanel(
 
     fun switchHidden() {
         hidden = !hidden
+    }
+
+    fun switchInstrument(){
+        usingFretboard = !usingFretboard
     }
 
     fun setUsingNoteNames(b: Boolean){
