@@ -13,7 +13,7 @@ class DisplayPanel(
 
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
-    private var usingFretboard: Boolean = true
+    private var usingFretboard: Boolean = false
     ) : JPanel(){
 
     init{
@@ -23,17 +23,17 @@ class DisplayPanel(
     override fun paint(g: Graphics) {
 
         val fretboardDisplay = FretboardDisplay(
-                scale,
-                reg_note_color = regNoteColor,
-                root_note_color = rootNoteColor,
-                blue_note_color = blueNoteColor
+            scale,
+            reg_note_color = regNoteColor,
+            root_note_color = rootNoteColor,
+            blue_note_color = blueNoteColor
         )
-        //val pianoDisplay = PianoDisplay(
-        //      scale,
-        //      regNoteColor = regNoteColor,
-        //      rootNoteColor = rootNoteColor,
-        //      blueNoteColor = blueNoteColor
-        // )
+        val pianoDisplay = PianoDisplay(
+            scale,
+            regNoteColor = regNoteColor,
+            rootNoteColor = rootNoteColor,
+            blueNoteColor = blueNoteColor
+        )
 
         g.color = backgroundColor
         g.fillRect(0, 0, 760, 610) // fill background
@@ -60,7 +60,7 @@ class DisplayPanel(
                 // PIANO DISPLAY
 
 
-                //pianoDisplay.drawPianoOutline(g)
+                pianoDisplay.drawPianoOutline(g)
             }
         }
     }

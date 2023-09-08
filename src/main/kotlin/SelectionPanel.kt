@@ -42,7 +42,8 @@ class SelectionPanel(
 
         instrumentButtonGroup.add(keyboardRadioButton)
         instrumentButtonGroup.add(fretboardRadioButton)
-        fretboardRadioButton.isSelected = true
+        keyboardRadioButton.isSelected = true
+        //fretboardRadioButton.isSelected = true
 
         sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
         sharpsOrFlatsButtonGroup.add(flatsRadioButton)
