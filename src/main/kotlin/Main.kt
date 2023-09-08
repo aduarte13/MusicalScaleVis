@@ -21,11 +21,11 @@ class Main : JFrame(){
         add(displayPanel, BorderLayout.SOUTH)
 
         pack()
-        setLocationRelativeTo(null) // center on screen
+        setLocationRelativeTo(null) // center frame on screen
 
-        isResizable = false // easier on my end
+        isResizable = false
 
-        isVisible = true // idk why this needs to be said
+        isVisible = true
     }
 }
 
