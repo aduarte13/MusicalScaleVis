@@ -4,25 +4,58 @@ import java.awt.Graphics
 class PianoDisplay(
     private val scale: Scale,
 
-    private val xOffset: Int = 3,        // top left
-    private val yOffset: Int = 365,      // corner
-    private val noteXDist: Int = 55,     // horizontal distance between notes
-    private val noteYDist: Int = 35,     // vertical distance between notes
-    private val noteSize: Int = 42,      // size of note visual
+    private val xOffset: Int = 30,        // top left
+    private val yOffset: Int = 388,      // corner
+    private val noteSize: Int = 46,      // horizontal size of note visual
+    private val wNoteHeight: Int = noteSize * 4,
+    private val bNoteHeight: Int = noteSize * 3 - 15,
+    private val whiteToBlackSizeRatio: Int = 2,
+    private val blackKeyXOffset: Int = noteSize - noteSize/4,
 
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
 ) {
-    private val allNotes = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
+    //private val allNotes = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
 
     fun drawPianoOutline(g: Graphics){
         g.color = Color.lightGray
-        g.drawRect(                     // perimeter of fretboard, includes e strings
-            xOffset + (noteSize),   // CAREFUL W/ TRUNCATION
-            yOffset + (noteSize / 2),
-            (noteXDist * 12) + 4,
-            noteYDist * 5
+        // perimenter of piano
+        g.drawRect(
+            xOffset ,
+            yOffset,
+            (noteSize * 15),
+            noteSize * 4
+        )
+        // vertical white note lines
+        for (i in 1 until 16)
+            g.drawLine(
+                xOffset +  (i * noteSize),
+                yOffset,
+                xOffset + (i * noteSize),
+                yOffset + wNoteHeight
+            )
+        g.color = Color.green
+        // c#/db note
+        g.drawRect(
+            xOffset + blackKeyXOffset,
+            yOffset,
+            noteSize / whiteToBlackSizeRatio,
+            bNoteHeight
+        )
+        // d#/eb note
+        g.drawRect(
+            xOffset + blackKeyXOffset + noteSize,
+            yOffset,
+            noteSize / whiteToBlackSizeRatio,
+            bNoteHeight
+        )
+        // f#/gb
+        g.drawRect(
+            xOffset + blackKeyXOffset + noteSize * 3,
+            yOffset,
+            noteSize / whiteToBlackSizeRatio,
+            bNoteHeight
         )
     }
 }
