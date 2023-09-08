@@ -1,7 +1,6 @@
 import java.awt.*
 import javax.swing.JFrame
 
-
 class Main : JFrame(){
     init{
         title = "Music Vis"
@@ -30,6 +29,6 @@ class Main : JFrame(){
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     Main()
 }

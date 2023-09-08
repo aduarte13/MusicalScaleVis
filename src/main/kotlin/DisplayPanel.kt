@@ -1,7 +1,6 @@
 import java.awt.*
 import javax.swing.*
 
-
 class DisplayPanel(
         private val scale: Scale,
         private val backgroundColor: Color = Color(40, 40, 40),
@@ -118,8 +117,8 @@ class DisplayPanel(
         hidden = !hidden
     }
 
-    fun switchInstrument(){
-        usingFretboard = !usingFretboard
+    fun setInstrument(b: Boolean){
+        usingFretboard = b
     }
 
     fun setUsingNoteNames(b: Boolean){

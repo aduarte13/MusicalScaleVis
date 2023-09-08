@@ -88,8 +88,11 @@ class SelectionPanel(
 
     inner class InstrumentSelectionListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
-            displayPanel.switchInstrument()
-            displayPanel.repaint()
+            if (fretboardRadioButton.isSelected)
+                displayPanel.setInstrument(true)
+            else
+                displayPanel.setInstrument(false)
+            displayPanel.repaint()  // should be optimized to not redraw unnecessarily
         }
     }
 
