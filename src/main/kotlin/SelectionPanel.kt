@@ -34,7 +34,7 @@ class SelectionPanel(
     private val instrumentButtonGroup = ButtonGroup()
 
     init {
-        border = BorderFactory.createTitledBorder("Chord Selection")
+        border = BorderFactory.createTitledBorder("Selection")
         layout = FlowLayout()
 
         noteDropMenu.maximumRowCount = 5
