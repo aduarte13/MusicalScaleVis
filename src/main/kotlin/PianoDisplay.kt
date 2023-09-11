@@ -35,27 +35,44 @@ class PianoDisplay(
                 xOffset + (i * noteSize),
                 yOffset + wNoteHeight
             )
-        g.color = Color.green
-        // c#/db note
-        g.drawRect(
-            xOffset + blackKeyXOffset,
-            yOffset,
-            noteSize / whiteToBlackSizeRatio,
-            bNoteHeight
-        )
-        // d#/eb note
-        g.drawRect(
-            xOffset + blackKeyXOffset + noteSize,
-            yOffset,
-            noteSize / whiteToBlackSizeRatio,
-            bNoteHeight
-        )
-        // f#/gb
-        g.drawRect(
-            xOffset + blackKeyXOffset + noteSize * 3,
-            yOffset,
-            noteSize / whiteToBlackSizeRatio,
-            bNoteHeight
-        )
+        for (i in 0 until 2) {
+            // c#/db notes
+            g.drawRect(
+                xOffset + blackKeyXOffset + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // d#/eb notes
+            g.drawRect(
+                xOffset + blackKeyXOffset + noteSize + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+        }
+        for(i in 0 until 2) {
+            // f#/gb
+            g.drawRect(
+                xOffset + blackKeyXOffset + noteSize * 3 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // g#/ab
+            g.drawRect(
+                xOffset + blackKeyXOffset + noteSize * 4 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // a#/bb
+            g.drawRect(
+                xOffset + blackKeyXOffset + noteSize * 5 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+        }
     }
 }
