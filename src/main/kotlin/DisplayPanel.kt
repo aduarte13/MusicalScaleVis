@@ -59,6 +59,7 @@ class DisplayPanel(
             else {
                 // PIANO DISPLAY
 
+                pianoDisplay.highlightPiano(g)
 
                 pianoDisplay.drawPianoOutline(g)
             }

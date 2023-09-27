@@ -16,7 +16,28 @@ class PianoDisplay(
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
 ) {
-    //private val allNotes = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
+    private val whiteNotes = arrayOf("C", "D", "E", "F", "G", "A", "B")
+    private val blackNotes = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
+
+    fun highlightPiano(g: Graphics){
+        var noteColor: Color = regNoteColor
+        for(note in scale.getDiatonicNotes()){
+            // get appropriate color
+            if (note == scale.getRoot())
+                noteColor = rootNoteColor
+            else if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
+                noteColor = blueNoteColor
+            else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
+                noteColor = blueNoteColor
+
+            highlightPianoKey(g, note, noteColor)
+
+        }
+    }
+
+    fun highlightPianoKey(g: Graphics, note: String, color: Color){
+
+    }
 
     fun drawPianoOutline(g: Graphics){
         g.color = Color.lightGray
