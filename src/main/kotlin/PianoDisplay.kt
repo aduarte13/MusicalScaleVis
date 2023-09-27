@@ -22,6 +22,8 @@ class PianoDisplay(
     fun highlightPiano(g: Graphics){
         var noteColor: Color
 
+        fillWhiteKeys(g)
+
         // white notes
         for(note in scale.getDiatonicNotes()){
             // get appropriate color
@@ -39,6 +41,7 @@ class PianoDisplay(
                 highlightWhitePianoKey(g, note, noteColor)
         }
 
+        fillBlackKeys(g)
         // black notes
         for(note in scale.getDiatonicNotes()){
             // get appropriate color
@@ -173,4 +176,48 @@ class PianoDisplay(
             noteSize * 4
         )
     }
+
+    fun fillBlackKeys(g: Graphics){
+        g.color = Color.black
+        for (i in 0 until 2) {
+            // c#/db notes
+            g.fillRect(
+                xOffset + blackKeyXOffset + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // d#/eb notes
+            g.fillRect(
+                xOffset + blackKeyXOffset + noteSize + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+        }
+        for(i in 0 until 2) {
+            // f#/gb
+            g.fillRect(
+                xOffset + blackKeyXOffset + noteSize * 3 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // g#/ab
+            g.fillRect(
+                xOffset + blackKeyXOffset + noteSize * 4 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+            // a#/bb
+            g.fillRect(
+                xOffset + blackKeyXOffset + noteSize * 5 + (i * 7 * noteSize),
+                yOffset,
+                noteSize / whiteToBlackSizeRatio,
+                bNoteHeight
+            )
+        }
+    }
+
 }

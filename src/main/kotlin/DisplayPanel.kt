@@ -58,11 +58,10 @@ class DisplayPanel(
             }
             else {
                 // PIANO DISPLAY
-                pianoDisplay.fillWhiteKeys(g)
-
                 pianoDisplay.highlightPiano(g)
 
                 pianoDisplay.drawPianoOutline(g)
+
             }
         }
     }
