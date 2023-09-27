@@ -163,4 +163,14 @@ class PianoDisplay(
             )
         }
     }
+
+    fun fillWhiteKeys(g: Graphics){
+        g.color = Color.white
+        g.fillRect(
+            xOffset ,
+            yOffset,
+            (noteSize * 15),
+            noteSize * 4
+        )
+    }
 }
