@@ -3,7 +3,7 @@ import javax.swing.*
 
 class DisplayPanel(
     private val scale: Scale,
-    private val backgroundColor: Color = Color(40, 40, 40),
+    private val backgroundColor: Color = Color(20, 20, 20),
     private val textColor: Color = Color(235, 235, 235),
     private val rootNoteColor: Color = Color(225, 15, 0),
     private val regNoteColor: Color = Color(255, 180, 70),
