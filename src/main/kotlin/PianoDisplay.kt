@@ -167,7 +167,7 @@ class PianoDisplay(
         }
     }
 
-    fun fillWhiteKeys(g: Graphics){
+    private fun fillWhiteKeys(g: Graphics){
         g.color = Color.white
         g.fillRect(
             xOffset ,
@@ -177,7 +177,7 @@ class PianoDisplay(
         )
     }
 
-    fun fillBlackKeys(g: Graphics){
+    private fun fillBlackKeys(g: Graphics){
         g.color = Color.black
         for (i in 0 until 2) {
             // c#/db notes
