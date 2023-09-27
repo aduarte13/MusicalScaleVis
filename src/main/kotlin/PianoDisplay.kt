@@ -20,27 +20,89 @@ class PianoDisplay(
     private val blackNotes = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
 
     fun highlightPiano(g: Graphics){
-        var noteColor: Color = regNoteColor
+        var noteColor: Color
+
+        // white notes
         for(note in scale.getDiatonicNotes()){
             // get appropriate color
-            if (note == scale.getRoot())
-                noteColor = rootNoteColor
+            noteColor = if (note == scale.getRoot())
+                rootNoteColor
             else if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
-                noteColor = blueNoteColor
+                blueNoteColor
             else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
-                noteColor = blueNoteColor
+                blueNoteColor
+            else
+                regNoteColor
 
-            highlightPianoKey(g, note, noteColor)
+            // highlight white diatonic notes
+            if (note in whiteNotes)
+                highlightWhitePianoKey(g, note, noteColor)
+        }
+
+        // black notes
+        for(note in scale.getDiatonicNotes()){
+            // get appropriate color
+            noteColor = if (note == scale.getRoot())
+                rootNoteColor
+            else if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
+                blueNoteColor
+            else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
+                blueNoteColor
+            else
+                regNoteColor
+
+            // highlight black diatonic notes
+            if (note in blackNotes)
+                highlightBlackPianoKey(g, note, noteColor)
 
         }
     }
 
-    fun highlightPianoKey(g: Graphics, note: String, color: Color){
+    private fun highlightWhitePianoKey(g: Graphics, note: String, color: Color){
+        g.color = color
+
+        val noteHeight: Int = wNoteHeight
+        val noteWidth: Int = noteSize
+        val keyPlace = whiteNotes.indexOf(note)
+
+        var count = 2
+        if (note == "C")
+            count++
+
+        for (i in 0 until count){
+            g.fillRect(
+                xOffset +  (i * 7 * noteSize) + (keyPlace * noteSize),
+                yOffset,
+                noteWidth,
+                noteHeight
+            )
+        }
+
+    }
+
+    private fun highlightBlackPianoKey(g: Graphics, note: String, color: Color){
+        g.color = color
+
+        val noteHeight: Int = bNoteHeight
+        val noteWidth: Int = noteSize / whiteToBlackSizeRatio
+        var keyPlace = blackNotes.indexOf(note)
+
+        if (keyPlace > 1)
+            keyPlace++
+
+        for (i in 0 until 2){
+            g.fillRect(
+                xOffset + blackKeyXOffset + (i * 7 * noteSize) + (keyPlace * noteSize),
+                yOffset,
+                noteWidth,
+                noteHeight
+            )
+        }
 
     }
 
     fun drawPianoOutline(g: Graphics){
-        g.color = Color.lightGray
+        g.color = Color.black
         // perimenter of piano
         g.drawRect(
             xOffset ,
