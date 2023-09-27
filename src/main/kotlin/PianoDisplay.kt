@@ -111,13 +111,18 @@ class PianoDisplay(
             noteSize * 4
         )
         // vertical white note lines
-        for (i in 1 until 16)
+        for (i in 1 until 16) {
+            var cutoff = 0
+            if (i in arrayOf(1, 2, 4, 5, 6, 8, 9, 11, 12, 13)){
+                cutoff = bNoteHeight
+            }
             g.drawLine(
-                xOffset +  (i * noteSize),
-                yOffset,
+                xOffset + (i * noteSize),
+                yOffset + cutoff,
                 xOffset + (i * noteSize),
                 yOffset + wNoteHeight
             )
+        }
         for (i in 0 until 2) {
             // c#/db notes
             g.drawRect(
