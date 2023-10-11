@@ -169,6 +169,7 @@ class PianoDisplay(
 
     private fun fillWhiteKeys(g: Graphics){
         g.color = Color.white
+        // fill white keys
         g.fillRect(
             xOffset ,
             yOffset,
@@ -180,14 +181,14 @@ class PianoDisplay(
     private fun fillBlackKeys(g: Graphics){
         g.color = Color.black
         for (i in 0 until 2) {
-            // c#/db notes
+            // color c#/db piano keys
             g.fillRect(
                 xOffset + blackKeyXOffset + (i * 7 * noteSize),
                 yOffset,
                 noteSize / whiteToBlackSizeRatio,
                 bNoteHeight
             )
-            // d#/eb notes
+            // color d#/eb piano keys
             g.fillRect(
                 xOffset + blackKeyXOffset + noteSize + (i * 7 * noteSize),
                 yOffset,
@@ -196,21 +197,21 @@ class PianoDisplay(
             )
         }
         for(i in 0 until 2) {
-            // f#/gb
+            // color f#/gb piano keys
             g.fillRect(
                 xOffset + blackKeyXOffset + noteSize * 3 + (i * 7 * noteSize),
                 yOffset,
                 noteSize / whiteToBlackSizeRatio,
                 bNoteHeight
             )
-            // g#/ab
+            // color g#/ab piano keys
             g.fillRect(
                 xOffset + blackKeyXOffset + noteSize * 4 + (i * 7 * noteSize),
                 yOffset,
                 noteSize / whiteToBlackSizeRatio,
                 bNoteHeight
             )
-            // a#/bb
+            // color a#/bb piano keys
             g.fillRect(
                 xOffset + blackKeyXOffset + noteSize * 5 + (i * 7 * noteSize),
                 yOffset,
