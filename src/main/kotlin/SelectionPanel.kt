@@ -26,6 +26,7 @@ class SelectionPanel(
     private val flatsRadioButton = JRadioButton("Flats")
     private val sharpsOrFlatsButtonGroup = ButtonGroup()
 
+    private val notesOrDegreesPanel = JPanel()
     private val notesRadioButton = JRadioButton("Notes")
     private val degreesRadioButton = JRadioButton("Degrees")
     private val notesOrDegreesButtonGroup = ButtonGroup()
@@ -57,8 +58,11 @@ class SelectionPanel(
         sharpsOrFlatsPanel.add(flatsRadioButton)
         sharpsRadioButton.isSelected = true
 
+        notesOrDegreesPanel.border = BorderFactory.createEtchedBorder()
         notesOrDegreesButtonGroup.add(notesRadioButton)
         notesOrDegreesButtonGroup.add(degreesRadioButton)
+        notesOrDegreesPanel.add(notesRadioButton)
+        notesOrDegreesPanel.add(degreesRadioButton)
         notesRadioButton.isSelected = true
 
         // add action listeners
@@ -87,8 +91,7 @@ class SelectionPanel(
 
         add(sharpsOrFlatsPanel)
 
-        add(notesRadioButton)
-        add(degreesRadioButton)
+        add(notesOrDegreesPanel)
 
     }
 
