@@ -21,6 +21,7 @@ class SelectionPanel(
     private val noteDropMenu = JComboBox(noteList)
     private val modeDropMenu = JComboBox(modeList)
 
+    private val sharpsOrFlatsPanel = JPanel()
     private val sharpsRadioButton = JRadioButton("Sharps")
     private val flatsRadioButton = JRadioButton("Flats")
     private val sharpsOrFlatsButtonGroup = ButtonGroup()
@@ -49,8 +50,11 @@ class SelectionPanel(
         keyboardRadioButton.isSelected = true
         //fretboardRadioButton.isSelected = true
 
+        sharpsOrFlatsPanel.border = BorderFactory.createEtchedBorder()
         sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
         sharpsOrFlatsButtonGroup.add(flatsRadioButton)
+        sharpsOrFlatsPanel.add(sharpsRadioButton)
+        sharpsOrFlatsPanel.add(flatsRadioButton)
         sharpsRadioButton.isSelected = true
 
         notesOrDegreesButtonGroup.add(notesRadioButton)
@@ -81,8 +85,7 @@ class SelectionPanel(
 
         add(checkboxHide)
 
-        add(sharpsRadioButton)
-        add(flatsRadioButton)
+        add(sharpsOrFlatsPanel)
 
         add(notesRadioButton)
         add(degreesRadioButton)
