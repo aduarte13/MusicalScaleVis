@@ -29,6 +29,7 @@ class SelectionPanel(
     private val degreesRadioButton = JRadioButton("Degrees")
     private val notesOrDegreesButtonGroup = ButtonGroup()
 
+    private val instrumentSelectionPanel = JPanel()
     private val fretboardRadioButton = JRadioButton("Fretboard")
     private val keyboardRadioButton = JRadioButton("Keyboard")
     private val instrumentButtonGroup = ButtonGroup()
@@ -40,7 +41,6 @@ class SelectionPanel(
         noteDropMenu.maximumRowCount = 5
         modeDropMenu.maximumRowCount = 5
 
-        val instrumentSelectionPanel = JPanel()
         instrumentSelectionPanel.border = BorderFactory.createEtchedBorder()
         instrumentButtonGroup.add(keyboardRadioButton)
         instrumentButtonGroup.add(fretboardRadioButton)
