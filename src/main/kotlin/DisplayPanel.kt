@@ -22,6 +22,8 @@ class DisplayPanel(
 
     override fun paint(g: Graphics) {
 
+        g.font = Font("American Typewriter", Font.BOLD, 24)
+
         val fretboardDisplay = FretboardDisplay(
             scale,
             reg_note_color = regNoteColor,
@@ -69,7 +71,6 @@ class DisplayPanel(
 
     private fun drawTopTextChordNumerals(g: Graphics){
 
-        g.font = Font("Arial", Font.BOLD, 24)
         g.color = Color.white
 
         // LOOP FOR DRAWING NOTE STRINGS
@@ -83,7 +84,6 @@ class DisplayPanel(
 
     private fun drawTopTextIntraScaleIntervals(g: Graphics){
 
-        g.font = Font("Arial", Font.BOLD, 24)
         g.color = Color.white
 
         var intervalTotal = 0
@@ -98,7 +98,6 @@ class DisplayPanel(
 
     private fun drawTopTextNotes(g: Graphics) {
 
-        g.font = Font("Arial", Font.BOLD, 24)
         g.color = regNoteColor
 
         // LOOP FOR DRAWING NOTE STRINGS
@@ -112,7 +111,6 @@ class DisplayPanel(
 
     private fun drawTopTextIntervals(g: Graphics) {
         g.color = textColor
-        g.font = Font("Arial", Font.BOLD, 20)
         for (i in 0 until scale.getFormulaStrings().size) {
             g.drawString(scale.getFormulaStrings()[i] + " ", 85 + (i * topTextNotesXDist), 25)
         }
