@@ -69,6 +69,10 @@ class DisplayPanel(
         }
     }
 
+    private fun drawTopTextFormula(g: Graphics){
+
+    }
+
     private fun drawTopTextChordNumerals(g: Graphics){
 
         g.color = Color.white
