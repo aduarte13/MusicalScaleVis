@@ -69,11 +69,11 @@ class DisplayPanel(
         }
     }
 
-    private fun drawTopTextFormula(g: Graphics){
-
+    private fun drawTopTextFormula(g: Graphics){   // 1 2 b3 4 ...
+        
     }
 
-    private fun drawTopTextChordNumerals(g: Graphics){
+    private fun drawTopTextChordNumerals(g: Graphics){   // I ii iii IV ...
 
         g.color = Color.white
 
@@ -86,7 +86,7 @@ class DisplayPanel(
         }
     }
 
-    private fun drawTopTextIntraScaleIntervals(g: Graphics){
+    private fun drawTopTextIntraScaleIntervals(g: Graphics){    // R W M3 P4 ...
 
         g.color = Color.white
 
@@ -100,7 +100,7 @@ class DisplayPanel(
         }
     }
 
-    private fun drawTopTextNotes(g: Graphics) {
+    private fun drawTopTextNotes(g: Graphics) {   // C D E F ...
 
         g.color = regNoteColor
 
@@ -113,7 +113,7 @@ class DisplayPanel(
         }
     }
 
-    private fun drawTopTextIntervals(g: Graphics) {
+    private fun drawTopTextIntervals(g: Graphics) {   // W W h W ...
         g.color = textColor
         for (i in 0 until scale.getFormulaStrings().size) {
             g.drawString(scale.getFormulaStrings()[i] + " ", 85 + (i * topTextNotesXDist), 25)
