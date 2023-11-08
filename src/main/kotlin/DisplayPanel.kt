@@ -40,14 +40,14 @@ class DisplayPanel(
         g.color = backgroundColor
         g.fillRect(0, 0, 760, 610) // fill background
 
-        drawTopTextIntervals(g)             // draw the formula intervals   W W h ...
-        drawTopTextIntraScaleIntervals(g)   // draw intervals from root     W M3 P4  ...
+        drawTopTextIntervals(g)             // W W h W...
+        drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
+        drawTopTextFormula(g)               // 1 2 b3 4 ...
 
         if (!hidden) {
             // TOP TEXT                         // -NOTE-                       -e.g.-
             drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
-            drawTopTextFormula(g)
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -76,7 +76,7 @@ class DisplayPanel(
         for (i in 0 until scale.getDiatonicIntervals().size){
 
             val interval: String = scale.getDiatonicIntervals()[i]
-            g.drawString(interval, 50 + (i * topTextNotesXDist), 95)
+            g.drawString(interval, 50 + (i * topTextNotesXDist), 75)
 
         }
     }
@@ -89,7 +89,7 @@ class DisplayPanel(
         for (i in 0 until scale.getDiatonicChords().size){
 
             val note: String = scale.getDiatonicChords()[i]
-            g.drawString(note, 50 + (i * topTextNotesXDist), 75)
+            g.drawString(note, 50 + (i * topTextNotesXDist), 135)
 
         }
     }

@@ -194,13 +194,13 @@ class Scale(
         diatonicIntervals.clear()  //
 
         when (modeType) {
-            "Major/Ionian" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> diatonicChords = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
-            "Phrygian" -> diatonicChords = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
-            "Lydian" -> diatonicChords = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
-            "Mixolydian" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
-            "Minor/Aeolian" -> diatonicChords = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
-            "Locrian" -> diatonicChords = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
+            "Major/Ionian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "7")
+            "Dorian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
+            "Phrygian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
+            "Lydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
+            "Mixolydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
+            "Minor/Aeolian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
+            "Locrian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
         }
     }
 }
