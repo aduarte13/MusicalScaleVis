@@ -56,6 +56,7 @@ class Scale(
 
         setFormula(modeType)        // set formulaStrings and formulaInts to correct mode intervals
         setDiatonicChords()         //
+        setDiatonicIntervals()      //
 
         // LOOP FOR BUILDING SCALE
         var offset: Int = allNotes.indexOf(rootNote)

@@ -47,6 +47,7 @@ class DisplayPanel(
             // TOP TEXT                         // -NOTE-                       -e.g.-
             drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
+            drawTopTextFormula(g)
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -70,7 +71,14 @@ class DisplayPanel(
     }
 
     private fun drawTopTextFormula(g: Graphics){   // 1 2 b3 4 ...
-        
+        g.color = Color.white
+
+        for (i in 0 until scale.getDiatonicIntervals().size){
+
+            val interval: String = scale.getDiatonicIntervals()[i]
+            g.drawString(interval, 50 + (i * topTextNotesXDist), 95)
+
+        }
     }
 
     private fun drawTopTextChordNumerals(g: Graphics){   // I ii iii IV ...
