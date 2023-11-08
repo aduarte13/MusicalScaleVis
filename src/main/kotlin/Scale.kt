@@ -5,6 +5,7 @@ class Scale(
         private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
         private val cleanNotes: MutableList<String> = mutableListOf<String>(),
         private var diatonicChords: MutableList<String> = mutableListOf<String>(),
+        private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
         private var formulaStrings: MutableList<String> = mutableListOf<String>(),
         private var formulaInts: MutableList<Int> = mutableListOf<Int>(),
         private val intervalStrings: Map<Int, String> = mapOf(
@@ -111,6 +112,8 @@ class Scale(
         usingSharps = b
     }
 
+    fun getDiatonicIntervals() = diatonicIntervals
+
     fun getIntervalStrings() = intervalStrings
 
     fun getFormulaInts() = formulaInts
@@ -187,16 +190,16 @@ class Scale(
     }
 
     private fun setDiatonicIntervals(){
-        diatonicChords.clear()  //
+        diatonicIntervals.clear()  //
 
         when (modeType) {
             "Major/Ionian" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
-            "Phrygian" -> diatonicChords = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
-            "Lydian" -> diatonicChords = mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
-            "Mixolydian" -> diatonicChords = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
-            "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
-            "Locrian" -> diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
+            "Dorian" -> diatonicChords = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
+            "Phrygian" -> diatonicChords = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
+            "Lydian" -> diatonicChords = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
+            "Mixolydian" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
+            "Minor/Aeolian" -> diatonicChords = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
+            "Locrian" -> diatonicChords = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
         }
     }
 }
