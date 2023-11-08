@@ -124,7 +124,7 @@ class DisplayPanel(
     private fun drawTopTextIntervals(g: Graphics) {   // W W h W ...
         g.color = textColor
         for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings()[i] + " ", 85 + (i * topTextNotesXDist), 25)
+            g.drawString(scale.getFormulaStrings()[i] + " ", 83 + (i * topTextNotesXDist), 25)
         }
     }
 
