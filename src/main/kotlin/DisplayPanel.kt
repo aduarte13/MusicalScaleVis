@@ -24,6 +24,7 @@ class DisplayPanel(
 
         g.font = Font("American Typewriter", Font.BOLD, 24)
 
+        
         val fretboardDisplay = FretboardDisplay(
             scale,
             reg_note_color = regNoteColor,

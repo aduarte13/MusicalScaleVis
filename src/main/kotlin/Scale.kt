@@ -201,6 +201,9 @@ class Scale(
             "Mixolydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
             "Minor/Aeolian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
             "Locrian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
+
+            "Major Pentatonic" -> diatonicIntervals = mutableListOf("1", "2", "3", "5", "6")
+            "Minor Pentatonic" -> diatonicIntervals = mutableListOf("1", "b3", "4", "5", "b7")
         }
     }
 }
