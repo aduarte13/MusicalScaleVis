@@ -204,6 +204,9 @@ class Scale(
 
             "Major Pentatonic" -> diatonicIntervals = mutableListOf("1", "2", "3", "5", "6")
             "Minor Pentatonic" -> diatonicIntervals = mutableListOf("1", "b3", "4", "5", "b7")
+
+            "Major Blues" -> diatonicIntervals = mutableListOf("1", "2", "b3", "3", "5", "6")
+            "Minor Blues" -> diatonicIntervals = mutableListOf("1", "b3", "4", "b5", "5", "b7")
         }
     }
 }
