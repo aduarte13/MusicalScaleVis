@@ -13,7 +13,7 @@ class DisplayPanel(
 
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
-    private var usingFretboard: Boolean = false
+    private var usingFretboard: Boolean = true
     ) : JPanel(){
 
     init{

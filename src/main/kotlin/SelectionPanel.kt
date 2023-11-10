@@ -48,8 +48,9 @@ class SelectionPanel(
         instrumentButtonGroup.add(fretboardRadioButton)
         instrumentSelectionPanel.add(keyboardRadioButton)
         instrumentSelectionPanel.add(fretboardRadioButton)
-        keyboardRadioButton.isSelected = true
-        //fretboardRadioButton.isSelected = true
+        //keyboardRadioButton.isSelected = true
+        fretboardRadioButton.isSelected = true
+        displayPanel.setInstrument(fretboardRadioButton.isSelected && !keyboardRadioButton.isSelected)
 
         sharpsOrFlatsPanel.border = BorderFactory.createEtchedBorder()
         sharpsOrFlatsButtonGroup.add(sharpsRadioButton)
