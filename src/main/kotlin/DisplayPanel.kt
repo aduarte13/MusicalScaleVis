@@ -33,9 +33,9 @@ class DisplayPanel(
         )
         val fretboardDisplay = FretboardDisplay(
             scale,
-            reg_note_color = regNoteColor,
-            root_note_color = rootNoteColor,
-            blue_note_color = blueNoteColor
+            regNoteColor = regNoteColor,
+            rootNoteColor = rootNoteColor,
+            blueNoteColor = blueNoteColor
         )
         val pianoDisplay = PianoDisplay(
             scale,

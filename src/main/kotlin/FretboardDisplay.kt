@@ -4,17 +4,17 @@ import java.awt.Graphics
 class FretboardDisplay(
     private val scale: Scale,
 
-    private val fretboard_x_offset: Int = 3,        // top left of fretboard
-    private val fretboard_y_offset: Int = 365,      // corner of fretboard
-    private val fretboard_note_x_dist: Int = 55,     // horizontal distance between notes
-    private val fretboard_note_y_dist: Int = 35,     // vertical distance between notes
-    private val note_size: Int = 42,                // size of notes on fretboard
+    private val fretboardXOffset: Int = 3,        // top left of fretboard
+    private val fretboardYOffset: Int = 365,      // corner of fretboard
+    private val fretboardNoteXDist: Int = 55,     // horizontal distance between notes
+    private val fretboardNoteYDist: Int = 35,     // vertical distance between notes
+    private val noteSize: Int = 42,                // size of notes on fretboard
 
-    private val root_note_color: Color,
-    private val reg_note_color: Color,
-    private val blue_note_color: Color,
+    private val rootNoteColor: Color,
+    private val regNoteColor: Color,
+    private val blueNoteColor: Color,
 
-) {
+    ) {
 
     private val eString = arrayOf("E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E")
     private val aString = arrayOf("A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A")
@@ -52,25 +52,25 @@ class FretboardDisplay(
             guitarString: Array<String>,
             guitarStringNum: Int
     ){
-        val yOffset = guitarStringNum * fretboard_note_y_dist
+        val yOffset = guitarStringNum * fretboardNoteYDist
 
         for (i in 0..12){
             // HIGHLIGHT ROOT
             if (guitarString[i] == scale.getRoot()){
                 drawGuitarNote(
                         g,
-                        root_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + yOffset
+                        rootNoteColor,
+                        fretboardXOffset + i * fretboardNoteXDist,
+                        fretboardYOffset + yOffset
                 )
             }
             // REGULAR DIATONIC NOTES
             else if (guitarString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
-                        reg_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + yOffset
+                        regNoteColor,
+                        fretboardXOffset + i * fretboardNoteXDist,
+                        fretboardYOffset + yOffset
                 )
             }
 
@@ -78,17 +78,17 @@ class FretboardDisplay(
             if (scale.getMode() == "Minor Blues" && guitarString[i] == scale.getDiatonicNotes()[3]) {
                 drawGuitarNote(
                         g,
-                        blue_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + yOffset
+                        blueNoteColor,
+                        fretboardXOffset + i * fretboardNoteXDist,
+                        fretboardYOffset + yOffset
                 )
             }
             if (scale.getMode() == "Major Blues" && guitarString[i] == scale.getDiatonicNotes()[2]) {
                 drawGuitarNote(
                         g,
-                        blue_note_color,
-                        fretboard_x_offset + i * fretboard_note_x_dist,
-                        fretboard_y_offset + yOffset
+                        blueNoteColor,
+                        fretboardXOffset + i * fretboardNoteXDist,
+                        fretboardYOffset + yOffset
                 )
             }
         }
@@ -102,7 +102,7 @@ class FretboardDisplay(
     ) {
         val accidentals = listOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
         var xOffset: Int
-        val yOffset = guitarStringNum * fretboard_note_y_dist
+        val yOffset = guitarStringNum * fretboardNoteYDist
 
         g.color = Color.black
 
@@ -121,8 +121,8 @@ class FretboardDisplay(
                 } else xOffset = 0
                 g.drawString(
                         note,
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size / 4) + 2 + xOffset,
-                        fretboard_y_offset + (note_size / 2) + 9 + yOffset
+                        fretboardXOffset + i * fretboardNoteXDist + (noteSize / 4) + 2 + xOffset,
+                        fretboardYOffset + (noteSize / 2) + 9 + yOffset
                 )
             }
         }
@@ -144,8 +144,8 @@ class FretboardDisplay(
 
                 g.drawString(
                         "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboard_x_offset + i * fretboard_note_x_dist + (note_size/4) + 2 + offset,
-                        fretboard_y_offset + (note_size/2) + 9 + (guitarStringNum * fretboard_note_y_dist)
+                        fretboardXOffset + i * fretboardNoteXDist + (noteSize/4) + 2 + offset,
+                        fretboardYOffset + (noteSize/2) + 9 + (guitarStringNum * fretboardNoteYDist)
                 )
             }
         }
@@ -154,37 +154,37 @@ class FretboardDisplay(
     fun drawFretboard(g: Graphics) {
         g.color = Color.lightGray
         g.drawRect(                     // perimeter of fretboard, includes e strings
-                fretboard_x_offset + (note_size),   // CAREFUL W/ TRUNCATION
-                fretboard_y_offset + (note_size / 2),
-                (fretboard_note_x_dist * 12) + 4,
-                fretboard_note_y_dist * 5
+                fretboardXOffset + (noteSize),   // CAREFUL W/ TRUNCATION
+                fretboardYOffset + (noteSize / 2),
+                (fretboardNoteXDist * 12) + 4,
+                fretboardNoteYDist * 5
         )
         for (i in 0..3)         // other guitar strings
             g.drawLine(
-                    fretboard_x_offset + (note_size / 2) + 29,
-                    fretboard_y_offset + note_size + 15 + (i * fretboard_note_y_dist),
-                    fretboard_x_offset + (note_size / 2) + (fretboard_note_x_dist * 12) + 24,
-                    fretboard_y_offset + note_size + 15 + (i * fretboard_note_y_dist)
+                    fretboardXOffset + (noteSize / 2) + 29,
+                    fretboardYOffset + noteSize + 15 + (i * fretboardNoteYDist),
+                    fretboardXOffset + (noteSize / 2) + (fretboardNoteXDist * 12) + 24,
+                    fretboardYOffset + noteSize + 15 + (i * fretboardNoteYDist)
             )
         // draw fret lines for fretboard
         for (i in 0..11)
             g.drawLine(
-                    fretboard_x_offset + fretboard_note_x_dist * i + note_size + 7,
-                    fretboard_y_offset + (note_size / 2),
-                    fretboard_x_offset + fretboard_note_x_dist * i + note_size + 7,
-                    fretboard_y_offset + (note_size / 2) + (fretboard_note_y_dist * 5)
+                    fretboardXOffset + fretboardNoteXDist * i + noteSize + 7,
+                    fretboardYOffset + (noteSize / 2),
+                    fretboardXOffset + fretboardNoteXDist * i + noteSize + 7,
+                    fretboardYOffset + (noteSize / 2) + (fretboardNoteYDist * 5)
             )
         // draw fret markings
         for (i in 0..3)  // draw circles for fret markings on fret 3, 5, 7, and 9
         //g.fillOval(181 + i * 110, 250, 11, 11)
             g.fillOval(
-                    fretboard_note_x_dist + (fretboard_note_x_dist * 2) + (note_size / 2) + (fretboard_note_x_dist * 2 * i) - 2,
-                    fretboard_y_offset - (note_size / 2),
+                    fretboardNoteXDist + (fretboardNoteXDist * 2) + (noteSize / 2) + (fretboardNoteXDist * 2 * i) - 2,
+                    fretboardYOffset - (noteSize / 2),
                     11,
                     11
             )
-        g.fillOval(667, fretboard_y_offset - (note_size / 2), 11, 11) // draw circles for fret
-        g.fillOval(687, fretboard_y_offset - (note_size / 2), 11, 11) // markings on fret 12
+        g.fillOval(667, fretboardYOffset - (noteSize / 2), 11, 11) // draw circles for fret
+        g.fillOval(687, fretboardYOffset - (noteSize / 2), 11, 11) // markings on fret 12
     }
 
 
