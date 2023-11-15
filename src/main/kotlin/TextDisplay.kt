@@ -7,6 +7,7 @@ class TextDisplay(
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
+    private  val specialNoteColor: Color,
 
     private val topTextNotesXDist: Int = 60,
 

@@ -15,6 +15,8 @@ class PianoDisplay(
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
+    private  val specialNoteColor: Color
+
 ) {
     private val whiteNotes = arrayOf("C", "D", "E", "F", "G", "A", "B")
     private val blackNotes = arrayOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")

@@ -13,6 +13,7 @@ class FretboardDisplay(
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
+    private  val specialNoteColor: Color
 
     ) {
 
