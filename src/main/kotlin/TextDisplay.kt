@@ -13,6 +13,20 @@ class TextDisplay(
     private val textColor: Color = Color(235, 235, 235),
     ) {
 
+    // C D E F ...
+    fun drawTopTextNotes(g: Graphics) {
+
+        g.color = regNoteColor
+
+        // LOOP FOR DRAWING NOTE STRINGS
+        for (i in 0 until scale.getDiatonicNotes().size){
+
+            val note: String = scale.getCleanNotes()[i]
+            g.drawString(note, 50 + (i * topTextNotesXDist), 50)
+
+        }
+    }
+
     // W W h W ...
     fun drawTopTextIntervals(g: Graphics) {
         g.color = textColor

@@ -51,8 +51,8 @@ class DisplayPanel(
         textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
 
         if (!hidden) {
-            // TOP TEXT                         // -NOTE-                       -e.g.-
-            drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
+            // TOP TEXT                                     // -NOTE-                       -e.g.-
+            textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
 
             if (usingFretboard) {
@@ -73,19 +73,6 @@ class DisplayPanel(
                 pianoDisplay.drawPianoOutline(g)
 
             }
-        }
-    }
-
-    private fun drawTopTextNotes(g: Graphics) {   // C D E F ...
-
-        g.color = regNoteColor
-
-        // LOOP FOR DRAWING NOTE STRINGS
-        for (i in 0 until scale.getDiatonicNotes().size){
-
-            val note: String = scale.getCleanNotes()[i]
-            g.drawString(note, 50 + (i * topTextNotesXDist), 50)
-
         }
     }
 
