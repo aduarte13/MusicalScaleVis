@@ -4,7 +4,6 @@ import javax.swing.*
 class DisplayPanel(
     private val scale: Scale,
     private val backgroundColor: Color = Color(20, 20, 20),
-    private val textColor: Color = Color(235, 235, 235),
     private val rootNoteColor: Color = Color(225, 15, 0),
     private val regNoteColor: Color = Color(255, 180, 70),
     private val blueNoteColor: Color = Color(60, 60, 255),
@@ -47,7 +46,7 @@ class DisplayPanel(
         g.color = backgroundColor
         g.fillRect(0, 0, 760, 610) // fill background
 
-        drawTopTextIntervals(g)             // W W h W...
+        textDisplay.drawTopTextIntervals(g)             // W W h W...
         drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
         drawTopTextFormula(g)               // 1 2 b3 4 ...
 
@@ -125,13 +124,6 @@ class DisplayPanel(
             val note: String = scale.getCleanNotes()[i]
             g.drawString(note, 50 + (i * topTextNotesXDist), 50)
 
-        }
-    }
-
-    private fun drawTopTextIntervals(g: Graphics) {   // W W h W ...
-        g.color = textColor
-        for (i in 0 until scale.getFormulaStrings().size) {
-            g.drawString(scale.getFormulaStrings()[i] + " ", 83 + (i * topTextNotesXDist), 25)
         }
     }
 
