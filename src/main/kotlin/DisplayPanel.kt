@@ -8,8 +8,6 @@ class DisplayPanel(
     private val regNoteColor: Color = Color(255, 180, 70),
     private val blueNoteColor: Color = Color(60, 60, 255),
 
-    private val topTextNotesXDist: Int = 60,
-
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
     private var usingFretboard: Boolean = true
