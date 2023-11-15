@@ -36,6 +36,21 @@ class TextDisplay(
         }
     }
 
+    // R W M3 P4 ...
+    fun drawTopTextIntraScaleIntervals(g: Graphics){
+
+        g.color = Color.white
+
+        var intervalTotal = 0
+
+        g.drawString("R", 50, 105)
+
+        for (i in 0 until scale.getFormulaInts().size-1){
+            intervalTotal += scale.getFormulaInts()[i]
+            g.drawString(scale.getIntervalStrings()[intervalTotal]!!, 50 + ((i+1) * topTextNotesXDist), 105)
+        }
+    }
+
     // I ii iii IV ...
     fun drawTopTextChordNumerals(g: Graphics){
 

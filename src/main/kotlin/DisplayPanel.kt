@@ -47,7 +47,7 @@ class DisplayPanel(
         g.fillRect(0, 0, 760, 610) // fill background
 
         textDisplay.drawTopTextIntervals(g)             // W W h W...
-        drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
+        textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
         textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
 
         if (!hidden) {
@@ -73,20 +73,6 @@ class DisplayPanel(
                 pianoDisplay.drawPianoOutline(g)
 
             }
-        }
-    }
-
-    private fun drawTopTextIntraScaleIntervals(g: Graphics){    // R W M3 P4 ...
-
-        g.color = Color.white
-
-        var intervalTotal = 0
-
-        g.drawString("R", 50, 105)
-
-        for (i in 0 until scale.getFormulaInts().size-1){
-            intervalTotal += scale.getFormulaInts()[i]
-            g.drawString(scale.getIntervalStrings()[intervalTotal]!!, 50 + ((i+1) * topTextNotesXDist), 105)
         }
     }
 
