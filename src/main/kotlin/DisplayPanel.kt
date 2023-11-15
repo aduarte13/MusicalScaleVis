@@ -53,7 +53,7 @@ class DisplayPanel(
         if (!hidden) {
             // TOP TEXT                         // -NOTE-                       -e.g.-
             drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
-            drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
+            textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -73,19 +73,6 @@ class DisplayPanel(
                 pianoDisplay.drawPianoOutline(g)
 
             }
-        }
-    }
-
-    private fun drawTopTextChordNumerals(g: Graphics){   // I ii iii IV ...
-
-        g.color = Color.white
-
-        // LOOP FOR DRAWING NOTE STRINGS
-        for (i in 0 until scale.getDiatonicChords().size){
-
-            val note: String = scale.getDiatonicChords()[i]
-            g.drawString(note, 50 + (i * topTextNotesXDist), 135)
-
         }
     }
 

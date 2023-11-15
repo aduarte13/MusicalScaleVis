@@ -35,4 +35,18 @@ class TextDisplay(
 
         }
     }
+
+    // I ii iii IV ...
+    fun drawTopTextChordNumerals(g: Graphics){
+
+        g.color = Color.white
+
+        for (i in 0 until scale.getDiatonicChords().size){
+
+            val note: String = scale.getDiatonicChords()[i]
+            g.drawString(note, 50 + (i * topTextNotesXDist), 135)
+
+        }
+    }
+
 }
