@@ -22,9 +22,13 @@ class TextDisplay(
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until scale.getDiatonicNotes().size){
 
+            if (scale.getDiatonicIntervals()[i].length > 1)
+                g.color = specialNoteColor
+
             val note: String = scale.getCleanNotes()[i]
             g.drawString(note, 50 + (i * topTextNotesXDist), 50)
 
+            g.color = regNoteColor
         }
     }
 
