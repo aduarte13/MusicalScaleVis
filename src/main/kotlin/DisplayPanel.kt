@@ -48,7 +48,7 @@ class DisplayPanel(
 
         textDisplay.drawTopTextIntervals(g)             // W W h W...
         drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
-        drawTopTextFormula(g)               // 1 2 b3 4 ...
+        textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
 
         if (!hidden) {
             // TOP TEXT                         // -NOTE-                       -e.g.-
@@ -73,17 +73,6 @@ class DisplayPanel(
                 pianoDisplay.drawPianoOutline(g)
 
             }
-        }
-    }
-
-    private fun drawTopTextFormula(g: Graphics){   // 1 2 b3 4 ...
-        g.color = Color.white
-
-        for (i in 0 until scale.getDiatonicIntervals().size){
-
-            val interval: String = scale.getDiatonicIntervals()[i]
-            g.drawString(interval, 50 + (i * topTextNotesXDist), 75)
-
         }
     }
 
