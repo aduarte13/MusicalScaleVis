@@ -45,20 +45,21 @@ class TextDisplay(
 
     // 1 2 b3 4 ...
     fun drawTopTextFormula(g: Graphics){
-        g.color = Color.white
+        g.color = textColor
 
         for (i in 0 until scale.getDiatonicIntervals().size){
 
             val interval: String = scale.getDiatonicIntervals()[i]
             g.drawString(interval, 50 + (i * topTextNotesXDist), 75)
 
+            //g.color = textColor
         }
     }
 
     // R W M3 P4 ...
     fun drawTopTextIntraScaleIntervals(g: Graphics){
 
-        g.color = Color.white
+        g.color = textColor
 
         var intervalTotal = 0
 
@@ -73,7 +74,7 @@ class TextDisplay(
     // I ii iii IV ...
     fun drawTopTextChordNumerals(g: Graphics){
 
-        g.color = Color.white
+        g.color = textColor
 
         for (i in 0 until scale.getDiatonicChords().size){
 
