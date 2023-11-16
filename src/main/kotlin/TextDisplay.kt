@@ -49,10 +49,13 @@ class TextDisplay(
 
         for (i in 0 until scale.getDiatonicIntervals().size){
 
+            if (scale.getDiatonicIntervals()[i].length > 1)
+                g.color = specialNoteColor
+
             val interval: String = scale.getDiatonicIntervals()[i]
             g.drawString(interval, 50 + (i * topTextNotesXDist), 75)
 
-            //g.color = textColor
+            g.color = textColor
         }
     }
 
