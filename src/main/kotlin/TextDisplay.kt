@@ -10,6 +10,7 @@ class TextDisplay(
     private  val specialNoteColor: Color,
 
     private val topTextNotesXDist: Int = 60,
+    private val topTextNotesYDist: Int = 0,
 
     private val textColor: Color = Color(235, 235, 235),
     ) {
@@ -26,7 +27,11 @@ class TextDisplay(
                 g.color = specialNoteColor
 
             val note: String = scale.getCleanNotes()[i]
-            g.drawString(note, 50 + (i * topTextNotesXDist), 50)
+            g.drawString(
+                note,
+                50 + (i * topTextNotesXDist),
+                topTextNotesYDist + 50
+            )
 
             g.color = regNoteColor
         }
@@ -38,7 +43,11 @@ class TextDisplay(
 
         for (i in 0 until scale.getFormulaStrings().size) {
 
-            g.drawString(scale.getFormulaStrings()[i] + " ", 83 + (i * topTextNotesXDist), 25)
+            g.drawString(
+                scale.getFormulaStrings()[i] + " ",
+                83 + (i * topTextNotesXDist),
+                topTextNotesYDist + 25
+            )
 
         }
     }
@@ -53,7 +62,10 @@ class TextDisplay(
                 g.color = specialNoteColor
 
             val interval: String = scale.getDiatonicIntervals()[i]
-            g.drawString(interval, 50 + (i * topTextNotesXDist), 75)
+            g.drawString(
+                interval,
+                50 + (i * topTextNotesXDist),
+                topTextNotesYDist + 75)
 
             g.color = textColor
         }
@@ -66,11 +78,19 @@ class TextDisplay(
 
         var intervalTotal = 0
 
-        g.drawString("R", 50, 105)
+        g.drawString(
+            "R",
+            topTextNotesXDist - 10,
+            topTextNotesYDist + 105
+        )
 
         for (i in 0 until scale.getFormulaInts().size-1){
             intervalTotal += scale.getFormulaInts()[i]
-            g.drawString(scale.getIntervalStrings()[intervalTotal]!!, 50 + ((i+1) * topTextNotesXDist), 105)
+            g.drawString(
+                scale.getIntervalStrings()[intervalTotal]!!,
+                50 + ((i+1) * topTextNotesXDist),
+                topTextNotesYDist + 105
+            )
         }
     }
 
@@ -82,7 +102,11 @@ class TextDisplay(
         for (i in 0 until scale.getDiatonicChords().size){
 
             val note: String = scale.getDiatonicChords()[i]
-            g.drawString(note, 50 + (i * topTextNotesXDist), 135)
+            g.drawString(
+                note,
+                50 + (i * topTextNotesXDist),
+                topTextNotesYDist + 135
+            )
 
         }
     }
