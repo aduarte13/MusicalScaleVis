@@ -57,6 +57,17 @@ class FretboardDisplay(
 
         for (i in 0..12){
             // HIGHLIGHT ROOT
+            var noteColor = regNoteColor
+
+            val noteIndex = scale.getDiatonicNotes().indexOf(guitarString[i])
+
+            if(noteIndex != -1) {
+                if (scale.getDiatonicIntervals()[noteIndex].length > 1)
+                    noteColor = specialNoteColor
+                if (scale.getDiatonicIntervals()[noteIndex].length > 1)
+                    noteColor = specialNoteColor
+            }
+
             if (guitarString[i] == scale.getRoot()){
                 drawGuitarNote(
                         g,
@@ -69,7 +80,7 @@ class FretboardDisplay(
             else if (guitarString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
-                        regNoteColor,
+                        noteColor,
                         fretboardXOffset + i * fretboardNoteXDist,
                         fretboardYOffset + yOffset
                 )
