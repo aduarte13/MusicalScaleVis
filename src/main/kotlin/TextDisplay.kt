@@ -10,7 +10,7 @@ class TextDisplay(
     private  val specialNoteColor: Color,
 
     private val topTextNotesXDist: Int = 60,
-    private val topTextNotesYDist: Int = 0,
+    private val topTextNotesYDist: Int = 100,
 
     private val textColor: Color = Color(235, 235, 235),
     ) {
