@@ -56,18 +56,18 @@ class FretboardDisplay(
         val yOffset = guitarStringNum * fretboardNoteYDist
 
         for (i in 0..12){
-            // HIGHLIGHT ROOT
+
             var noteColor = regNoteColor
 
+            // determine if current fret note deviates from relative major
+            // and if so, set noteColor accordingly
             val noteIndex = scale.getDiatonicNotes().indexOf(guitarString[i])
-
             if(noteIndex != -1) {
-                if (scale.getDiatonicIntervals()[noteIndex].length > 1)
-                    noteColor = specialNoteColor
                 if (scale.getDiatonicIntervals()[noteIndex].length > 1)
                     noteColor = specialNoteColor
             }
 
+            // HIGHLIGHT ROOT
             if (guitarString[i] == scale.getRoot()){
                 drawGuitarNote(
                         g,
@@ -76,7 +76,7 @@ class FretboardDisplay(
                         fretboardYOffset + yOffset
                 )
             }
-            // REGULAR DIATONIC NOTES
+            // NON-ROOT DIATONIC NOTES
             else if (guitarString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
