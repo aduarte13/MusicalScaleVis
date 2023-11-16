@@ -27,20 +27,29 @@ class PianoDisplay(
         fillWhiteKeys(g)
 
         // white notes
-        for(note in scale.getDiatonicNotes()){
+        for(i in 0 until scale.getDiatonicNotes().size){
             // get appropriate color
-            noteColor = if (note == scale.getRoot())
+            noteColor = if (scale.getDiatonicNotes()[i] == scale.getRoot())
                 rootNoteColor
-            else if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
+            else if (scale.getMode() == "Minor Blues" && scale.getDiatonicNotes()[i] == scale.getDiatonicNotes()[3])
                 blueNoteColor
-            else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
+            else if (scale.getMode() == "Major Blues" && scale.getDiatonicNotes()[i] == scale.getDiatonicNotes()[2])
                 blueNoteColor
             else
                 regNoteColor
 
+            // determine if current note deviates from relative major
+            // and if so, set noteColor accordingly
+
+            val noteIndex = scale.getDiatonicNotes().indexOf(whiteNotes[i])
+            if(noteIndex != -1) {
+                if (scale.getDiatonicIntervals()[i].length > 1)
+                    noteColor = specialNoteColor
+            }
+
             // highlight white diatonic notes
-            if (note in whiteNotes)
-                highlightWhitePianoKey(g, note, noteColor)
+            if (scale.getDiatonicNotes()[i] in whiteNotes)
+                highlightWhitePianoKey(g, scale.getDiatonicNotes()[i], noteColor)
         }
 
         fillBlackKeys(g)
