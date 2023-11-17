@@ -15,7 +15,7 @@ class PianoDisplay(
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
-    private  val specialNoteColor: Color
+    private val specialNoteColor: Color
 
 ) {
     private val whiteNotes = arrayOf("C", "D", "E", "F", "G", "A", "B")
@@ -30,23 +30,23 @@ class PianoDisplay(
         for(i in 0 until scale.getDiatonicNotes().size){
             val note = scale.getDiatonicNotes()[i]
 
-            // get appropriate color
-            noteColor = if (scale.getDiatonicNotes()[i] == scale.getRoot())
-                rootNoteColor
-            else if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
-                blueNoteColor
-            else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
-                blueNoteColor
-            else
-                regNoteColor
-
             // determine if current note deviates from relative major
             // and if so, set noteColor accordingly
             val noteIndex = scale.getDiatonicNotes().indexOf(note)
-            if(noteIndex != -1) {
-                if (scale.getDiatonicIntervals()[i].length > 1)
-                    noteColor = specialNoteColor
-            }
+            // get appropriate color
+            noteColor = if (scale.getDiatonicNotes()[i] == scale.getRoot())
+                rootNoteColor
+            else (if (scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3])
+                        blueNoteColor
+                    else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
+                        blueNoteColor
+                    else if (noteIndex != -1) {
+                        if (scale.getDiatonicIntervals()[i].length > 1)
+                            specialNoteColor
+                        else
+                            regNoteColor
+                    } else
+                        regNoteColor)
 
             // highlight white diatonic notes
             if (scale.getDiatonicNotes()[i] in whiteNotes)
