@@ -68,6 +68,14 @@ class PianoDisplay(
             else
                 regNoteColor
 
+            // determine if current note deviates from relative major
+            // and if so, set noteColor accordingly
+            val noteIndex = scale.getDiatonicNotes().indexOf(note)
+            if(noteIndex != -1) {
+                if (scale.getDiatonicIntervals()[i].length > 1)
+                    noteColor = specialNoteColor
+            }
+
             // highlight black diatonic notes
             if (note in blackNotes)
                 highlightBlackPianoKey(g, note, noteColor)
