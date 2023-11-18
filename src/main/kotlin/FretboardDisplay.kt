@@ -146,19 +146,24 @@ class FretboardDisplay(
             guitarStringNum: Int
     ) {
 
-        val offset = 3  // for centering accidental strings on note
+        var offset = 0
 
         g.color = Color.black
 
         for (i in 0..12) {
             if (guitarString[i] in scale.getDiatonicNotes()) {
                 val note = guitarString[i]
+                val noteIndex = scale.getDiatonicNotes().indexOf(note)
+                val interval = scale.getDiatonicIntervals()[noteIndex]
+                if (interval.length > 1)
+                    offset -= 6
 
                 g.drawString(
-                        "" + (scale.getDiatonicNotes().indexOf(note) + 1),
-                        fretboardXOffset + i * fretboardNoteXDist + (noteSize/4) + 2 + offset,
+                        "" + (scale.getDiatonicIntervals()[noteIndex]),
+                        fretboardXOffset + i * fretboardNoteXDist + (noteSize/4) + 5 + offset,
                         fretboardYOffset + (noteSize/2) + 9 + (guitarStringNum * fretboardNoteYDist)
                 )
+                offset = 0
             }
         }
     }
