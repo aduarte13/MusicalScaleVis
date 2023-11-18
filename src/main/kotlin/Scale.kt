@@ -22,6 +22,20 @@ class Scale(
         10 to "m7", // minor 7th
         11 to "M7"  // major 7th
         ),
+        private val intervalToInt: Map<String, Int> = mapOf(
+            "1" to 0,
+            "#1" to 1, "b2" to 1,
+            "2" to 2,
+            "#2" to 3, "b3" to 3,
+            "3" to 4, "b4" to 4,
+            "#3" to 5, "4" to 5,
+            "#4" to 6, "b5" to 6,
+            "5" to 7,
+            "#5" to 8, "b6" to 8,
+            "6" to 9,
+            "#6" to 10, "b7" to 10,
+            "7" to 11
+        ),
         private val allNotes: List<String> = listOf(
         "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb",
         "G", "G#/Ab", "A", "A#/Bb", "B"
@@ -51,17 +65,17 @@ class Scale(
         diatonicNotes.clear()   //
         cleanNotes.clear()      //
 
-        diatonicNotes.add(rootNote) // add the root note to scale
-        cleanNotes.add(rootNote)
+        //diatonicNotes.add(rootNote) // add the root note to scale
+        //cleanNotes.add(rootNote)
 
         setFormula(modeType)        // set formulaStrings and formulaInts to correct mode intervals
         setDiatonicChords()         //
         setDiatonicIntervals()      //
 
         // LOOP FOR BUILDING SCALE
-        var offset: Int = allNotes.indexOf(rootNote)
-        for (i in 0 until formulaInts.size-1){
-            offset += formulaInts[i]
+        val rootIndex: Int = allNotes.indexOf(rootNote)
+        for (i in 0 until diatonicIntervals.size){
+            var offset = rootIndex + intervalToInt[diatonicIntervals[i]]!!
             if (offset >= allNotes.size)
                 offset -= allNotes.size
             diatonicNotes.add(allNotes[offset])
