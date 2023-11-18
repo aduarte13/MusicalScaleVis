@@ -70,6 +70,14 @@ class TextDisplay(
 
             if (scale.getDiatonicIntervals()[i].length > 1)
                 g.color = specialNoteColor
+            // BLUE NOTES
+            if (scale.getMode() == "Minor Blues" && i == 3) {
+                g.color = blueNoteColor
+            }
+            if (scale.getMode() == "Major Blues" && i == 2) {
+                g.color = blueNoteColor
+            }
+
 
             val interval: String = scale.getDiatonicIntervals()[i]
             g.drawString(
