@@ -33,7 +33,8 @@ class TextDisplay(
             if (scale.getMode() == "Major Blues" && i == 2) {
                 g.color = blueNoteColor
             }
-
+            if (i == 0)
+                g.color = rootNoteColor
 
             val note: String = scale.getCleanNotes()[i]
             g.drawString(
