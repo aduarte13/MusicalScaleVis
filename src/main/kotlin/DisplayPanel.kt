@@ -11,6 +11,7 @@ class DisplayPanel(
 
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
+    private var relativeMajorHidden: Boolean = false,
     private var usingFretboard: Boolean = true
     ) : JPanel(){
 
@@ -48,7 +49,8 @@ class DisplayPanel(
         g.color = backgroundColor
         g.fillRect(0, 0, 760, 610) // fill background
 
-        textDisplay.drawTopTextRelativeMajorNotes(g)
+        if (!relativeMajorHidden)
+            textDisplay.drawTopTextRelativeMajorNotes(g)
         textDisplay.drawTopTextIntervals(g)             // W W h W...
         textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
         textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
@@ -81,6 +83,10 @@ class DisplayPanel(
 
     fun switchHidden() {
         hidden = !hidden
+    }
+
+    fun switchRelativeMajorHidden(){
+        relativeMajorHidden = !relativeMajorHidden
     }
 
     fun setInstrument(b: Boolean){

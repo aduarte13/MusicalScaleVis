@@ -8,6 +8,7 @@ class SelectionPanel(
     private val displayPanel: DisplayPanel
 ) : JPanel(){
     private val checkboxHide = JCheckBox("Hide")
+    private val relativeMajorHide = JCheckBox("Relative Major")
 
     private val noteList = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
     private val modeList = arrayOf(
@@ -74,7 +75,9 @@ class SelectionPanel(
         keyboardRadioButton.addActionListener(InstrumentSelectionListener())
         fretboardRadioButton.addActionListener(InstrumentSelectionListener())
 
-        checkboxHide.addActionListener(HideCheckBoxListener())
+        checkboxHide.addActionListener(CheckBoxListener())
+        relativeMajorHide.addActionListener(CheckBoxListener())
+        relativeMajorHide.isSelected = true
 
         noteDropMenu.addActionListener(RootSelectionListener())
 
@@ -93,6 +96,7 @@ class SelectionPanel(
         add(modeDropMenu)
 
         add(checkboxHide)
+        add(relativeMajorHide)
 
         add(sharpsOrFlatsPanel)
 
@@ -148,9 +152,12 @@ class SelectionPanel(
         }
     }
 
-    inner class HideCheckBoxListener : ActionListener {
+    inner class CheckBoxListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
-            displayPanel.switchHidden()
+            if (e.source == checkboxHide)
+                displayPanel.switchHidden()
+            else if (e.source == relativeMajorHide)
+                displayPanel.switchRelativeMajorHidden()
             displayPanel.repaint()
         }
     }
