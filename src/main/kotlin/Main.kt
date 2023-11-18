@@ -9,8 +9,9 @@ class Main : JFrame(){
 
         // create music structure and panels
         val musicStruct = Scale(rootNote = "C", modeType = "Major/Ionian")
-        val displayPanel = DisplayPanel(musicStruct)
-        val selectionPanel = SelectionPanel(musicStruct, displayPanel)
+        val relativeMajor = Scale(rootNote = "C", modeType = "Major/Ionian")
+        val displayPanel = DisplayPanel(musicStruct, relativeMajor)
+        val selectionPanel = SelectionPanel(musicStruct, relativeMajor, displayPanel)
 
         // set panel sizes
         selectionPanel.preferredSize = Dimension(750, 60)

@@ -5,6 +5,7 @@ import javax.swing.*
 
 class SelectionPanel(
     private val scale: Scale,
+    private val relativeMajor: Scale,
     private val displayPanel: DisplayPanel
 ) : JPanel(){
     private val checkboxHide = JCheckBox("Hide")
@@ -116,11 +117,16 @@ class SelectionPanel(
 
     inner class SharpsOrFlatsListener : ActionListener {
         override fun actionPerformed(e: ActionEvent?) {
-            if (sharpsRadioButton.isSelected)
+            if (sharpsRadioButton.isSelected) {
                 scale.setUsingSharps(true)
-            else
+                relativeMajor.setUsingSharps(true)
+            }
+            else {
                 scale.setUsingSharps(false)
+                relativeMajor.setUsingSharps(false)
+            }
             scale.build()
+            relativeMajor.build()
             displayPanel.repaint()
         }
     }
@@ -140,6 +146,7 @@ class SelectionPanel(
         override fun actionPerformed(e: ActionEvent) {
             val selection = noteDropMenu.selectedItem as String // get the currently selected root from the list
             scale.setRoot(selection) // set the chord's root to the selected note
+            relativeMajor.setRoot(selection)
             displayPanel.repaint() // update display panel
         }
     }
@@ -148,6 +155,7 @@ class SelectionPanel(
         override fun actionPerformed(e: ActionEvent) {
             val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
             scale.setMode(selection) // set the chord's type to the selected tyoe
+            scale.setMode(selection)
             displayPanel.repaint() // update display panel
         }
     }

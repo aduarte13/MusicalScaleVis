@@ -3,6 +3,7 @@ import java.awt.Graphics
 
 class TextDisplay(
     private val scale: Scale,
+    private val relativeMajor: Scale,
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
@@ -48,7 +49,6 @@ class TextDisplay(
 
     // C D E F ...
     fun drawTopTextRelativeMajorNotes(g: Graphics) {
-        val relativeMajor = scale.getRelativeMajor()
 
         g.color = textColor
 
