@@ -68,10 +68,10 @@ class TextDisplay(
     fun drawTopTextIntervals(g: Graphics) {
         g.color = textColor
 
-        for (i in 0 until scale.getFormulaStrings().size) {
+        for (i in 0 until scale.getSteps().size) {
 
             g.drawString(
-                scale.getFormulaStrings()[i] + " ",
+                scale.getSteps()[i] + " ",
                 83 + (i * topTextNotesXDist),
                 topTextNotesYDist + 25
             )
@@ -111,19 +111,13 @@ class TextDisplay(
 
         g.color = textColor
 
-        var intervalTotal = 0
 
-        g.drawString(
-            "R",
-            topTextNotesXDist - 10,
-            topTextNotesYDist + 105
-        )
 
-        for (i in 0 until scale.getFormulaInts().size-1){
-            intervalTotal += scale.getFormulaInts()[i]
+
+        for (i in 0 until scale.getFormulaStrings().size){
             g.drawString(
-                scale.getIntervalStrings()[intervalTotal]!!,
-                50 + ((i+1) * topTextNotesXDist),
+                scale.getFormulaStrings()[i],
+                50 + ((i) * topTextNotesXDist),
                 topTextNotesYDist + 105
             )
         }

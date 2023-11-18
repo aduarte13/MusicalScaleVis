@@ -7,11 +7,12 @@ class Scale(
         private var diatonicChords: MutableList<String> = mutableListOf<String>(),
         private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
         private var formulaStrings: MutableList<String> = mutableListOf<String>(),
-        private var formulaInts: MutableList<Int> = mutableListOf<Int>(),
+        private var steps: MutableList<String> = mutableListOf<String>(),
         private val intervalStrings: Map<Int, String> = mapOf(
         // unison && octave omitted
-        1 to "h",   // half step || minor 2md
-        2 to "W",   // whole step || major 2nd
+            0 to "R",
+        1 to "m2",   // half step || minor 2md
+        2 to "M2",   // whole step || major 2nd
         3 to "m3",  // minor 3rd
         4 to "M3",  // major 3rd
         5 to "P4",  // perfect 4th
@@ -68,9 +69,10 @@ class Scale(
         //diatonicNotes.add(rootNote) // add the root note to scale
         //cleanNotes.add(rootNote)
 
-        setFormula(modeType)        // set formulaStrings and formulaInts to correct mode intervals
+        setFormula()        // set formulaStrings and formulaInts to correct mode intervals
         setDiatonicChords()         //
         setDiatonicIntervals()      //
+        setSteps()
 
         // LOOP FOR BUILDING SCALE
         val rootIndex: Int = allNotes.indexOf(rootNote)
@@ -103,10 +105,6 @@ class Scale(
             print(cleanNotes[i] + " ")
         }
         println()
-        for (i in 0 until formulaInts.size){
-            print("${formulaInts[i]} ")
-        }
-        println()
         for (i in 0 until formulaStrings.size){
             print("${formulaStrings[i]} ")
         }
@@ -131,8 +129,6 @@ class Scale(
 
     fun getIntervalStrings() = intervalStrings
 
-    fun getFormulaInts() = formulaInts
-
     fun getFormulaStrings() = formulaStrings
 
     fun getDiatonicNotes() = diatonicNotes
@@ -141,52 +137,52 @@ class Scale(
 
     fun getCleanNotes() = cleanNotes
 
+    fun getSteps() = steps
+
     fun setRoot(rootNote: String){ this.rootNote = rootNote; build() }
 
     fun setMode(modeType: String){ this.modeType = modeType; build() }
 
-    private fun setFormula(modeType: String) {
-        formulaInts.clear()
+    private fun setSteps(){
+        steps.clear()
+
+        // WACKY THREE
+        if (modeType == "Chromatic")
+            steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
+        else if (modeType == "Whole Tone")
+            steps = mutableListOf("W", "W", "W", "W", "W", "W", "W")
+        else if (modeType == "Diminished")
+            steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
+        // MAJOR MODES
+        if (modeType in allMajorModes){
+            val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
+            var offset = allMajorModes.indexOf(modeType)
+            for (i in 0 until majorSteps.size){
+                if (i+offset >= majorSteps.size)
+                    offset -= majorSteps.size
+                steps.add(majorSteps[i + offset])
+            }
+        }
+
+    }
+
+    private fun setFormula() {
         formulaStrings.clear()
 
-        if (modeType in allMajorModes) {
-            var offset: Int = allMajorModes.indexOf(modeType)
-            for (i in stepsMajorModes.indices){
-                formulaInts.add(stepsMajorModes[offset])
-                formulaStrings.add(intervalStrings[formulaInts[i]]!!)
-                offset += 1
-                if (offset >= stepsMajorModes.size)
-                    offset -= stepsMajorModes.size
-            }
-        }
-        else if (modeType in pentaModes){
-            if (modeType == "Major Pentatonic"){
-                formulaInts = mutableListOf(2, 2, 3, 2, 3)
-                for (i in 0 until formulaInts.size){
-                    formulaStrings.add(intervalStrings[formulaInts[i]]!!)
-                }
-            }
-            else if (modeType == "Minor Pentatonic"){
-                formulaInts = mutableListOf(3, 2, 2, 3, 2)
-                for (i in 0 until formulaInts.size){
-                    formulaStrings.add(intervalStrings[formulaInts[i]]!!)
-                }
-            }
-        }
-        else if (modeType == "Major Blues"){
-            formulaInts = mutableListOf(2, 1, 1, 3, 2, 3)
-            for (i in 0 until formulaInts.size){
-                formulaStrings.add(intervalStrings[formulaInts[i]]!!)
-            }
-        }
-        else if (modeType == "Minor Blues"){
-            formulaInts = mutableListOf(3, 2, 1, 1, 3, 2)
-            for (i in 0 until formulaInts.size){
-                formulaStrings.add(intervalStrings[formulaInts[i]]!!)
-            }
-        }
-        else{
-            println("Mode not found!!!")
+        when (modeType) {
+            "Major/Ionian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "7")
+            "Dorian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
+            "Phrygian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
+            "Lydian" -> formulaStrings = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
+            "Mixolydian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
+            "Minor/Aeolian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
+            "Locrian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
+
+            "Major Pentatonic" -> formulaStrings = mutableListOf("1", "2", "3", "5", "6")
+            "Minor Pentatonic" -> formulaStrings = mutableListOf("1", "b3", "4", "5", "b7")
+
+            "Major Blues" -> formulaStrings = mutableListOf("1", "2", "b3", "3", "5", "6")
+            "Minor Blues" -> formulaStrings = mutableListOf("1", "b3", "4", "b5", "5", "b7")
         }
     }
 
