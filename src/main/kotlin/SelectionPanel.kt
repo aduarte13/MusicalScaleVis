@@ -11,6 +11,8 @@ class SelectionPanel(
 
     private val noteList = arrayOf("C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B")
     private val modeList = arrayOf(
+            // WACKY THREE
+            "Chromatic", "Whole Tone", "Diminished",
             // CLASSIC SEVEN
             "Major/Ionian", "Dorian", "Phrygian", "Lydian",
             "Mixolydian", "Minor/Aeolian", "Locrian",
@@ -39,6 +41,8 @@ class SelectionPanel(
     init {
         border = BorderFactory.createTitledBorder("Selection")
         layout = FlowLayout()
+
+        modeDropMenu.selectedItem = "Major/Ionian"
 
         noteDropMenu.maximumRowCount = 5
         modeDropMenu.maximumRowCount = 5
