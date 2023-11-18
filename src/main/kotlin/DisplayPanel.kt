@@ -48,11 +48,10 @@ class DisplayPanel(
         g.color = backgroundColor
         g.fillRect(0, 0, 760, 610) // fill background
 
+        textDisplay.drawTopTextRelativeMajorNotes(g)
         textDisplay.drawTopTextIntervals(g)             // W W h W...
         textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
         textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
-
-        val relativeMajor = Scale(rootNote = scale.getRoot(), modeType = "Major/Ionian")
 
         if (!hidden) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-

@@ -127,6 +127,8 @@ class Scale(
 
     fun getCleanNotes() = cleanNotes
 
+    fun getRelativeMajor() = Scale(rootNote = rootNote, modeType = "Major/Ionian")
+
     fun setRoot(rootNote: String){ this.rootNote = rootNote; build() }
 
     fun setMode(modeType: String){ this.modeType = modeType; build() }

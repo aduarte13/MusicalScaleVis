@@ -3,11 +3,10 @@ import java.awt.Graphics
 
 class TextDisplay(
     private val scale: Scale,
-
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
-    private  val specialNoteColor: Color,
+    private val specialNoteColor: Color,
 
     private val topTextNotesXDist: Int = 60,
     private val topTextNotesYDist: Int = 100,
@@ -44,6 +43,24 @@ class TextDisplay(
             )
 
             g.color = regNoteColor
+        }
+    }
+
+    // C D E F ...
+    fun drawTopTextRelativeMajorNotes(g: Graphics) {
+        val relativeMajor = scale.getRelativeMajor()
+
+        g.color = textColor
+
+        // LOOP FOR DRAWING NOTE STRINGS
+        for (i in 0 until relativeMajor.getDiatonicNotes().size){
+
+            val note: String = relativeMajor.getCleanNotes()[i]
+            g.drawString(
+                note,
+                50 + (i * topTextNotesXDist),
+                topTextNotesYDist
+            )
         }
     }
 
