@@ -127,8 +127,6 @@ class Scale(
 
     fun getDiatonicIntervals() = diatonicIntervals
 
-    fun getIntervalStrings() = intervalStrings
-
     fun getFormulaStrings() = formulaStrings
 
     fun getDiatonicNotes() = diatonicNotes
