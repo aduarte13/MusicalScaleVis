@@ -114,9 +114,9 @@ class TextDisplay(
 
 
 
-        for (i in 0 until scale.getFormulaStrings().size){
+        for (i in 0 until scale.getDiatonicIntervals().size){
             g.drawString(
-                scale.getFormulaStrings()[i],
+                scale.getDiatonicIntervals()[i],
                 50 + ((i) * topTextNotesXDist),
                 topTextNotesYDist + 105
             )

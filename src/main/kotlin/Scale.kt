@@ -1,14 +1,13 @@
 class Scale(
-        private var rootNote: String,
-        private var modeType: String,
-        private var usingSharps: Boolean = true,
-        private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
-        private val cleanNotes: MutableList<String> = mutableListOf<String>(),
-        private var diatonicChords: MutableList<String> = mutableListOf<String>(),
-        private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
-        private var formulaStrings: MutableList<String> = mutableListOf<String>(),
-        private var steps: MutableList<String> = mutableListOf<String>(),
-        private val intervalStrings: Map<Int, String> = mapOf(
+    private var rootNote: String,
+    private var modeType: String,
+    private var usingSharps: Boolean = true,
+    private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
+    private val cleanNotes: MutableList<String> = mutableListOf<String>(),
+    private var diatonicChords: MutableList<String> = mutableListOf<String>(),
+    private var formula: MutableList<String> = mutableListOf<String>(),
+    private var steps: MutableList<String> = mutableListOf<String>(),
+    private val intervalStrings: Map<Int, String> = mapOf(
         // unison && octave omitted
             0 to "R",
         1 to "m2",   // half step || minor 2md
@@ -23,7 +22,7 @@ class Scale(
         10 to "m7", // minor 7th
         11 to "M7"  // major 7th
         ),
-        private val intervalToInt: Map<String, Int> = mapOf(
+    private val intervalToInt: Map<String, Int> = mapOf(
             "1" to 0,
             "#1" to 1, "b2" to 1,
             "2" to 2,
@@ -37,18 +36,14 @@ class Scale(
             "#6" to 10, "b7" to 10,
             "7" to 11
         ),
-        private val allNotes: List<String> = listOf(
+    private val allNotes: List<String> = listOf(
         "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb",
         "G", "G#/Ab", "A", "A#/Bb", "B"
         ),
-        private val allMajorModes: List<String> = listOf(
+    private val allMajorModes: List<String> = listOf(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
         ),
-        private val pentaModes: List<String> = listOf(
-        "Major Pentatonic", "Minor Pentatonic"
-        ),
-        private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
         //private val chordsMajorModes: List<String> = listOf(
         //    "Major", "Minor", "Minor", "Major",
         //    "Major", "Minor", "Diminished"
@@ -69,15 +64,14 @@ class Scale(
         //diatonicNotes.add(rootNote) // add the root note to scale
         //cleanNotes.add(rootNote)
 
-        setFormula()        // set formulaStrings and formulaInts to correct mode intervals
         setDiatonicChords()         //
         setDiatonicIntervals()      //
         setSteps()
 
         // LOOP FOR BUILDING SCALE
         val rootIndex: Int = allNotes.indexOf(rootNote)
-        for (i in 0 until diatonicIntervals.size){
-            var offset = rootIndex + intervalToInt[diatonicIntervals[i]]!!
+        for (i in 0 until formula.size){
+            var offset = rootIndex + intervalToInt[formula[i]]!!
             if (offset >= allNotes.size)
                 offset -= allNotes.size
             diatonicNotes.add(allNotes[offset])
@@ -105,10 +99,6 @@ class Scale(
             print(cleanNotes[i] + " ")
         }
         println()
-        for (i in 0 until formulaStrings.size){
-            print("${formulaStrings[i]} ")
-        }
-        println()
         for (i in 0 until diatonicChords.size){
             print("${diatonicChords[i]} ")
         }
@@ -125,9 +115,7 @@ class Scale(
         usingSharps = b
     }
 
-    fun getDiatonicIntervals() = diatonicIntervals
-
-    fun getFormulaStrings() = formulaStrings
+    fun getDiatonicIntervals() = formula
 
     fun getDiatonicNotes() = diatonicNotes
 
@@ -145,44 +133,27 @@ class Scale(
         steps.clear()
 
         // WACKY THREE
-        if (modeType == "Chromatic")
-            steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
-        else if (modeType == "Whole Tone")
-            steps = mutableListOf("W", "W", "W", "W", "W", "W", "W")
-        else if (modeType == "Diminished")
-            steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
-        // MAJOR MODES
-        if (modeType in allMajorModes){
-            val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
-            var offset = allMajorModes.indexOf(modeType)
-            for (i in 0 until majorSteps.size){
-                if (i+offset >= majorSteps.size)
-                    offset -= majorSteps.size
-                steps.add(majorSteps[i + offset])
-            }
-        }
-
-    }
-
-    private fun setFormula() {
-        formulaStrings.clear()
-
         when (modeType) {
-            "Major/Ionian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
-            "Phrygian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
-            "Lydian" -> formulaStrings = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
-            "Mixolydian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
-            "Minor/Aeolian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
-            "Locrian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
-
-            "Major Pentatonic" -> formulaStrings = mutableListOf("1", "2", "3", "5", "6")
-            "Minor Pentatonic" -> formulaStrings = mutableListOf("1", "b3", "4", "5", "b7")
-
-            "Major Blues" -> formulaStrings = mutableListOf("1", "2", "b3", "3", "5", "6")
-            "Minor Blues" -> formulaStrings = mutableListOf("1", "b3", "4", "b5", "5", "b7")
+            "Chromatic" -> steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
+            "Whole Tone" -> steps = mutableListOf("W", "W", "W", "W", "W", "W", "W")
+            "Diminished" -> steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
+            // MAJOR MODES
+            in allMajorModes -> {
+                val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
+                var offset = allMajorModes.indexOf(modeType)
+                for (i in 0 until majorSteps.size){
+                    if (i+offset >= majorSteps.size)
+                        offset -= majorSteps.size
+                    steps.add(majorSteps[i + offset])
+                }
+            }
+            "Major Pentatonic" -> steps = mutableListOf("W", "W", "m3", "W", "m3")
+            "Minor Pentatonic" -> steps = mutableListOf("m3", "W", "W", "m3", "W")
+            "Major Blues" -> steps = mutableListOf("W", "h", "h", "m3", "W", "m3")
+            "Minor Blues" -> steps = mutableListOf("m3", "W", "h", "h", "m3", "W")
         }
     }
+
 
     private fun setDiatonicChords(){
         diatonicChords.clear()  //
@@ -199,22 +170,22 @@ class Scale(
     }
 
     private fun setDiatonicIntervals(){
-        diatonicIntervals.clear()  //
+        formula.clear()  //
 
         when (modeType) {
-            "Major/Ionian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
-            "Phrygian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
-            "Lydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
-            "Mixolydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
-            "Minor/Aeolian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
-            "Locrian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
+            "Major/Ionian" -> formula = mutableListOf("1", "2", "3", "4", "5", "6", "7")
+            "Dorian" -> formula = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
+            "Phrygian" -> formula = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
+            "Lydian" -> formula = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
+            "Mixolydian" -> formula = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
+            "Minor/Aeolian" -> formula = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
+            "Locrian" -> formula = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
 
-            "Major Pentatonic" -> diatonicIntervals = mutableListOf("1", "2", "3", "5", "6")
-            "Minor Pentatonic" -> diatonicIntervals = mutableListOf("1", "b3", "4", "5", "b7")
+            "Major Pentatonic" -> formula = mutableListOf("1", "2", "3", "5", "6")
+            "Minor Pentatonic" -> formula = mutableListOf("1", "b3", "4", "5", "b7")
 
-            "Major Blues" -> diatonicIntervals = mutableListOf("1", "2", "b3", "3", "5", "6")
-            "Minor Blues" -> diatonicIntervals = mutableListOf("1", "b3", "4", "b5", "5", "b7")
+            "Major Blues" -> formula = mutableListOf("1", "2", "b3", "3", "5", "6")
+            "Minor Blues" -> formula = mutableListOf("1", "b3", "4", "b5", "5", "b7")
         }
     }
 }
