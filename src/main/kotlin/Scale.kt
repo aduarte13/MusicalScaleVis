@@ -6,7 +6,7 @@ class Scale(
         private val cleanNotes: MutableList<String> = mutableListOf<String>(),
         private var diatonicChords: MutableList<String> = mutableListOf<String>(),
         private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
-        private var formulaStrings: MutableList<String> = mutableListOf<String>(),
+        private var formula: MutableList<String> = mutableListOf<String>(),
         private var steps: MutableList<String> = mutableListOf<String>(),
         private val intervalStrings: Map<Int, String> = mapOf(
         // unison && octave omitted
@@ -76,8 +76,8 @@ class Scale(
 
         // LOOP FOR BUILDING SCALE
         val rootIndex: Int = allNotes.indexOf(rootNote)
-        for (i in 0 until diatonicIntervals.size){
-            var offset = rootIndex + intervalToInt[diatonicIntervals[i]]!!
+        for (i in 0 until formula.size){
+            var offset = rootIndex + intervalToInt[formula[i]]!!
             if (offset >= allNotes.size)
                 offset -= allNotes.size
             diatonicNotes.add(allNotes[offset])
@@ -105,8 +105,8 @@ class Scale(
             print(cleanNotes[i] + " ")
         }
         println()
-        for (i in 0 until formulaStrings.size){
-            print("${formulaStrings[i]} ")
+        for (i in 0 until formula.size){
+            print("${formula[i]} ")
         }
         println()
         for (i in 0 until diatonicChords.size){
@@ -127,7 +127,7 @@ class Scale(
 
     fun getDiatonicIntervals() = diatonicIntervals
 
-    fun getFormulaStrings() = formulaStrings
+    fun getFormula() = formula
 
     fun getDiatonicNotes() = diatonicNotes
 
@@ -173,22 +173,22 @@ class Scale(
     }
 
     private fun setFormula() {
-        formulaStrings.clear()
+        formula.clear()
 
         when (modeType) {
-            "Major/Ionian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
-            "Phrygian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
-            "Lydian" -> formulaStrings = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
-            "Mixolydian" -> formulaStrings = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
-            "Minor/Aeolian" -> formulaStrings = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
-            "Locrian" -> formulaStrings = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
+            "Major/Ionian" -> formula = mutableListOf("1", "2", "3", "4", "5", "6", "7")
+            "Dorian" -> formula = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
+            "Phrygian" -> formula = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
+            "Lydian" -> formula = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
+            "Mixolydian" -> formula = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
+            "Minor/Aeolian" -> formula = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
+            "Locrian" -> formula = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
 
-            "Major Pentatonic" -> formulaStrings = mutableListOf("1", "2", "3", "5", "6")
-            "Minor Pentatonic" -> formulaStrings = mutableListOf("1", "b3", "4", "5", "b7")
+            "Major Pentatonic" -> formula = mutableListOf("1", "2", "3", "5", "6")
+            "Minor Pentatonic" -> formula = mutableListOf("1", "b3", "4", "5", "b7")
 
-            "Major Blues" -> formulaStrings = mutableListOf("1", "2", "b3", "3", "5", "6")
-            "Minor Blues" -> formulaStrings = mutableListOf("1", "b3", "4", "b5", "5", "b7")
+            "Major Blues" -> formula = mutableListOf("1", "2", "b3", "3", "5", "6")
+            "Minor Blues" -> formula = mutableListOf("1", "b3", "4", "b5", "5", "b7")
         }
     }
 
