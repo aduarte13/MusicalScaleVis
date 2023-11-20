@@ -45,10 +45,6 @@ class Scale(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
         ),
-    private val pentaModes: List<String> = listOf(
-        "Major Pentatonic", "Minor Pentatonic"
-        ),
-    private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
         //private val chordsMajorModes: List<String> = listOf(
         //    "Major", "Minor", "Minor", "Major",
         //    "Major", "Minor", "Diminished"
