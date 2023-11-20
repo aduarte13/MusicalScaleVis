@@ -41,7 +41,7 @@ class PianoDisplay(
                     else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
                         blueNoteColor
                     else if (noteIndex != -1) {
-                        if (scale.getDiatonicIntervals()[i].length > 1)
+                        if (scale.getFormula()[i].length > 1)
                             specialNoteColor
                         else
                             regNoteColor
@@ -69,7 +69,7 @@ class PianoDisplay(
             else if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2])
                 blueNoteColor
             else if (noteIndex != -1) {
-                if (scale.getDiatonicIntervals()[i].length > 1)
+                if (scale.getFormula()[i].length > 1)
                     specialNoteColor
                 else
                     regNoteColor

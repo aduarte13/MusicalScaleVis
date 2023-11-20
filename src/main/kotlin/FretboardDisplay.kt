@@ -63,7 +63,7 @@ class FretboardDisplay(
             // and if so, set noteColor accordingly
             val noteIndex = scale.getDiatonicNotes().indexOf(guitarString[i])
             if(noteIndex != -1) {
-                if (scale.getDiatonicIntervals()[noteIndex].length > 1)
+                if (scale.getFormula()[noteIndex].length > 1)
                     noteColor = specialNoteColor
             }
 

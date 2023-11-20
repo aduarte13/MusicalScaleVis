@@ -1,14 +1,14 @@
 class Scale(
-        private var rootNote: String,
-        private var modeType: String,
-        private var usingSharps: Boolean = true,
-        private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
-        private val cleanNotes: MutableList<String> = mutableListOf<String>(),
-        private var diatonicChords: MutableList<String> = mutableListOf<String>(),
-        private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
-        private var formula: MutableList<String> = mutableListOf<String>(),
-        private var steps: MutableList<String> = mutableListOf<String>(),
-        private val intervalStrings: Map<Int, String> = mapOf(
+    private var rootNote: String,
+    private var modeType: String,
+    private var usingSharps: Boolean = true,
+    private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
+    private val cleanNotes: MutableList<String> = mutableListOf<String>(),
+    private var diatonicChords: MutableList<String> = mutableListOf<String>(),
+    private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
+    private var formula: MutableList<String> = mutableListOf<String>(),
+    private var steps: MutableList<String> = mutableListOf<String>(),
+    private val intToStrInterval: Map<Int, String> = mapOf(
         // unison && octave omitted
             0 to "R",
         1 to "m2",   // half step || minor 2md
@@ -23,7 +23,7 @@ class Scale(
         10 to "m7", // minor 7th
         11 to "M7"  // major 7th
         ),
-        private val intervalToInt: Map<String, Int> = mapOf(
+    private val intervalToInt: Map<String, Int> = mapOf(
             "1" to 0,
             "#1" to 1, "b2" to 1,
             "2" to 2,
@@ -37,18 +37,18 @@ class Scale(
             "#6" to 10, "b7" to 10,
             "7" to 11
         ),
-        private val allNotes: List<String> = listOf(
+    private val allNotes: List<String> = listOf(
         "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb",
         "G", "G#/Ab", "A", "A#/Bb", "B"
         ),
-        private val allMajorModes: List<String> = listOf(
+    private val allMajorModes: List<String> = listOf(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
         ),
-        private val pentaModes: List<String> = listOf(
+    private val pentaModes: List<String> = listOf(
         "Major Pentatonic", "Minor Pentatonic"
         ),
-        private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
+    private val stepsMajorModes: List<Int> = listOf(2, 2, 1, 2, 2, 2, 1),
         //private val chordsMajorModes: List<String> = listOf(
         //    "Major", "Minor", "Minor", "Major",
         //    "Major", "Minor", "Diminished"
@@ -204,20 +204,10 @@ class Scale(
     private fun setDiatonicIntervals(){
         diatonicIntervals.clear()  //
 
-        when (modeType) {
-            "Major/Ionian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "7")
-            "Dorian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
-            "Phrygian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "5", "b6", "b7")
-            "Lydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "#4", "5", "6", "7")
-            "Mixolydian" -> diatonicIntervals = mutableListOf("1", "2", "3", "4", "5", "6", "b7")
-            "Minor/Aeolian" -> diatonicIntervals = mutableListOf("1", "2", "b3", "4", "5", "b6", "b7")
-            "Locrian" -> diatonicIntervals = mutableListOf("1", "b2", "b3", "4", "b5", "b6", "b7")
-
-            "Major Pentatonic" -> diatonicIntervals = mutableListOf("1", "2", "3", "5", "6")
-            "Minor Pentatonic" -> diatonicIntervals = mutableListOf("1", "b3", "4", "5", "b7")
-
-            "Major Blues" -> diatonicIntervals = mutableListOf("1", "2", "b3", "3", "5", "6")
-            "Minor Blues" -> diatonicIntervals = mutableListOf("1", "b3", "4", "b5", "5", "b7")
+        for (i in 0 until formula.size){
+            val intValue = intervalToInt[formula[i]]
+            val interval = intToStrInterval[intValue]
+            diatonicIntervals.add(interval!!)
         }
     }
 }

@@ -21,9 +21,9 @@ class TextDisplay(
         g.color = regNoteColor
 
         // LOOP FOR DRAWING NOTE STRINGS
-        for (i in 0 until scale.getDiatonicNotes().size){
+        for (i in 0 until scale.getFormula().size){
 
-            if (scale.getDiatonicIntervals()[i].length > 1)
+            if (scale.getFormula()[i].length > 1)
                 g.color = specialNoteColor
 
             // BLUE NOTES
@@ -83,9 +83,9 @@ class TextDisplay(
     fun drawTopTextFormula(g: Graphics){
         g.color = textColor
 
-        for (i in 0 until scale.getDiatonicIntervals().size){
+        for (i in 0 until scale.getFormula().size){
 
-            if (scale.getDiatonicIntervals()[i].length > 1)
+            if (scale.getFormula()[i].length > 1)
                 g.color = specialNoteColor
             // BLUE NOTES
             if (scale.getMode() == "Minor Blues" && i == 3) {
@@ -96,7 +96,7 @@ class TextDisplay(
             }
 
 
-            val interval: String = scale.getDiatonicIntervals()[i]
+            val interval: String = scale.getFormula()[i]
             g.drawString(
                 interval,
                 50 + (i * topTextNotesXDist),
@@ -110,9 +110,6 @@ class TextDisplay(
     fun drawTopTextIntraScaleIntervals(g: Graphics){
 
         g.color = textColor
-
-
-
 
         for (i in 0 until scale.getDiatonicIntervals().size){
             g.drawString(
