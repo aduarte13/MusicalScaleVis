@@ -170,7 +170,7 @@ class Scale(
             "Chromatic" -> formula = mutableListOf("1", "b2", "2", "b3", "3", "4", "b5", "5",
                                                    "b6", "6", "b7", "7")
             "Whole Tone" -> formula = mutableListOf("1", "2", "3", "#4", "#5", "#6")
-            "Diminished" -> formula = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
+            "Diminished" -> formula = mutableListOf("1", "2", "b3", "4", "b5", "#5", "6", "7")
 
             "Major/Ionian" -> formula = mutableListOf("1", "2", "3", "4", "5", "6", "7")
             "Dorian" -> formula = mutableListOf("1", "2", "b3", "4", "5", "6", "b7")
