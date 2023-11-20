@@ -45,6 +45,10 @@ class Scale(
         "Major/Ionian", "Dorian", "Phrygian", "Lydian",
         "Mixolydian", "Minor/Aeolian", "Locrian"
         ),
+    private val allMelodicMinor: List<String> = listOf(
+        "Melodic Minor", "Dorian b2", "Lydian #5", "Lydian b7",
+        "Mixolydian b6", "Locrian nat 2", "Altered"
+    ),
         //private val chordsMajorModes: List<String> = listOf(
         //    "Major", "Minor", "Minor", "Major",
         //    "Major", "Minor", "Diminished"
@@ -140,8 +144,8 @@ class Scale(
     private fun setSteps(){
         steps.clear()
 
-        // WACKY THREE
         when (modeType) {
+            // WACKY THREE
             "Chromatic" -> steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
             "Whole Tone" -> steps = mutableListOf("W", "W", "W", "W", "W", "W")
             "Diminished" -> steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
@@ -155,10 +159,21 @@ class Scale(
                     steps.add(majorSteps[i + offset])
                 }
             }
+            // PENTA + BLUES
             "Major Pentatonic" -> steps = mutableListOf("W", "W", "m3", "W", "m3")
             "Minor Pentatonic" -> steps = mutableListOf("m3", "W", "W", "m3", "W")
             "Major Blues" -> steps = mutableListOf("W", "h", "h", "m3", "W", "m3")
             "Minor Blues" -> steps = mutableListOf("m3", "W", "h", "h", "m3", "W")
+            // MELODIC MINOR
+            in allMelodicMinor -> {
+                val melodicMinorSteps = mutableListOf("W", "h", "W", "W", "W", "W", "h")
+                var offset = allMelodicMinor.indexOf(modeType)
+                for (i in 0 until melodicMinorSteps.size){
+                    if (i+offset >= melodicMinorSteps.size)
+                        offset -= melodicMinorSteps.size
+                    steps.add(melodicMinorSteps[i + offset])
+                }
+            }
         }
 
     }
@@ -185,6 +200,8 @@ class Scale(
 
             "Major Blues" -> formula = mutableListOf("1", "2", "b3", "3", "5", "6")
             "Minor Blues" -> formula = mutableListOf("1", "b3", "4", "b5", "5", "b7")
+
+            "Melodic Minor" -> formula = mutableListOf("1", "2", "b3", "4", "5", "6", "7")
         }
     }
 
