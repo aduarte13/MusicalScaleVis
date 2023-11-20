@@ -154,12 +154,12 @@ class FretboardDisplay(
             if (guitarString[i] in scale.getDiatonicNotes()) {
                 val note = guitarString[i]
                 val noteIndex = scale.getDiatonicNotes().indexOf(note)
-                val interval = scale.getDiatonicIntervals()[noteIndex]
+                val interval = scale.getFormula()[noteIndex]
                 if (interval.length > 1)
-                    offset -= 6
+                    offset -= 7
 
                 g.drawString(
-                        "" + (scale.getDiatonicIntervals()[noteIndex]),
+                        "" + (scale.getFormula()[noteIndex]),
                         fretboardXOffset + i * fretboardNoteXDist + (noteSize/4) + 5 + offset,
                         fretboardYOffset + (noteSize/2) + 9 + (guitarStringNum * fretboardNoteYDist)
                 )
