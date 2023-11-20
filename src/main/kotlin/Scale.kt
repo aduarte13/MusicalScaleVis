@@ -145,30 +145,25 @@ class Scale(
         steps.clear()
 
         // WACKY THREE
-        if (modeType == "Chromatic")
-            steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
-        else if (modeType == "Whole Tone")
-            steps = mutableListOf("W", "W", "W", "W", "W", "W", "W")
-        else if (modeType == "Diminished")
-            steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
-        // MAJOR MODES
-        else if (modeType in allMajorModes){
-            val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
-            var offset = allMajorModes.indexOf(modeType)
-            for (i in 0 until majorSteps.size){
-                if (i+offset >= majorSteps.size)
-                    offset -= majorSteps.size
-                steps.add(majorSteps[i + offset])
+        when (modeType) {
+            "Chromatic" -> steps = mutableListOf("h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h", "h")
+            "Whole Tone" -> steps = mutableListOf("W", "W", "W", "W", "W", "W", "W")
+            "Diminished" -> steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
+            // MAJOR MODES
+            in allMajorModes -> {
+                val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
+                var offset = allMajorModes.indexOf(modeType)
+                for (i in 0 until majorSteps.size){
+                    if (i+offset >= majorSteps.size)
+                        offset -= majorSteps.size
+                    steps.add(majorSteps[i + offset])
+                }
             }
+            "Major Pentatonic" -> steps = mutableListOf("W", "W", "m3", "W", "m3")
+            "Minor Pentatonic" -> steps = mutableListOf("m3", "W", "W", "m3", "W")
+            "Major Blues" -> steps = mutableListOf("W", "h", "h", "m3", "W", "m3")
+            "Minor Blues" -> steps = mutableListOf("m3", "W", "h", "h", "m3", "W")
         }
-        else if (modeType == "Major Pentatonic")
-            steps = mutableListOf("W", "W", "m3", "W", "m3")
-        else if (modeType == "Minor Pentatonic")
-            steps = mutableListOf("m3", "W", "W", "m3", "W")
-        else if (modeType == "Major Blues")
-            steps = mutableListOf("W", "h", "h", "m3", "W", "m3")
-        else if (modeType == "Minor Blues")
-            steps = mutableListOf("m3", "W", "h", "h", "m3", "W")
 
     }
 

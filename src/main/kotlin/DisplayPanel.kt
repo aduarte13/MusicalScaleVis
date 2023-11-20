@@ -49,7 +49,7 @@ class DisplayPanel(
         )
 
         g.color = backgroundColor
-        g.fillRect(0, 0, 760, 610) // fill background
+        g.fillRect(0, 0, 860, 610) // fill background
 
         if (!relativeMajorHidden)
             textDisplay.drawTopTextRelativeMajorNotes(g)
