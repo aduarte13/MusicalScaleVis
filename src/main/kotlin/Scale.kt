@@ -152,7 +152,7 @@ class Scale(
         else if (modeType == "Diminished")
             steps = mutableListOf("W", "h", "W", "h", "W", "h", "W", "h")
         // MAJOR MODES
-        if (modeType in allMajorModes){
+        else if (modeType in allMajorModes){
             val majorSteps = mutableListOf("W", "W", "h", "W", "W", "W", "h")
             var offset = allMajorModes.indexOf(modeType)
             for (i in 0 until majorSteps.size){
@@ -161,6 +161,14 @@ class Scale(
                 steps.add(majorSteps[i + offset])
             }
         }
+        else if (modeType == "Major Pentatonic")
+            steps = mutableListOf("W", "W", "m3", "W", "m3")
+        else if (modeType == "Minor Pentatonic")
+            steps = mutableListOf("m3", "W", "W", "m3", "W")
+        else if (modeType == "Major Blues")
+            steps = mutableListOf("W", "h", "h", "m3", "W", "m3")
+        else if (modeType == "Minor Blues")
+            steps = mutableListOf("m3", "W", "h", "h", "m3", "W")
 
     }
 
