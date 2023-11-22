@@ -214,7 +214,11 @@ class Scale(
     private fun setDiatonicChords(){
         diatonicChords.clear()  //
 
+        val majorChords = mutableListOf("M", "m", "m", "M", "M", "m", "dim")
+        val intToRoman = mapOf(1 to "i")
+
         when (modeType) {
+
             "Major/Ionian" -> diatonicChords = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
             "Dorian" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
             "Phrygian" -> diatonicChords = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
@@ -222,6 +226,8 @@ class Scale(
             "Mixolydian" -> diatonicChords = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
             "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
             "Locrian" -> diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
+
+            "Melodic Minor" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "7")
         }
     }
 
