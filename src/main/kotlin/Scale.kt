@@ -227,7 +227,7 @@ class Scale(
             "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
             "Locrian" -> diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
 
-            "Melodic Minor" -> diatonicChords = mutableListOf("1", "2", "3", "4", "5", "6", "7")
+            "Melodic Minor" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "V", "vi", "vii")
         }
     }
 
