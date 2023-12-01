@@ -215,7 +215,14 @@ class Scale(
         diatonicChords.clear()  //
 
         val majorChords = mutableListOf("M", "m", "m", "M", "M", "m", "dim")
-        val intToRoman = mapOf(1 to "i")
+        val intToRoman = mapOf(
+            1 to "i",
+            2 to "ii",
+            3 to "iii",
+            4 to "iv",
+            5 to "v",
+            6 to "vi",
+            7 to "vii")
 
         when (modeType) {
 
