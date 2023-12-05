@@ -226,16 +226,17 @@ class Scale(
 
         when (modeType) {
 
-            "Major/Ionian" -> diatonicChords = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
-            "Dorian" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
-            "Phrygian" -> diatonicChords = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
-            "Lydian" -> diatonicChords = mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
-            "Mixolydian" -> diatonicChords = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
+            "Major/Ionian" -> diatonicChords =  mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
+            "Dorian" -> diatonicChords =        mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
+            "Phrygian" -> diatonicChords =      mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
+            "Lydian" -> diatonicChords =        mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
+            "Mixolydian" -> diatonicChords =    mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
             "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
-            "Locrian" -> diatonicChords = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
+            "Locrian" -> diatonicChords =       mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
 
             "Melodic Minor" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "V", "vi", "vii")
-            "Dorian b2" -> diatonicChords = mutableListOf("i", "II", "III", "IV", "v", "vi", "vii")
+            "Dorian b2" -> diatonicChords =     mutableListOf("i", "II", "III", "IV", "v", "vi", "vii")
+            "Lydian #5" -> diatonicChords =     mutableListOf("I", "II", "III", "iv", "v", "vi", "vii")
         }
     }
 
