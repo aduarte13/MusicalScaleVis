@@ -62,6 +62,8 @@ class DisplayPanel(
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
 
+            textDisplay.drawStructureName(g)
+
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
                 fretboardDisplay.drawFretboard(g)               // fretboard

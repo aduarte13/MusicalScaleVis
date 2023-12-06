@@ -47,6 +47,16 @@ class TextDisplay(
         }
     }
 
+    fun drawStructureName(g: Graphics){
+        g.color = textColor
+
+        g.drawString(
+            scale.getRoot() + " "+ scale.getMode(),
+            topTextNotesXDist - 10,
+            topTextNotesYDist - 20
+        )
+    }
+
     // C D E F ...
     fun drawTopTextRelativeMajorNotes(g: Graphics) {
 
@@ -59,7 +69,7 @@ class TextDisplay(
             g.drawString(
                 note,
                 50 + (i * topTextNotesXDist),
-                topTextNotesYDist
+                topTextNotesYDist + 200
             )
         }
     }
