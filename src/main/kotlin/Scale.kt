@@ -240,6 +240,7 @@ class Scale(
             "Lydian b7" -> diatonicChords     = mutableListOf("I", "II", "iii", "iv", "v", "vi", "VII")
             "Mixolydian b6" -> diatonicChords = mutableListOf("I", "ii", "iii", "iv", "v", "VI", "VII")
             "Locrian nat 2" -> diatonicChords = mutableListOf("i", "ii", "iii", "iv", "V", "VI", "VII")
+            "Altered" -> diatonicChords       = mutableListOf("i", "ii", "iii", "IV", "V", "VI", "vii")
 
         }
     }
