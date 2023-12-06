@@ -4,7 +4,7 @@ import java.awt.Graphics
 class FretboardDisplay(
     private val scale: Scale,
 
-    private val fretboardXOffset: Int = 3,        // top left of fretboard
+    private val fretboardXOffset: Int = 60,        // top left of fretboard
     private val fretboardYOffset: Int = 365,      // corner of fretboard
     private val fretboardNoteXDist: Int = 55,     // horizontal distance between notes
     private val fretboardNoteYDist: Int = 35,     // vertical distance between notes
