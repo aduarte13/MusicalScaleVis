@@ -4,7 +4,7 @@ import java.awt.Graphics
 class PianoDisplay(
     private val scale: Scale,
 
-    private val xOffset: Int = 30,        // top left
+    private val xOffset: Int = 80,        // top left
     private val yOffset: Int = 388,      // corner
     private val noteSize: Int = 46,      // horizontal size of note visual
     private val wNoteHeight: Int = noteSize * 4,
