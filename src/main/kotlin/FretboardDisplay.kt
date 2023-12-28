@@ -4,11 +4,11 @@ import java.awt.Graphics
 class FretboardDisplay(
     private val scale: Scale,
 
-    private val fretboardXOffset: Int = 60,        // top left of fretboard
-    private val fretboardYOffset: Int = 365,      // corner of fretboard
+    private val fretboardXOffset: Int = 60,       // top left of fretboard
+    private val fretboardYOffset: Int = 365,      // top left of fretboard
     private val fretboardNoteXDist: Int = 55,     // horizontal distance between notes
     private val fretboardNoteYDist: Int = 35,     // vertical distance between notes
-    private val noteSize: Int = 42,                // size of notes on fretboard
+    private val noteSize: Int = 42,               // size of notes on fretboard
 
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
@@ -27,27 +27,43 @@ class FretboardDisplay(
             eString, bString, gString, dString, aString, eString
     )
 
-
+    /**
+     *  drawFretboardGuitarStrings
+     *  calls drawFretboardNotes for each guitar string array
+     *  @param g: Graphics used to draw onto DisplayPanel frame
+     */
     fun drawFretboardGuitarStrings(g: Graphics){
-
         for (i in allGuitarStrings.indices){
             drawFretboardNotes(g, allGuitarStrings[i], i)
         }
     }
 
+    /**
+     *  drawFretboardNoteNames
+     *  calls drawFretboardNoteStrings for each guitar string array
+     *  @param g: Graphics used to draw onto DisplayPanel frame
+     */
     fun drawFretboardNoteNames(g: Graphics) {
-
         for (i in allGuitarStrings.indices){
             drawFretboardNoteStrings(g, allGuitarStrings[i], i)
         }
     }
 
+    /**
+     *  drawFretboardDegrees
+     *  calls drawFretboardDegreeStrings for each guitar string array
+     *  @param g: Graphics used to draw onto DisplayPanel frame
+     */
     fun drawFretboardDegrees(g: Graphics){
         for (i in allGuitarStrings.indices){
             drawFretboardDegreeStrings(g, allGuitarStrings[i], i)
         }
     }
 
+    /**
+     *  drawFretboardNotes
+     *
+     */
     private fun drawFretboardNotes(
             g: Graphics,
             guitarString: Array<String>,
@@ -76,7 +92,7 @@ class FretboardDisplay(
                         fretboardYOffset + yOffset
                 )
             }
-            // NON-ROOT DIATONIC NOTES
+            // OTHER DIATONIC NOTES
             else if (guitarString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
@@ -113,8 +129,8 @@ class FretboardDisplay(
             guitarStringNum: Int
     ) {
         val accidentals = listOf("C#/Db", "D#/Eb", "F#/Gb", "G#/Ab", "A#/Bb")
-        var xOffset: Int
-        val yOffset = guitarStringNum * fretboardNoteYDist
+        var xOffset: Int                                    // for centering strings of size 2
+        val yOffset = guitarStringNum * fretboardNoteYDist  //
 
         g.color = Color.black
 
@@ -150,6 +166,7 @@ class FretboardDisplay(
 
         g.color = Color.black
 
+        //
         for (i in 0..12) {
             if (guitarString[i] in scale.getDiatonicNotes()) {
                 val note = guitarString[i]
