@@ -73,7 +73,9 @@ class DisplayPanel(
                 // FRETBOARD DISPLAY
                 fretboardDisplay.drawFretboard(g)               // fretboard
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
-
+                // FRETBOARD
+                if (highlightRoot)
+                    fretboardDisplay.highlightFretboardRoots(g)
                 if (usingNoteNames) {
                     fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
                 } else {

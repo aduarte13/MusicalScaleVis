@@ -76,27 +76,8 @@ class FretboardDisplay(
 
         for (i in 0..12){
 
-            var noteColor = regNoteColor
-
-            // determine if current fret note deviates from relative major
-            // and if so, set noteColor accordingly
-            val noteIndex = scale.getDiatonicNotes().indexOf(guitarString[i])
-            if(noteIndex != -1) {
-                if (scale.getFormula()[noteIndex].length > 1)
-                    noteColor = specialNoteColor
-            }
-
-            // HIGHLIGHT ROOT
-            if (guitarString[i] == scale.getRoot()){
-                drawGuitarNote(
-                        g,
-                        rootNoteColor,
-                        fretboardXOffset + i * fretboardNoteXDist,
-                        fretboardYOffset + yOffset
-                )
-            }
-            // OTHER DIATONIC NOTES
-            else if (guitarString[i] in scale.getDiatonicNotes()){
+            val noteColor = regNoteColor
+            if (guitarString[i] in scale.getDiatonicNotes()){
                 drawGuitarNote(
                         g,
                         noteColor,
@@ -104,24 +85,33 @@ class FretboardDisplay(
                         fretboardYOffset + yOffset
                 )
             }
+        }
+    }
 
-            // BLUE NOTES
-            if (scale.getMode() == "Minor Blues" && guitarString[i] == scale.getDiatonicNotes()[3]) {
-                drawGuitarNote(
+    /**
+     *  drawFretboardNotes
+     *  calls drawGuitarNote for each ROOT note for each guitar string
+     *  @param g: Graphics object for DisplayPanel
+     */
+    fun highlightFretboardRoots(
+        g: Graphics
+    ){
+
+        for (i in 0..5) {
+            val yOffset = i * fretboardNoteYDist
+
+            for (j in 0..12) {
+                // HIGHLIGHT ROOT
+                if (allGuitarStrings[i][j] == scale.getRoot()) {
+                    drawGuitarNote(
                         g,
-                        blueNoteColor,
-                        fretboardXOffset + i * fretboardNoteXDist,
+                        rootNoteColor,
+                        fretboardXOffset + j * fretboardNoteXDist,
                         fretboardYOffset + yOffset
-                )
+                    )
+                }
             }
-            if (scale.getMode() == "Major Blues" && guitarString[i] == scale.getDiatonicNotes()[2]) {
-                drawGuitarNote(
-                        g,
-                        blueNoteColor,
-                        fretboardXOffset + i * fretboardNoteXDist,
-                        fretboardYOffset + yOffset
-                )
-            }
+
         }
     }
 
