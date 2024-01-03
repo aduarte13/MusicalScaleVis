@@ -1,5 +1,6 @@
 import java.awt.*
 import javax.swing.*
+import javax.swing.text.Highlighter.Highlight
 
 class DisplayPanel(
     private val scale: Scale,
@@ -13,7 +14,11 @@ class DisplayPanel(
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
     private var relativeMajorHidden: Boolean = false,
-    private var usingFretboard: Boolean = true
+    private var usingFretboard: Boolean = true,
+
+    private var highlightRoot: Boolean = true,
+    private var highlightDevs: Boolean = true,
+    private var highlightBlue: Boolean = true
     ) : JPanel(){
 
     init{
