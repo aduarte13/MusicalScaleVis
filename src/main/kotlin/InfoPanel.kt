@@ -16,8 +16,12 @@ class InfoPanel(
     private val checkBoxHighlightBlue = JCheckBox("Highlight Blue Note")
 
     init {
-        border = BorderFactory.createTitledBorder("Selection")
+        border = BorderFactory.createTitledBorder("Info")
         layout = FlowLayout()
+
+        checkboxHighlightRoot.isSelected = true
+        checkBoxHighlightDevs.isSelected = true
+        checkBoxHighlightBlue.isSelected = true
 
         // add listeners
 
