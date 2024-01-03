@@ -1,4 +1,5 @@
-import java.awt.*
+import java.awt.BorderLayout
+import java.awt.Dimension
 import javax.swing.JFrame
 
 class Main : JFrame(){
@@ -12,13 +13,16 @@ class Main : JFrame(){
         val relativeMajor = Scale(rootNote = "C", modeType = "Major/Ionian")
         val displayPanel = DisplayPanel(musicStruct, relativeMajor)
         val selectionPanel = SelectionPanel(musicStruct, relativeMajor, displayPanel)
+        val infoPanel = InfoPanel(musicStruct, displayPanel)
 
         // set panel sizes
         selectionPanel.preferredSize = Dimension(850, 60)
         displayPanel.preferredSize = Dimension(850, 600)
+        selectionPanel.preferredSize = Dimension(850, 60)
 
         // add panels to frame
-        add(selectionPanel, BorderLayout.CENTER)
+        add(selectionPanel, BorderLayout.NORTH)
+        add(infoPanel, BorderLayout.CENTER)
         add(displayPanel, BorderLayout.SOUTH)
 
         pack()
