@@ -1,6 +1,8 @@
-import java.awt.*
-import javax.swing.*
-import javax.swing.text.Highlighter.Highlight
+import java.awt.Color
+import java.awt.Font
+import java.awt.Graphics
+import javax.swing.BorderFactory
+import javax.swing.JPanel
 
 class DisplayPanel(
     private val scale: Scale,
@@ -73,9 +75,10 @@ class DisplayPanel(
                 // FRETBOARD DISPLAY
                 fretboardDisplay.drawFretboard(g)               // fretboard
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
-                // FRETBOARD
+                // FRETBOARD ROOTS
                 if (highlightRoot)
                     fretboardDisplay.highlightFretboardRoots(g)
+                // NAMES OR DEGREES
                 if (usingNoteNames) {
                     fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
                 } else {
@@ -107,4 +110,13 @@ class DisplayPanel(
     fun setUsingNoteNames(b: Boolean){
         usingNoteNames = b
     }
+
+    fun switchHighlightSetting(c: Char){
+        when (c){
+            'r' -> highlightRoot = !highlightRoot
+            'd' -> highlightDevs = !highlightDevs
+            'b' -> highlightBlue = !highlightBlue
+        }
+    }
+
 }

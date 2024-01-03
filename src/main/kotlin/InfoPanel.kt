@@ -24,6 +24,9 @@ class InfoPanel(
         checkBoxHighlightBlue.isSelected = true
 
         // add listeners
+        checkboxHighlightRoot.addActionListener(CheckBoxListener())
+        checkBoxHighlightDevs.addActionListener(CheckBoxListener())
+        checkBoxHighlightBlue.addActionListener(CheckBoxListener())
 
         highlightButtonsPanel.add(checkboxHighlightRoot)
         highlightButtonsPanel.add(checkBoxHighlightDevs)
@@ -36,10 +39,11 @@ class InfoPanel(
     inner class CheckBoxListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
             when (e.source) {
-                checkboxHighlightRoot -> displayPanel.switchHidden()
-                checkBoxHighlightDevs -> displayPanel.switchRelativeMajorHidden()
-                checkBoxHighlightBlue -> displayPanel.repaint()
+                checkboxHighlightRoot -> displayPanel.switchHighlightSetting('r')
+                checkBoxHighlightDevs -> displayPanel.switchHighlightSetting('d')
+                checkBoxHighlightBlue -> displayPanel.switchHighlightSetting('b')
             }
+            displayPanel.repaint()
         }
     }
 
