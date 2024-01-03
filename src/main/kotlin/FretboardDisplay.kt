@@ -30,7 +30,7 @@ class FretboardDisplay(
     /**
      *  drawFretboardGuitarStrings
      *  calls drawFretboardNotes for each guitar string array
-     *  @param g: Graphics used to draw onto DisplayPanel frame
+     *  @param g: Graphics object for DisplayPanel
      */
     fun drawFretboardGuitarStrings(g: Graphics){
         for (i in allGuitarStrings.indices){
@@ -41,7 +41,7 @@ class FretboardDisplay(
     /**
      *  drawFretboardNoteNames
      *  calls drawFretboardNoteStrings for each guitar string array
-     *  @param g: Graphics used to draw onto DisplayPanel frame
+     *  @param g: Graphics object for DisplayPanel
      */
     fun drawFretboardNoteNames(g: Graphics) {
         for (i in allGuitarStrings.indices){
@@ -52,7 +52,7 @@ class FretboardDisplay(
     /**
      *  drawFretboardDegrees
      *  calls drawFretboardDegreeStrings for each guitar string array
-     *  @param g: Graphics used to draw onto DisplayPanel frame
+     *  @param g: Graphics object for DisplayPanel
      */
     fun drawFretboardDegrees(g: Graphics){
         for (i in allGuitarStrings.indices){
@@ -62,7 +62,10 @@ class FretboardDisplay(
 
     /**
      *  drawFretboardNotes
-     *
+     *  calls drawGuitarNote for each diatonic note for each guitar string
+     *  @param g: Graphics object for DisplayPanel
+     *  @param guitarString: string array representing guitar notes per fret
+     *  @param guitarStringNum: used for drawing notes at appropriate y value
      */
     private fun drawFretboardNotes(
             g: Graphics,
@@ -122,7 +125,13 @@ class FretboardDisplay(
         }
     }
 
-
+    /**
+     *  drawFretboardNoteStrings
+     *  draws the note name as a string onto appropriate note circles
+     *  @param g: Graphics object for DisplayPanel
+     *  @param guitarString: string array representing guitar notes per fret
+     *  @param guitarStringNum: used for drawing notes at appropriate y value
+     */
     private fun drawFretboardNoteStrings(
             g: Graphics,
             guitarString: Array<String>,
@@ -156,6 +165,13 @@ class FretboardDisplay(
         }
     }
 
+    /**
+     *  drawFretboardDegreeStrings
+     *  draws the degree of the note as a string onto appropriate note circles
+     *  @param g: Graphics object for DisplayPanel
+     *  @param guitarString: string array representing guitar notes per fret
+     *  @param guitarStringNum: used for drawing notes at appropriate y value
+     */
     private fun drawFretboardDegreeStrings(
             g: Graphics,
             guitarString: Array<String>,
@@ -185,6 +201,11 @@ class FretboardDisplay(
         }
     }
 
+    /**
+     *  drawFretboard
+     *  draws the fretboard shape, fret lines, and fret markings
+     *  @param g: Graphics object for DisplayPanel
+     */
     fun drawFretboard(g: Graphics) {
         g.color = Color.lightGray
         g.drawRect(                     // perimeter of fretboard, includes e strings
@@ -221,7 +242,14 @@ class FretboardDisplay(
         g.fillOval(687, fretboardYOffset - (noteSize / 2), 11, 11) // markings on fret 12
     }
 
-
+    /**
+     *  drawGuitarNote
+     *  draws circle of a given color at (x, y)
+     *  @param g: Graphics object for DisplayPanel
+     *  @param c: color of note circle
+     *  @param x: x coordinate of top left of circle
+     *  @param y: y coordinate of top left of circle
+     */
     private fun drawGuitarNote(g: Graphics, c: Color, x: Int, y: Int){
         val size = 42
         val borderWidth = 4
