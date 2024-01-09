@@ -19,6 +19,7 @@ class Main : JFrame(){
         selectionPanel.preferredSize = Dimension(850, 60)
         displayPanel.preferredSize = Dimension(850, 600)
         selectionPanel.preferredSize = Dimension(850, 60)
+        infoPanel.preferredSize = Dimension(850, 45)
 
         // add panels to frame
         add(selectionPanel, BorderLayout.NORTH)
