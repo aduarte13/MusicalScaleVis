@@ -62,6 +62,8 @@ class TextDisplay(
 
         g.color = textColor
 
+        g.drawLine(0, topTextNotesYDist + 160, 850, topTextNotesYDist + 160)
+
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until relativeMajor.getDiatonicNotes().size){
 
