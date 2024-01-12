@@ -80,8 +80,8 @@ class DisplayPanel(
                     fretboardDisplay.highlightFretboardRoots(g)
                 if (highlightDevs)
                     fretboardDisplay.highlightFretboardDevs(g)
-                //if (highlightBlue)
-
+                if (highlightBlue)
+                    fretboardDisplay.highlightFretboardBlue(g)
                 // NAMES OR DEGREES
                 if (usingNoteNames) {
                     fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes

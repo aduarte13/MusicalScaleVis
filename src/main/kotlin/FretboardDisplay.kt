@@ -146,6 +146,29 @@ class FretboardDisplay(
         }
     }
 
+    fun highlightFretboardBlue(
+        g: Graphics
+    ){
+        for (i in 0..5) {
+            val yOffset = i * fretboardNoteYDist
+
+            for (j in 0..12) {
+                val note = allGuitarStrings[i][j]
+
+                if (scale.getMode() == "Major Blues" && note == scale.getDiatonicNotes()[2]
+                    || scale.getMode() == "Minor Blues" && note == scale.getDiatonicNotes()[3]) {
+                    drawGuitarNote(
+                        g,
+                        blueNoteColor,
+                        fretboardXOffset + j * fretboardNoteXDist,
+                        fretboardYOffset + yOffset
+                    )
+                }
+
+            }
+        }
+    }
+
     /**
      *  drawFretboardNoteStrings
      *  draws the note name as a string onto appropriate note circles
