@@ -78,7 +78,7 @@ class DisplayPanel(
                 // FRETBOARD ROOTS
                 if (highlightRoot)
                     fretboardDisplay.highlightFretboardRoots(g)
-                //if (highlightDevs)
+                if (highlightDevs)
                     fretboardDisplay.highlightFretboardDevs(g)
                 //if (highlightBlue)
 
