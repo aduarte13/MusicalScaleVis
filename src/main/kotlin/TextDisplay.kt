@@ -2,16 +2,15 @@ import java.awt.Color
 import java.awt.Graphics
 
 class TextDisplay(
-    private val scale: Scale,
+    val scale: Scale,
     private val relativeMajor: Scale,
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
     private val blueNoteColor: Color,
     private val specialNoteColor: Color,
-
     private val topTextNotesXDist: Int = 60,
-    private val topTextNotesYDist: Int = 100,
 
+    private val topTextNotesYDist: Int = 100,
     private val textColor: Color = Color(235, 235, 235),
     ) {
 
@@ -23,6 +22,7 @@ class TextDisplay(
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until scale.getFormula().size){
 
+            /*
             if (scale.getFormula()[i].length > 1)
                 g.color = specialNoteColor
 
@@ -35,6 +35,7 @@ class TextDisplay(
             }
             if (i == 0)
                 g.color = rootNoteColor
+            */
 
             val note: String = scale.getCleanNotes()[i]
             g.drawString(
@@ -97,7 +98,7 @@ class TextDisplay(
         g.color = textColor
 
         for (i in 0 until scale.getFormula().size){
-
+            /*
             if (scale.getFormula()[i].length > 1)
                 g.color = specialNoteColor
             // BLUE NOTES
@@ -107,7 +108,7 @@ class TextDisplay(
             if (scale.getMode() == "Major Blues" && i == 2) {
                 g.color = blueNoteColor
             }
-
+            */
 
             val interval: String = scale.getFormula()[i]
             g.drawString(
@@ -116,6 +117,39 @@ class TextDisplay(
                 topTextNotesYDist + 75)
 
             g.color = textColor
+        }
+    }
+
+    fun highlightTopTextRootInfo(g: Graphics){
+        g.color = rootNoteColor
+        g.drawString(
+            scale.getCleanNotes()[0],
+            50,
+            topTextNotesYDist + 50)
+        g.drawString(
+            "1",
+            50,
+            topTextNotesYDist + 75)
+    }
+
+    fun highlightTopTextDevInfo(g: Graphics){
+        g.color = specialNoteColor
+        for (i in 0 until scale.getFormula().size) {
+
+            if (scale.getFormula()[i].length > 1) {
+
+                val interval: String = scale.getFormula()[i]
+                g.drawString(
+                    scale.getCleanNotes()[i],
+                    50 + (i * topTextNotesXDist),
+                    topTextNotesYDist + 50
+                )
+                g.drawString(
+                    interval,
+                    50 + (i * topTextNotesXDist),
+                    topTextNotesYDist + 75
+                )
+            }
         }
     }
 

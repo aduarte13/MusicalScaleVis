@@ -5,6 +5,7 @@ import javax.swing.BorderFactory
 import javax.swing.JPanel
 
 class DisplayPanel(
+
     private val scale: Scale,
     private val relativeMajor: Scale,
     private val backgroundColor: Color = Color(20, 20, 20),
@@ -76,10 +77,14 @@ class DisplayPanel(
                 fretboardDisplay.drawFretboard(g)               // fretboard
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
                 // FRETBOARD ROOTS
-                if (highlightRoot)
+                if (highlightRoot) {
+                    textDisplay.highlightTopTextRootInfo(g)
                     fretboardDisplay.highlightFretboardRoots(g)
-                if (highlightDevs)
+                }
+                if (highlightDevs) {
+                    textDisplay.highlightTopTextDevInfo(g)
                     fretboardDisplay.highlightFretboardDevs(g)
+                }
                 if (highlightBlue)
                     fretboardDisplay.highlightFretboardBlue(g)
                 // NAMES OR DEGREES
