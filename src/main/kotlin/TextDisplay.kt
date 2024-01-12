@@ -153,6 +153,28 @@ class TextDisplay(
         }
     }
 
+    fun highlightTopTextBlueInfo(g: Graphics){
+        g.color = blueNoteColor
+        for (i in 0 until scale.getFormula().size) {
+
+            if (scale.getMode() == "Major Blues" && i == 2
+                || scale.getMode() == "Minor Blues" && i == 3) {
+
+                val interval: String = scale.getFormula()[i]
+                g.drawString(
+                    scale.getCleanNotes()[i],
+                    50 + (i * topTextNotesXDist),
+                    topTextNotesYDist + 50
+                )
+                g.drawString(
+                    interval,
+                    50 + (i * topTextNotesXDist),
+                    topTextNotesYDist + 75
+                )
+            }
+        }
+    }
+
     // R W M3 P4 ...
     fun drawTopTextIntraScaleIntervals(g: Graphics){
 

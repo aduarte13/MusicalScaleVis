@@ -85,8 +85,10 @@ class DisplayPanel(
                     textDisplay.highlightTopTextDevInfo(g)
                     fretboardDisplay.highlightFretboardDevs(g)
                 }
-                if (highlightBlue)
+                if (highlightBlue) {
+                    textDisplay.highlightTopTextBlueInfo(g)
                     fretboardDisplay.highlightFretboardBlue(g)
+                }
                 // NAMES OR DEGREES
                 if (usingNoteNames) {
                     fretboardDisplay.drawFretboardNoteNames(g)      // draw note names on fretboard notes
