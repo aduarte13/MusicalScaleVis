@@ -89,7 +89,7 @@ class FretboardDisplay(
     }
 
     /**
-     *  drawFretboardNotes
+     *  highlightFretboardRoots
      *  calls drawGuitarNote for each ROOT note for each guitar string
      *  @param g: Graphics object for DisplayPanel
      */
@@ -115,6 +115,12 @@ class FretboardDisplay(
         }
     }
 
+    /**
+     *  highlightFretboardDev
+     *  calls drawGuitarNote for each diatonic note and highlights it if it
+     *  deviates from its relative major scale
+     *  @param g: Graphics object for DisplayPanel
+     */
     fun highlightFretboardDevs(g: Graphics){
         for (i in 0..5) {
             val yOffset = i * fretboardNoteYDist
