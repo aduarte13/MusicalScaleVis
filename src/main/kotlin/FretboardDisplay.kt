@@ -115,6 +115,31 @@ class FretboardDisplay(
         }
     }
 
+    fun highlightFretboardDevs(g: Graphics){
+        for (i in 0..5) {
+            val yOffset = i * fretboardNoteYDist
+
+            for (j in 0..12) {
+                val note = allGuitarStrings[i][j]
+
+                if (note in scale.getDiatonicNotes()) {
+
+                    val intervalIndex = scale.getDiatonicNotes().indexOf(note)
+                    val interval = scale.getFormula()[intervalIndex]
+
+                    if (interval.length > 1) {
+                        drawGuitarNote(
+                            g,
+                            specialNoteColor,
+                            fretboardXOffset + j * fretboardNoteXDist,
+                            fretboardYOffset + yOffset
+                        )
+                    }
+                }
+            }
+        }
+    }
+
     /**
      *  drawFretboardNoteStrings
      *  draws the note name as a string onto appropriate note circles

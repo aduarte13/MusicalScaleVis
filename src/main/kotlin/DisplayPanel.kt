@@ -79,7 +79,7 @@ class DisplayPanel(
                 if (highlightRoot)
                     fretboardDisplay.highlightFretboardRoots(g)
                 //if (highlightDevs)
-
+                    fretboardDisplay.highlightFretboardDevs(g)
                 //if (highlightBlue)
 
                 // NAMES OR DEGREES
