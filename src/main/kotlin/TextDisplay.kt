@@ -47,11 +47,12 @@ class TextDisplay(
         }
     }
 
+    // C MAJOR
     fun drawStructureName(g: Graphics){
         g.color = textColor
 
         g.drawString(
-            scale.getRoot() + " "+ scale.getMode(),
+            scale.getCleanNotes()[0] + " "+ scale.getMode(),
             topTextNotesXDist - 10,
             topTextNotesYDist - 20
         )
