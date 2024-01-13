@@ -22,21 +22,6 @@ class TextDisplay(
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until scale.getFormula().size){
 
-            /*
-            if (scale.getFormula()[i].length > 1)
-                g.color = specialNoteColor
-
-            // BLUE NOTES
-            if (scale.getMode() == "Minor Blues" && i == 3) {
-                g.color = blueNoteColor
-            }
-            if (scale.getMode() == "Major Blues" && i == 2) {
-                g.color = blueNoteColor
-            }
-            if (i == 0)
-                g.color = rootNoteColor
-            */
-
             val note: String = scale.getCleanNotes()[i]
             g.drawString(
                 note,
