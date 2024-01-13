@@ -2,7 +2,7 @@ import java.awt.Color
 import java.awt.Graphics
 
 class TextDisplay(
-    val scale: Scale,
+    private val scale: Scale,
     private val relativeMajor: Scale,
     private val rootNoteColor: Color,
     private val regNoteColor: Color,
@@ -98,17 +98,6 @@ class TextDisplay(
         g.color = textColor
 
         for (i in 0 until scale.getFormula().size){
-            /*
-            if (scale.getFormula()[i].length > 1)
-                g.color = specialNoteColor
-            // BLUE NOTES
-            if (scale.getMode() == "Minor Blues" && i == 3) {
-                g.color = blueNoteColor
-            }
-            if (scale.getMode() == "Major Blues" && i == 2) {
-                g.color = blueNoteColor
-            }
-            */
 
             val interval: String = scale.getFormula()[i]
             g.drawString(

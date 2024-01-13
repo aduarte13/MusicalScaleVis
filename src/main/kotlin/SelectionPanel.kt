@@ -157,7 +157,7 @@ class SelectionPanel(
     inner class ModeSelectionListener : ActionListener{
         override fun actionPerformed(e: ActionEvent) {
             val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
-            scale.setMode(selection) // set the chord's type to the selected tyoe
+            scale.setMode(selection) // set the chord's type to the selected type
             scale.setMode(selection)
             displayPanel.repaint() // update display panel
         }
