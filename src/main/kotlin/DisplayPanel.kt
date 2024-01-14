@@ -9,10 +9,10 @@ class DisplayPanel(
     private val scale: Scale,
     private val relativeMajor: Scale,
     private val backgroundColor: Color = Color(20, 20, 20),
-    private val rootNoteColor: Color = Color(225, 15, 0),
+    private val rootNoteColor: Color = Color(220, 45, 30),
     private val regNoteColor: Color = Color(255, 180, 70),
-    private val blueNoteColor: Color = Color(60, 60, 255),
-    private val specialNoteColor: Color = Color(195, 50, 195),
+    private val blueNoteColor: Color = Color(60, 110, 255),
+    private val specialNoteColor: Color = Color(220, 80, 220),
 
     private var usingNoteNames: Boolean = true,
     private var hidden: Boolean = false,
@@ -32,7 +32,7 @@ class DisplayPanel(
         blueNoteColor = blueNoteColor,
         specialNoteColor = specialNoteColor
     ),
-    val fretboardDisplay: FretboardDisplay = FretboardDisplay(
+    private val fretboardDisplay: FretboardDisplay = FretboardDisplay(
         scale,
         regNoteColor = regNoteColor,
         rootNoteColor = rootNoteColor,
