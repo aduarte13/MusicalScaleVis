@@ -16,27 +16,21 @@ class TextDisplay(
 
     // C D E F ...
     fun drawTopTextNotes(g: Graphics) {
-
         g.color = regNoteColor
-
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until scale.getFormula().size){
-
             val note: String = scale.getCleanNotes()[i]
             g.drawString(
                 note,
                 50 + (i * topTextNotesXDist),
                 topTextNotesYDist + 50
             )
-
-            g.color = regNoteColor
         }
     }
 
     // C MAJOR
     fun drawStructureName(g: Graphics){
         g.color = textColor
-
         g.drawString(
             scale.getCleanNotes()[0] + " "+ scale.getMode(),
             topTextNotesXDist - 10,
@@ -46,14 +40,10 @@ class TextDisplay(
 
     // C D E F ...
     fun drawTopTextRelativeMajorNotes(g: Graphics) {
-
         g.color = textColor
-
         g.drawLine(0, topTextNotesYDist + 160, 850, topTextNotesYDist + 160)
-
         // LOOP FOR DRAWING NOTE STRINGS
         for (i in 0 until relativeMajor.getDiatonicNotes().size){
-
             val note: String = relativeMajor.getCleanNotes()[i]
             g.drawString(
                 note,
@@ -66,30 +56,24 @@ class TextDisplay(
     // W W h W ...
     fun drawTopTextIntervals(g: Graphics) {
         g.color = textColor
-
         for (i in 0 until scale.getSteps().size) {
-
             g.drawString(
                 scale.getSteps()[i] + " ",
                 83 + (i * topTextNotesXDist),
                 topTextNotesYDist + 25
             )
-
         }
     }
 
     // 1 2 b3 4 ...
     fun drawTopTextFormula(g: Graphics){
         g.color = textColor
-
         for (i in 0 until scale.getFormula().size){
-
             val interval: String = scale.getFormula()[i]
             g.drawString(
                 interval,
                 50 + (i * topTextNotesXDist),
                 topTextNotesYDist + 75)
-
             g.color = textColor
         }
     }
@@ -109,9 +93,7 @@ class TextDisplay(
     fun highlightTopTextDevInfo(g: Graphics){
         g.color = specialNoteColor
         for (i in 0 until scale.getFormula().size) {
-
             if (scale.getFormula()[i].length > 1) {
-
                 val interval: String = scale.getFormula()[i]
                 g.drawString(
                     scale.getCleanNotes()[i],
@@ -130,10 +112,8 @@ class TextDisplay(
     fun highlightTopTextBlueInfo(g: Graphics){
         g.color = blueNoteColor
         for (i in 0 until scale.getFormula().size) {
-
             if (scale.getMode() == "Major Blues" && i == 2
                 || scale.getMode() == "Minor Blues" && i == 3) {
-
                 val interval: String = scale.getFormula()[i]
                 g.drawString(
                     scale.getCleanNotes()[i],
@@ -151,9 +131,7 @@ class TextDisplay(
 
     // R W M3 P4 ...
     fun drawTopTextIntraScaleIntervals(g: Graphics){
-
         g.color = textColor
-
         for (i in 0 until scale.getDiatonicIntervals().size){
             g.drawString(
                 scale.getDiatonicIntervals()[i],
@@ -165,19 +143,14 @@ class TextDisplay(
 
     // I ii iii IV ...
     fun drawTopTextChordNumerals(g: Graphics){
-
         g.color = textColor
-
         for (i in 0 until scale.getDiatonicChords().size){
-
             val note: String = scale.getDiatonicChords()[i]
             g.drawString(
                 note,
                 50 + (i * topTextNotesXDist),
                 topTextNotesYDist + 135
             )
-
         }
     }
-
 }

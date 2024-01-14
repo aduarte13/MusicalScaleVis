@@ -61,20 +61,26 @@ class DisplayPanel(
 
         if (!relativeMajorHidden)
             textDisplay.drawTopTextRelativeMajorNotes(g)
+
         textDisplay.drawTopTextIntervals(g)             // W W h W...
         textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
         textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
+        textDisplay.drawStructureName(g)                // C Major
+
+        if (usingFretboard)
+            fretboardDisplay.drawFretboard(g)               // fretboard
+        else
+            pianoDisplay.drawPianoOutline(g, Color.white)                //
+
 
         if (!hidden) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
 
-            textDisplay.drawStructureName(g)
-
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
-                fretboardDisplay.drawFretboard(g)               // fretboard
+
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
                 // FRETBOARD ROOTS
                 if (highlightRoot) {
@@ -99,9 +105,7 @@ class DisplayPanel(
             else {
                 // PIANO DISPLAY
                 pianoDisplay.highlightPiano(g)
-
-                pianoDisplay.drawPianoOutline(g)
-
+                pianoDisplay.drawPianoOutline(g, Color.black)
             }
         }
     }
