@@ -126,8 +126,8 @@ class PianoDisplay(
 
     }
 
-    fun drawPianoOutline(g: Graphics){
-        g.color = Color.black
+    fun drawPianoOutline(g: Graphics, c: Color){
+        g.color = c
         // perimenter of piano
         g.drawRect(
             xOffset ,
