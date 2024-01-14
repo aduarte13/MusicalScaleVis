@@ -10,9 +10,13 @@ class InfoPanel(
     private val displayPanel: DisplayPanel
 ): JPanel() {
     private val highlightButtonsPanel = JPanel()
+    private val hideOptionsPanel = JPanel()
 
-    private val checkboxHide = JCheckBox("Hide")
     private val relativeMajorHide = JCheckBox("Relative Major")
+    private val checkboxHideAll = JCheckBox("Hide All")
+    private val checkboxHideSteps = JCheckBox("Hide Steps")
+    private val checkboxHideFormula = JCheckBox("Hide Formula")
+    private val checkboxHideChords = JCheckBox("Hide Chords")
 
     private val checkboxHighlightRoot = JCheckBox("Highlight Root")
     private val checkBoxHighlightDevs = JCheckBox("Highlight Deviations")
@@ -22,6 +26,8 @@ class InfoPanel(
         layout = FlowLayout()
 
         highlightButtonsPanel.border = BorderFactory.createTitledBorder("Highlight Control")
+        hideOptionsPanel.border = BorderFactory.createTitledBorder("Hide Options")
+
         checkboxHighlightRoot.isSelected = true
         checkBoxHighlightDevs.isSelected = true
         checkBoxHighlightBlue.isSelected = true
@@ -31,17 +37,21 @@ class InfoPanel(
         checkboxHighlightRoot.addActionListener(CheckBoxListener())
         checkBoxHighlightDevs.addActionListener(CheckBoxListener())
         checkBoxHighlightBlue.addActionListener(CheckBoxListener())
-        checkboxHide.addActionListener(CheckBoxListener())
+        checkboxHideAll.addActionListener(CheckBoxListener())
         relativeMajorHide.addActionListener(CheckBoxListener())
 
-        add(relativeMajorHide)
-
+        // add components to appropriate
+        //add(relativeMajorHide)
         highlightButtonsPanel.add(checkboxHighlightRoot)
         highlightButtonsPanel.add(checkBoxHighlightDevs)
         highlightButtonsPanel.add(checkBoxHighlightBlue)
+        hideOptionsPanel.add(checkboxHideAll)
+        hideOptionsPanel.add(checkboxHideSteps)
+        hideOptionsPanel.add(checkboxHideFormula)
+        hideOptionsPanel.add(checkboxHideChords)
 
         add(highlightButtonsPanel)
-        add(checkboxHide)
+        add(hideOptionsPanel)
 
     }
 
@@ -51,7 +61,7 @@ class InfoPanel(
                 checkboxHighlightRoot -> displayPanel.switchHighlightSetting('r')
                 checkBoxHighlightDevs -> displayPanel.switchHighlightSetting('d')
                 checkBoxHighlightBlue -> displayPanel.switchHighlightSetting('b')
-                checkboxHide -> displayPanel.switchHidden()
+                checkboxHideAll -> displayPanel.switchHidden()
                 relativeMajorHide -> displayPanel.switchRelativeMajorHidden()
             }
             displayPanel.repaint()

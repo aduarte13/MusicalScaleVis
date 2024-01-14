@@ -70,7 +70,7 @@ class DisplayPanel(
         if (usingFretboard)
             fretboardDisplay.drawFretboard(g)               // fretboard
         else
-            pianoDisplay.drawPianoOutline(g, Color.white)                //
+            pianoDisplay.drawPianoOutline(g, Color.white)
 
 
         if (!hidden) {
