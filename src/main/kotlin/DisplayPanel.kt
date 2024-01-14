@@ -21,8 +21,32 @@ class DisplayPanel(
 
     private var highlightRoot: Boolean = true,
     private var highlightDevs: Boolean = true,
-    private var highlightBlue: Boolean = true
-    ) : JPanel(){
+    private var highlightBlue: Boolean = true,
+
+    // create display objects
+    private val textDisplay: TextDisplay = TextDisplay(
+        scale,
+        relativeMajor,
+        regNoteColor = regNoteColor,
+        rootNoteColor = rootNoteColor,
+        blueNoteColor = blueNoteColor,
+        specialNoteColor = specialNoteColor
+    ),
+    val fretboardDisplay: FretboardDisplay = FretboardDisplay(
+        scale,
+        regNoteColor = regNoteColor,
+        rootNoteColor = rootNoteColor,
+        blueNoteColor = blueNoteColor,
+        specialNoteColor = specialNoteColor
+    ),
+    private val pianoDisplay: PianoDisplay = PianoDisplay(
+        scale,
+        regNoteColor = regNoteColor,
+        rootNoteColor = rootNoteColor,
+        blueNoteColor = blueNoteColor,
+        specialNoteColor = specialNoteColor
+    )
+) : JPanel(){
 
     init{
         border = BorderFactory.createEtchedBorder()
@@ -31,30 +55,6 @@ class DisplayPanel(
     override fun paint(g: Graphics) {
 
         g.font = Font("American Typewriter", Font.BOLD, 24)
-
-        // create display objects
-        val textDisplay = TextDisplay(
-            scale,
-            relativeMajor,
-            regNoteColor = regNoteColor,
-            rootNoteColor = rootNoteColor,
-            blueNoteColor = blueNoteColor,
-            specialNoteColor = specialNoteColor
-        )
-        val fretboardDisplay = FretboardDisplay(
-            scale,
-            regNoteColor = regNoteColor,
-            rootNoteColor = rootNoteColor,
-            blueNoteColor = blueNoteColor,
-            specialNoteColor = specialNoteColor
-        )
-        val pianoDisplay = PianoDisplay(
-            scale,
-            regNoteColor = regNoteColor,
-            rootNoteColor = rootNoteColor,
-            blueNoteColor = blueNoteColor,
-            specialNoteColor = specialNoteColor
-        )
 
         g.color = backgroundColor
         g.fillRect(0, 0, 860, 610) // fill background
