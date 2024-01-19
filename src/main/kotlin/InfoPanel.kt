@@ -41,7 +41,6 @@ class InfoPanel(
         relativeMajorHide.addActionListener(CheckBoxListener())
 
         // add components to appropriate
-        //add(relativeMajorHide)
         highlightButtonsPanel.add(checkboxHighlightRoot)
         highlightButtonsPanel.add(checkBoxHighlightDevs)
         highlightButtonsPanel.add(checkBoxHighlightBlue)
@@ -52,7 +51,7 @@ class InfoPanel(
 
         add(highlightButtonsPanel)
         add(hideOptionsPanel)
-
+        add(relativeMajorHide)
     }
 
     inner class CheckBoxListener : ActionListener {
