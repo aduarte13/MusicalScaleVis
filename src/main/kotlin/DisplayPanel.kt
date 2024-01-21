@@ -66,13 +66,20 @@ class DisplayPanel(
         if (!relativeMajorHidden)
             textDisplay.drawTopTextRelativeMajorNotes(g)
 
-        textDisplay.drawTopTextIntervals(g)             // W W h W...
-        textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
-        textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
         textDisplay.drawStructureName(g)                // C Major
 
+        if (showSteps)
+            textDisplay.drawTopTextIntervals(g)             // W W h W...
+        if (showFormula) {
+            textDisplay.drawTopTextIntraScaleIntervals(g)   // W M3 P4  ...
+            textDisplay.drawTopTextFormula(g)               // 1 2 b3 4 ...
+        }
+        if (showChords)
+            textDisplay.drawTopTextChordNumerals(g)         // I ii iii ...
+
+
         if (usingFretboard)
-            fretboardDisplay.drawFretboard(g)               // fretboard
+            fretboardDisplay.drawFretboard(g)
         else
             pianoDisplay.drawPianoOutline(g, Color.white)
 
@@ -80,7 +87,6 @@ class DisplayPanel(
         if (showAll) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
-            textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -133,7 +139,18 @@ class DisplayPanel(
             'd' -> highlightDevs = !highlightDevs
             'b' -> highlightBlue = !highlightBlue
             // INFO OPTIONS
-            'a' -> showAll = !showAll
+            'a' -> {showAll = !showAll
+                if (showAll == false){
+                    showSteps = false
+                    showFormula = false
+                    showChords = false
+                }
+                else{
+                    showSteps = true
+                    showFormula = true
+                    showChords = true
+                }
+            }
             's' -> showSteps = !showSteps
             'f' -> showFormula = !showFormula
             'c' -> showChords = !showChords

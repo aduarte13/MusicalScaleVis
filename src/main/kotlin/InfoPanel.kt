@@ -37,8 +37,13 @@ class InfoPanel(
         checkboxHighlightRoot.addActionListener(CheckBoxListener())
         checkBoxHighlightDevs.addActionListener(CheckBoxListener())
         checkBoxHighlightBlue.addActionListener(CheckBoxListener())
+
         checkboxHideAll.addActionListener(CheckBoxListener())
         relativeMajorHide.addActionListener(CheckBoxListener())
+
+        checkboxHideSteps.addActionListener(CheckBoxListener())
+        checkboxHideFormula.addActionListener(CheckBoxListener())
+        checkboxHideChords.addActionListener(CheckBoxListener())
 
         // add components to appropriate
         highlightButtonsPanel.add(checkboxHighlightRoot)
@@ -63,6 +68,10 @@ class InfoPanel(
 
                 checkboxHideAll -> displayPanel.switchSetting('a')
                 relativeMajorHide -> displayPanel.switchRelativeMajorHidden()
+
+                checkboxHideSteps -> displayPanel.switchSetting('s')
+                checkboxHideFormula -> displayPanel.switchSetting('f')
+                checkboxHideChords -> displayPanel.switchSetting('c')
             }
             displayPanel.repaint()
         }
