@@ -34,16 +34,18 @@ class InfoPanel(
         relativeMajorHide.isSelected = true
 
         // add listeners
-        checkboxHighlightRoot.addActionListener(CheckBoxListener())
-        checkBoxHighlightDevs.addActionListener(CheckBoxListener())
-        checkBoxHighlightBlue.addActionListener(CheckBoxListener())
+        val checkboxListener = CheckBoxListener()
 
-        checkboxHideAll.addActionListener(CheckBoxListener())
-        relativeMajorHide.addActionListener(CheckBoxListener())
+        checkboxHighlightRoot.addActionListener(checkboxListener)
+        checkBoxHighlightDevs.addActionListener(checkboxListener)
+        checkBoxHighlightBlue.addActionListener(checkboxListener)
 
-        checkboxHideSteps.addActionListener(CheckBoxListener())
-        checkboxHideFormula.addActionListener(CheckBoxListener())
-        checkboxHideChords.addActionListener(CheckBoxListener())
+        checkboxHideAll.addActionListener(checkboxListener)
+        relativeMajorHide.addActionListener(checkboxListener)
+
+        checkboxHideSteps.addActionListener(checkboxListener)
+        checkboxHideFormula.addActionListener(checkboxListener)
+        checkboxHideChords.addActionListener(checkboxListener)
 
         // add components to appropriate
         highlightButtonsPanel.add(checkboxHighlightRoot)
