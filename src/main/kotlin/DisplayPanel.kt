@@ -58,7 +58,7 @@ class DisplayPanel(
 
     override fun paint(g: Graphics) {
 
-        g.font = Font("American Typewriter", Font.BOLD, 24)
+        g.font = Font("SansSerif", Font.BOLD, 24)
 
         g.color = backgroundColor
         g.fillRect(0, 0, 860, 610) // fill background
