@@ -15,13 +15,17 @@ class DisplayPanel(
     private val specialNoteColor: Color = Color(220, 80, 220),
 
     private var usingNoteNames: Boolean = true,
-    private var hidden: Boolean = false,
     private var relativeMajorHidden: Boolean = false,
     private var usingFretboard: Boolean = true,
 
     private var highlightRoot: Boolean = true,
     private var highlightDevs: Boolean = true,
     private var highlightBlue: Boolean = true,
+
+    private var showAll: Boolean = true,
+    private var showSteps: Boolean = true,
+    private var showFormula: Boolean = true,
+    private var showChords: Boolean = true,
 
     // create display objects
     private val textDisplay: TextDisplay = TextDisplay(
@@ -73,7 +77,7 @@ class DisplayPanel(
             pianoDisplay.drawPianoOutline(g, Color.white)
 
 
-        if (!hidden) {
+        if (showAll) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
             textDisplay.drawTopTextChordNumerals(g)         // draw chord roman numerals    I ii iii ...
@@ -110,10 +114,6 @@ class DisplayPanel(
         }
     }
 
-    fun switchHidden() {
-        hidden = !hidden
-    }
-
     fun switchRelativeMajorHidden(){
         relativeMajorHidden = !relativeMajorHidden
     }
@@ -126,11 +126,17 @@ class DisplayPanel(
         usingNoteNames = b
     }
 
-    fun switchHighlightSetting(c: Char){
+    fun switchSetting(c: Char){
         when (c){
+            // HIGHLIGHT OPTIONS
             'r' -> highlightRoot = !highlightRoot
             'd' -> highlightDevs = !highlightDevs
             'b' -> highlightBlue = !highlightBlue
+            // INFO OPTIONS
+            'a' -> showAll = !showAll
+            's' -> showSteps = !showSteps
+            'f' -> showFormula = !showFormula
+            'c' -> showChords = !showChords
         }
     }
 

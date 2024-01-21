@@ -57,10 +57,11 @@ class InfoPanel(
     inner class CheckBoxListener : ActionListener {
         override fun actionPerformed(e: ActionEvent) {
             when (e.source) {
-                checkboxHighlightRoot -> displayPanel.switchHighlightSetting('r')
-                checkBoxHighlightDevs -> displayPanel.switchHighlightSetting('d')
-                checkBoxHighlightBlue -> displayPanel.switchHighlightSetting('b')
-                checkboxHideAll -> displayPanel.switchHidden()
+                checkboxHighlightRoot -> displayPanel.switchSetting('r')
+                checkBoxHighlightDevs -> displayPanel.switchSetting('d')
+                checkBoxHighlightBlue -> displayPanel.switchSetting('b')
+
+                checkboxHideAll -> displayPanel.switchSetting('a')
                 relativeMajorHide -> displayPanel.switchRelativeMajorHidden()
             }
             displayPanel.repaint()
