@@ -76,9 +76,8 @@ class SelectionPanel(
         keyboardRadioButton.addActionListener(InstrumentSelectionListener())
         fretboardRadioButton.addActionListener(InstrumentSelectionListener())
 
-        noteDropMenu.addActionListener(RootSelectionListener())
-
-        modeDropMenu.addActionListener(ModeSelectionListener())
+        noteDropMenu.addActionListener(ComboBoxListener())
+        modeDropMenu.addActionListener(ComboBoxListener())
 
         sharpsRadioButton.addActionListener(SharpsOrFlatsListener())
         flatsRadioButton.addActionListener(SharpsOrFlatsListener())
@@ -135,21 +134,22 @@ class SelectionPanel(
         }
     }
 
-    inner class RootSelectionListener : ActionListener {
+    inner class ComboBoxListener : ActionListener{
         override fun actionPerformed(e: ActionEvent) {
-            val selection = noteDropMenu.selectedItem as String // get the currently selected root from the list
-            scale.setRoot(selection) // set the chord's root to the selected note
-            relativeMajor.setRoot(selection)
-            displayPanel.repaint() // update display panel
-        }
-    }
-
-    inner class ModeSelectionListener : ActionListener{
-        override fun actionPerformed(e: ActionEvent) {
-            val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
-            scale.setMode(selection) // set the chord's type to the selected type
-            scale.setMode(selection)
-            displayPanel.repaint() // update display panel
+            when(e.source){
+                noteDropMenu -> {
+                    val selection = noteDropMenu.selectedItem as String // get the currently selected root from the list
+                    scale.setRoot(selection) // set the chord's root to the selected note
+                    relativeMajor.setRoot(selection)
+                    displayPanel.repaint() // update display panel
+                }
+                modeDropMenu -> {
+                    val selection = modeDropMenu.selectedItem as String // get currently selected type from the list
+                    scale.setMode(selection) // set the chord's type to the selected type
+                    scale.setMode(selection)
+                    displayPanel.repaint() // update display panel
+                }
+            }
         }
     }
 }
