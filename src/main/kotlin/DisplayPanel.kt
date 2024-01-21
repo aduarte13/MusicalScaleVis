@@ -77,20 +77,13 @@ class DisplayPanel(
         if (showChords)
             textDisplay.drawTopTextChordNumerals(g)         // I ii iii ...
 
-
-        if (usingFretboard)
-            fretboardDisplay.drawFretboard(g)
-        else
-            pianoDisplay.drawPianoOutline(g, Color.white)
-
-
         if (showAll) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
-
+                fretboardDisplay.drawFretboard(g)
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
                 // FRETBOARD ROOTS
                 if (highlightRoot) {
