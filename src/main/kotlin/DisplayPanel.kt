@@ -77,9 +77,17 @@ class DisplayPanel(
         if (showChords)
             textDisplay.drawTopTextChordNumerals(g)         // I ii iii ...
 
+        if(showAll)
+            textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
+        if (highlightRoot)
+            textDisplay.highlightTopTextRootInfo(g)
+        if (highlightDevs)
+            textDisplay.highlightTopTextDevInfo(g)
+        if (highlightBlue)
+            textDisplay.highlightTopTextBlueInfo(g)
+
         if (showAll) {
             // TOP TEXT                                     // -NOTE-                       -e.g.-
-            textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -87,15 +95,12 @@ class DisplayPanel(
                 fretboardDisplay.drawFretboardGuitarStrings(g)  // guitar notes
                 // FRETBOARD ROOTS
                 if (highlightRoot) {
-                    textDisplay.highlightTopTextRootInfo(g)
                     fretboardDisplay.highlightFretboardRoots(g)
                 }
                 if (highlightDevs) {
-                    textDisplay.highlightTopTextDevInfo(g)
                     fretboardDisplay.highlightFretboardDevs(g)
                 }
                 if (highlightBlue) {
-                    textDisplay.highlightTopTextBlueInfo(g)
                     fretboardDisplay.highlightFretboardBlue(g)
                 }
                 // NAMES OR DEGREES
