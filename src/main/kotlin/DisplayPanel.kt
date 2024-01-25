@@ -77,17 +77,16 @@ class DisplayPanel(
         if (showChords)
             textDisplay.drawTopTextChordNumerals(g)         // I ii iii ...
 
-        if(showAll)
+        if(showAll) {
             textDisplay.drawTopTextNotes(g)                 // draw diatonic note strings   C D E ...
-        if (highlightRoot)
-            textDisplay.highlightTopTextRootInfo(g)
-        if (highlightDevs)
-            textDisplay.highlightTopTextDevInfo(g)
-        if (highlightBlue)
-            textDisplay.highlightTopTextBlueInfo(g)
-
+            if (highlightRoot)
+                textDisplay.highlightTopTextRootInfo(g)
+            if (highlightDevs)
+                textDisplay.highlightTopTextDevInfo(g)
+            if (highlightBlue)
+                textDisplay.highlightTopTextBlueInfo(g)
+        }
         if (showAll) {
-            // TOP TEXT                                     // -NOTE-                       -e.g.-
 
             if (usingFretboard) {
                 // FRETBOARD DISPLAY
@@ -138,7 +137,7 @@ class DisplayPanel(
             'b' -> highlightBlue = !highlightBlue
             // INFO OPTIONS
             'a' -> {showAll = !showAll
-                if (showAll == false){
+                if (!showAll){
                     showSteps = false
                     showFormula = false
                     showChords = false
