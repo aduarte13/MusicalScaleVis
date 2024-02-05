@@ -145,6 +145,16 @@ class TextDisplay(
     // I ii iii IV ...
     fun drawTopTextChordNumerals(g: Graphics){
         g.color = textColor
+
+        val intToRoman = mapOf(
+            0 to "I",
+            1 to "II",
+            2 to "III",
+            3 to "IV",
+            4 to "V",
+            5 to "VI",
+            6 to "VII")
+
         for (i in 0 until scale.getDiatonicChords().size){
             val note: String = scale.getDiatonicChords()[i]
             g.drawString(
