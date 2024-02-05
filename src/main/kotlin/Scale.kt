@@ -214,26 +214,33 @@ class Scale(
     private fun setDiatonicChords(){
         diatonicChords.clear()  //
 
-        val majorChords = mutableListOf("M", "m", "m", "M", "M", "m", "dim")
         val intToRoman = mapOf(
-            1 to "i",
-            2 to "ii",
-            3 to "iii",
-            4 to "iv",
-            5 to "v",
-            6 to "vi",
-            7 to "vii")
+            0 to "I",
+            1 to "II",
+            2 to "III",
+            3 to "IV",
+            4 to "V",
+            5 to "VI",
+            6 to "VII")
 
         when (modeType) {
-
-            "Major/Ionian" -> diatonicChords  = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
+            in allMajorModes -> {
+                val majorChords = mutableListOf("M", "m", "m", "M", "M", "m", "dim")
+                var offset = allMajorModes.indexOf(modeType)
+                for (i in 0 until majorChords.size){
+                    if (i+offset >= majorChords.size)
+                        offset -= majorChords.size
+                    diatonicChords.add(majorChords[i + offset])
+                }
+            }
+            /*"Major/Ionian" -> diatonicChords  = mutableListOf("I", "ii", "iii", "IV", "V", "vi", "vii-")
             "Dorian" -> diatonicChords        = mutableListOf("i", "ii", "III", "IV", "v", "vi-", "VII")
             "Phrygian" -> diatonicChords      = mutableListOf("i", "II", "III", "iv", "v-", "VI", "vii")
             "Lydian" -> diatonicChords        = mutableListOf("I", "II", "iii", "iv-", "V", "vi", "vii")
             "Mixolydian" -> diatonicChords    = mutableListOf("I", "ii", "iii-", "IV", "v", "vi", "VII")
             "Minor/Aeolian" -> diatonicChords = mutableListOf("i", "ii-", "III", "iv", "v", "VI", "VII")
             "Locrian" -> diatonicChords       = mutableListOf("i-", "II", "iii", "iv", "V", "VI", "vii")
-
+            */
             "Melodic Minor" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "V", "vi", "vii")
             "Dorian b2" -> diatonicChords     = mutableListOf("i", "II", "III", "IV", "v", "vi", "vii")
             "Lydian #5" -> diatonicChords     = mutableListOf("I", "II", "III", "iv", "v", "vi", "vii")
