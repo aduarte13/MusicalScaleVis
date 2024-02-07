@@ -154,10 +154,15 @@ class TextDisplay(
             5 to "VI",
             6 to "VII")
 
-        for (i in 0 until scale.getDiatonicChords().size){
-            val note: String = scale.getDiatonicChords()[i]
+        for (i in scale.getDiatonicChords().indices){
+            var chordNumeral: String = intToRoman[i]!!
+            when (scale.getDiatonicChords()[i]) {
+                "m" -> chordNumeral = chordNumeral.lowercase()
+                "dim" -> chordNumeral = chordNumeral.lowercase() + "-"
+            }
+
             g.drawString(
-                note,
+                chordNumeral,
                 50 + (i * topTextNotesXDist),
                 topTextNotesYDist + 135
             )
