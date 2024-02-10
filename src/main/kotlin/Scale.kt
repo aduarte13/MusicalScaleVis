@@ -216,22 +216,23 @@ class Scale(
 
         when (modeType) {
             in allMajorModes -> {
-                val majorChords = mutableListOf("M", "m", "m", "M", "M", "m", "dim")
+                val majorChords = listOf("M", "m", "m", "M", "M", "m", "dim")
                 var offset = allMajorModes.indexOf(modeType)
-                for (i in 0 until majorChords.size){
+                for (i in majorChords.indices){
                     if (i+offset >= majorChords.size)
                         offset -= majorChords.size
                     diatonicChords.add(majorChords[i + offset])
                 }
             }
-
-            "Melodic Minor" -> diatonicChords = mutableListOf("i", "ii", "III", "IV", "V", "vi", "vii")
-            "Dorian b2" -> diatonicChords     = mutableListOf("i", "II", "III", "IV", "v", "vi", "vii")
-            "Lydian #5" -> diatonicChords     = mutableListOf("I", "II", "III", "iv", "v", "vi", "vii")
-            "Lydian b7" -> diatonicChords     = mutableListOf("I", "II", "iii", "iv", "v", "vi", "VII")
-            "Mixolydian b6" -> diatonicChords = mutableListOf("I", "ii", "iii", "iv", "v", "VI", "VII")
-            "Locrian nat 2" -> diatonicChords = mutableListOf("i", "ii", "iii", "iv", "V", "VI", "VII")
-            "Altered" -> diatonicChords       = mutableListOf("i", "ii", "iii", "IV", "V", "VI", "vii")
+            in  allMelodicMinor -> {
+                val melodicMinorChords = listOf("m", "m", "aug", "M", "M", "dim", "dim")
+                var offset = allMelodicMinor.indexOf(modeType)
+                for (i in allMelodicMinor.indices) {
+                    if (i + offset >= melodicMinorChords.size)
+                        offset -= melodicMinorChords.size
+                    diatonicChords.add(melodicMinorChords[i + offset])
+                }
+            }
 
         }
     }

@@ -159,6 +159,7 @@ class TextDisplay(
             when (scale.getDiatonicChords()[i]) {
                 "m" -> chordNumeral = chordNumeral.lowercase()
                 "dim" -> chordNumeral = chordNumeral.lowercase() + "-"
+                "aug" -> chordNumeral = "$chordNumeral+"
             }
 
             g.drawString(
