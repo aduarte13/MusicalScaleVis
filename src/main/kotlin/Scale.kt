@@ -2,15 +2,15 @@ class Scale(
     private var rootNote: String,
     private var modeType: String,
     private var usingSharps: Boolean = true,
-    private val diatonicNotes: MutableList<String> = mutableListOf<String>(),
-    private val cleanNotes: MutableList<String> = mutableListOf<String>(),
-    private var diatonicChords: MutableList<String> = mutableListOf<String>(),
-    private var diatonicIntervals: MutableList<String> = mutableListOf<String>(),
-    private var formula: MutableList<String> = mutableListOf<String>(),
-    private var steps: MutableList<String> = mutableListOf<String>(),
+    private val diatonicNotes: MutableList<String> = mutableListOf(),
+    private val cleanNotes: MutableList<String> = mutableListOf(),
+    private var diatonicChords: MutableList<String> = mutableListOf(),
+    private var diatonicIntervals: MutableList<String> = mutableListOf(),
+    private var formula: MutableList<String> = mutableListOf(),
+    private var steps: MutableList<String> = mutableListOf(),
     private val intToStrInterval: Map<Int, String> = mapOf(
         // unison && octave omitted
-            0 to "R",
+        0 to "R",
         1 to "m2",   // half step || minor 2md
         2 to "M2",   // whole step || major 2nd
         3 to "m3",  // minor 3rd
@@ -49,10 +49,6 @@ class Scale(
         "Melodic Minor", "Dorian b2", "Lydian #5", "Lydian b7",
         "Mixolydian b6", "Locrian nat 2", "Altered"
     ),
-        //private val chordsMajorModes: List<String> = listOf(
-        //    "Major", "Minor", "Minor", "Major",
-        //    "Major", "Minor", "Diminished"
-        //),
         // val stepsNaturalMinor
         // val stepsMelodicMinor
         // val stepsByzantine
