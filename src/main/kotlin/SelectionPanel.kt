@@ -19,7 +19,7 @@ class SelectionPanel(
         "Major Pentatonic", "Minor Pentatonic", "Major Blues", "Minor Blues",
         // MELODIC MINOR
         "Melodic Minor", "Dorian b2", "Lydian #5", "Lydian b7",
-        "Mixolydian b6", "Locrian nat 2", "Altered"
+        "Mixolydian b6", "Locrian nat 2", "Super Locrian"
     )
 
     private val noteDropMenu = JComboBox(noteList)

@@ -47,8 +47,12 @@ class Scale(
         ),
     private val allMelodicMinor: List<String> = listOf(
         "Melodic Minor", "Dorian b2", "Lydian #5", "Lydian b7",
-        "Mixolydian b6", "Locrian nat 2", "Altered"
+        "Mixolydian b6", "Locrian nat 2", "Super Locrian"
     ),
+    private val allHarmonicMinor: List<String> = listOf(
+        "Harmonic Minor", "Locrian nat 6", "Ionian #5", "Dorian #11",
+        "Phrygian Dominant", "Lydian #2", "Super Locrian bb7"
+    )
         // val stepsNaturalMinor
         // val stepsMelodicMinor
         // val stepsByzantine
@@ -203,7 +207,7 @@ class Scale(
             "Lydian b7" -> formula = mutableListOf("1", "2", "3", "#4", "5", "6", "b7")
             "Mixolydian b6" -> formula = mutableListOf("1", "2", "3", "4", "5", "b6", "b7")
             "Locrian nat 2" -> formula = mutableListOf("1", "2", "b3", "4", "b5", "b6", "b7")
-            "Altered" -> formula = mutableListOf("1", "b2", "b3", "b4", "b5", "b6", "b7")
+            "Super Locrian" -> formula = mutableListOf("1", "b2", "b3", "b4", "b5", "b6", "b7")
         }
     }
 
